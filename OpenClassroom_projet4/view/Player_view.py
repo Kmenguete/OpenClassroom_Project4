@@ -1,5 +1,5 @@
+from OpenClassroom_projet4.model.Player_model import Player
 
 
-class PlayerView:
-    def create_player(self, player):
-        pass
+def create_player():
+    return Player
