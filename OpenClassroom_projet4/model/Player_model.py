@@ -1,3 +1,4 @@
+from OpenClassroom_projet4.controller.Controller import Controller
 
 
 class Player:
@@ -7,3 +8,7 @@ class Player:
         self.date_of_birth = date_of_birth
         self.sex = sex
         self.rank = rank
+
+
+def controller_update():
+    return Controller

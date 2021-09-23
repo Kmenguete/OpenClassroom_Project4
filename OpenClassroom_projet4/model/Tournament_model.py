@@ -1,3 +1,4 @@
+from OpenClassroom_projet4.controller.Controller import Controller
 
 
 class Tournament:
@@ -10,3 +11,7 @@ class Tournament:
         self.number_of_round = number_of_round
         self.number_of_match = number_of_match
         self.description_of_tournament = description_of_tournament
+
+
+def controller_update():
+    return Controller
