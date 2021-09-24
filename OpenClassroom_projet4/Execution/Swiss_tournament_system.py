@@ -9,11 +9,17 @@ def sort_player_by_rank(player_1, player_2, player_3, player_4, player_5, player
     return sorted_player_list
 
 
-class SwissTournamentSystem:
+def split_total_number_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7,
+                                  player_8):
+    # We want to split players in two group. The first half return the first half of the group. The second half return
+    # the second half of the group.
+    player_list = [player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8]
+    first_half = player_list[:3]
+    second_half = player_list[3:]
+    return first_half, second_half
 
-    def split_total_number_of_players(self, player_1, player_2, player_3, player_4, player_5, player_6, player_7,
-                                      player_8):
-        pass
+
+class SwissTournamentSystem:
 
     def pairs_of_players(self, player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8):
         pass
