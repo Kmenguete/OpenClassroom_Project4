@@ -19,10 +19,18 @@ def split_total_number_of_players(player_1, player_2, player_3, player_4, player
     return first_half, second_half
 
 
-class SwissTournamentSystem:
+def pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8):
+    # Pairs of players are generated according the rank of each group of players. The best player of the first group
+    # will play with the best player of the 2nd group. The 2nd best player of the first group will play with the 2nd
+    # best player of the 2nd group and so on.
+    pair_of_player_a = {'1st': player_3, '3rd': player_6}
+    pair_of_player_b = {'2nd': player_1, '4th': player_5}
+    pair_of_player_c = {'5th': player_4, '6th': player_7}
+    pair_of_player_d = {'8th': player_2, '7th': player_8}
+    return pair_of_player_a, pair_of_player_b, pair_of_player_c, pair_of_player_d
 
-    def pairs_of_players(self, player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8):
-        pass
+
+class SwissTournamentSystem:
 
     def sort_players_by_score_round(self, player_1, player_2, player_3, player_4, player_5, player_6, player_7,
                                     player_8):
