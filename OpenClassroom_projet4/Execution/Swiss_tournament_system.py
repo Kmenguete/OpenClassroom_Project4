@@ -1,3 +1,5 @@
+# My Player class instances will be store in variables player_1, player_2, player_3...etc.
+# The rank of my players are the key of my dictionary.
 
 def sort_player_by_rank(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8):
     player_list = {'2nd': player_1, '8th': player_2, '1st': player_3, '5th': player_4, '4th': player_5,
