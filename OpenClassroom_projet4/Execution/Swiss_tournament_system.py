@@ -6,7 +6,7 @@ def sort_player_by_rank(player_1, player_2, player_3, player_4, player_5, player
     player_list = {'2nd': player_1, '8th': player_2, '1st': player_3, '5th': player_4, '4th': player_5,
                    '3rd': player_6, '6th': player_7, '7th': player_8}
     sorted_player_list = sorted(player_list)
-    return sorted_player_list
+    print(sorted_player_list)
 
 
 def split_total_number_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7,
@@ -16,7 +16,7 @@ def split_total_number_of_players(player_1, player_2, player_3, player_4, player
     player_list = [player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8]
     first_half = player_list[:3]
     second_half = player_list[3:]
-    return first_half, second_half
+    print(first_half, second_half)
 
 
 def pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8):
@@ -27,14 +27,23 @@ def pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6,
     pair_of_player_b = {'2nd': player_1, '4th': player_5}
     pair_of_player_c = {'5th': player_4, '6th': player_7}
     pair_of_player_d = {'8th': player_2, '7th': player_8}
-    return pair_of_player_a, pair_of_player_b, pair_of_player_c, pair_of_player_d
+    print(pair_of_player_a, pair_of_player_b, pair_of_player_c, pair_of_player_d)
+
+
+def sort_players_by_score_round(player_1, player_2, player_3, player_4, player_5, player_6, player_7,
+                                player_8):
+    # When a round is finished, players should be sorted according their total number of points for the round.
+    # This new sorted list will be the new rank for the next round. If two players has the same number of points,
+    # they are sorted by rank.
+    player_list = [{player_1: "Kevin", "score of round": 5.5}, {player_2: "Sarah", "score of round": 1},
+                   {player_3: "Alexandra", "score of round": 6}, {player_4: "Isaac", "score of round": 2},
+                   {player_5: "Eddy", "score of round": 4}, {player_6: "Thomas", "score of round": 5},
+                   {player_7: "Elodie", "score of round": 2}, {player_8: "Ines", "score of round": 1.5}]
+    print("The player list sorted by total score of round:")
+    print(sorted(player_list, key=lambda i: (i["score of round"])))
 
 
 class SwissTournamentSystem:
-
-    def sort_players_by_score_round(self, player_1, player_2, player_3, player_4, player_5, player_6, player_7,
-                                    player_8):
-        pass
 
     def generate_new_pairs_of_players(self, player_1, player_2, player_3, player_4, player_5, player_6, player_7,
                                       player_8):
