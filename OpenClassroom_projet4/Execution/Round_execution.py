@@ -1,3 +1,5 @@
+from tinydb import TinyDB
+
 
 class Round:
     def __init__(self, name_of_tournament, round_number, match_number, score_player_1, score_player_2):
@@ -20,3 +22,9 @@ if __name__ == '__main__':
     score_player_2 = input("enter the score of player 2: ")
     round = Round(name_of_tournament, round_number, match_number, score_player_1, score_player_2)
     print("Here is the last information about the selected match: " + str(round))
+    round_database = TinyDB('Round.json')
+    round_database.insert({'name of tournament': name_of_tournament})
+    round_database.insert({'round number': round_number})
+    round_database.insert({'match number': match_number})
+    round_database.insert({'score player 1': score_player_1})
+    round_database.insert({'score player 2': score_player_2})
