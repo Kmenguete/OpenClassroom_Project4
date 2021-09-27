@@ -43,10 +43,15 @@ def sort_players_by_score_round(player_1, player_2, player_3, player_4, player_5
     print(sorted(player_list, key=lambda i: (i["score of round"])))
 
 
-class SwissTournamentSystem:
-
-    def generate_new_pairs_of_players(self, player_1, player_2, player_3, player_4, player_5, player_6, player_7,
-                                      player_8):
-        pass
+def generate_new_pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7,
+                                  player_8):
+    # For the next round, the player 1 meet the player 2, the player 3 meet the player 4 and so on.
+    # If the player 1 has already met the player 2 then he meet the player 3. If the player 3 has already
+    # met the player 4 then he meet the player 5 and so on.
+    pair_of_player_a = {'Kevin': player_1, 'Sarah': player_2}
+    pair_of_player_b = {'Alexandra': player_3, 'Isaac': player_4}
+    pair_of_player_c = {'Eddy': player_5, 'Thomas': player_6}
+    pair_of_player_d = {'Elodie': player_7, 'Ines': player_8}
+    print(pair_of_player_a, pair_of_player_b, pair_of_player_c, pair_of_player_d)
 
 # I repeat the two last functions until the end of tournament.
