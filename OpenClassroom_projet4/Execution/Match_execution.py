@@ -1,3 +1,5 @@
+from tinydb import TinyDB
+
 
 class Match:
     def __init__(self, player_1, player_2, score_player_1, score_player_2):
@@ -17,3 +19,8 @@ if __name__ == '__main__':
     score_player_2 = input("enter the score of player 2: ")
     match = Match(player_1, player_2, score_player_1, score_player_2)
     print("Here is the result of the match: " + str(match))
+    match_database = TinyDB('Match.json')
+    match_database.insert({'player 1': player_1})
+    match_database.insert({'score of player 1': score_player_1})
+    match_database.insert({'player 2': player_2})
+    match_database.insert({'score of player 2': score_player_2})
