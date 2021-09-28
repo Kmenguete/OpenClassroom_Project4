@@ -24,7 +24,7 @@ if __name__ == '__main__':
     date_of_tournament = input("enter the date of tournament: ")
     duration_of_tournament = input("enter the duration of tournament: ")
     number_of_round = input("enter the number of round: ")
-    number_of_match = input("enter the number of match: ")
+    number_of_match = input("enter the number of match for each round: ")
     description_of_tournament = input("enter a description for this tournament: ")
     tournament = Tournament(name_of_tournament, place_of_tournament, date_of_tournament, duration_of_tournament,
                             number_of_round, number_of_match, description_of_tournament)
