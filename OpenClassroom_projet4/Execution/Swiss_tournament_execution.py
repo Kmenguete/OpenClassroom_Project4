@@ -1,5 +1,8 @@
 from tinydb import TinyDB, Query
 
+from OpenClassroom_projet4.Execution.Swiss_tournament_system import sort_player_by_rank, split_total_number_of_players, \
+    pairs_of_players, sort_players_by_score_round, generate_new_pairs_of_players
+
 tournament_database = TinyDB('Tournament.json')
 round_database = TinyDB('Round.json')
 match_database = TinyDB('Match.json')
@@ -25,4 +28,13 @@ player_7 = player_database.search(Player.surname == 'Ghazi') + player_database.s
            player_database.search(Player.rank == '7th')
 player_8 = player_database.search(Player.surname == 'Dionne') + player_database.search(Player.firstname == 'Vanessa') + \
            player_database.search(Player.rank == '8th')
-print(player_1)
+
+sort_player_by_rank(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8)
+
+split_total_number_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8)
+
+pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8)
+
+sort_players_by_score_round(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8)
+
+generate_new_pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8)

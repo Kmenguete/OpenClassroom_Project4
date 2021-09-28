@@ -6,7 +6,7 @@ def sort_player_by_rank(player_1, player_2, player_3, player_4, player_5, player
     player_list = {'1st': player_1, '2nd': player_2, '3rd': player_3, '4th': player_4, '5th': player_5,
                    '6th': player_6, '7th': player_7, '8th': player_8}
     sorted_player_list = sorted(player_list)
-    print(sorted_player_list)
+    print("Please, sort the players according the rank of each one: ", sorted_player_list)
 
 
 def split_total_number_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7,
@@ -16,7 +16,7 @@ def split_total_number_of_players(player_1, player_2, player_3, player_4, player
     player_list = [player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8]
     first_half = player_list[:3]
     second_half = player_list[3:]
-    print(first_half, second_half)
+    print("Here this is the first half: ", first_half, "Here this is the second half: ", second_half)
 
 
 def pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8):
@@ -27,7 +27,8 @@ def pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6,
     match_2 = [player_3, player_4]
     match_3 = [player_5, player_6]
     match_4 = [player_7, player_8]
-    print(match_1, match_2, match_3, match_4)
+    print("Here is the match one: ", match_1, "Here is the match two: ", match_2, "Here is the match three: ", match_3,
+          "Here is the match four: ", match_4)
 
 
 def sort_players_by_score_round(player_1, player_2, player_3, player_4, player_5, player_6, player_7,
@@ -38,7 +39,8 @@ def sort_players_by_score_round(player_1, player_2, player_3, player_4, player_5
     player_list = {'1st': player_1, '2nd': player_2, '3rd': player_3, '4th': player_4, '5th': player_5,
                    '6th': player_6, '7th': player_7, '8th': player_8}
     sorted_player_list = sorted(player_list)
-    print(sorted_player_list)
+    print("Please, update the rank of players according their scores, if two players has the same score then promote "
+          "the best rank of the last round: ", sorted_player_list)
 
 
 def generate_new_pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7,
@@ -50,6 +52,7 @@ def generate_new_pairs_of_players(player_1, player_2, player_3, player_4, player
     match_2 = [player_3, player_4]
     match_3 = [player_5, player_6]
     match_4 = [player_7, player_8]
-    print(match_1, match_2, match_3, match_4)
+    print("Here is the match one: ", match_1, "Here is the match two: ", match_2, "Here is the match three: ", match_3,
+          "Here is the match four: ", match_4)
 
 # I repeat the two last functions until the end of tournament.
