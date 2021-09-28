@@ -23,10 +23,10 @@ def pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6,
     # Pairs of players are generated according the rank of each group of players. The best player of the first group
     # will play with the best player of the 2nd group. The 2nd best player of the first group will play with the 2nd
     # best player of the 2nd group and so on.
-    match_1 = {'1st': player_1, '2nd': player_2}
-    match_2 = {'3rd': player_3, '4th': player_4}
-    match_3 = {'5th': player_5, '6th': player_6}
-    match_4 = {'7th': player_7, '8th': player_8}
+    match_1 = [player_1, player_2]
+    match_2 = [player_3, player_4]
+    match_3 = [player_5, player_6]
+    match_4 = [player_7, player_8]
     print(match_1, match_2, match_3, match_4)
 
 
@@ -46,10 +46,10 @@ def generate_new_pairs_of_players(player_1, player_2, player_3, player_4, player
     # For the next round, the player 1 meet the player 2, the player 3 meet the player 4 and so on.
     # If the player 1 has already met the player 2 then he meet the player 3. If the player 3 has already
     # met the player 4 then he meet the player 5 and so on.
-    match_1 = {'1st': player_1, '2nd': player_2}
-    match_2 = {'3rd': player_3, '4th': player_4}
-    match_3 = {'5th': player_5, '6th': player_6}
-    match_4 = {'7th': player_7, '8th': player_8}
+    match_1 = [player_1, player_2]
+    match_2 = [player_3, player_4]
+    match_3 = [player_5, player_6]
+    match_4 = [player_7, player_8]
     print(match_1, match_2, match_3, match_4)
 
 # I repeat the two last functions until the end of tournament.
