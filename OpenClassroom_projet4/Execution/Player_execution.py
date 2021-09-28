@@ -24,6 +24,6 @@ if __name__ == '__main__':
     player_database = TinyDB('Player.json')
     player_database.insert({'surname': surname})
     player_database.insert({'firstname': firstname})
-    player_database.insert({'date of birth': date_of_birth})
+    player_database.insert({'birthdate': date_of_birth})
     player_database.insert({'sex': sex})
     player_database.insert({'rank': rank})
