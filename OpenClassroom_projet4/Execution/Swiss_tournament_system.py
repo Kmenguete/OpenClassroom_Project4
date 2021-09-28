@@ -3,8 +3,8 @@ def sort_player_by_rank(player_1, player_2, player_3, player_4, player_5, player
     # The goal of this function is to sort players by rank.
     # My Player class instances will be store in variables player_1, player_2, player_3...etc.
     # The rank of my players are the key of my dictionary. my dictionary will be sorted by key.
-    player_list = {'2nd': player_1, '8th': player_2, '1st': player_3, '5th': player_4, '4th': player_5,
-                   '3rd': player_6, '6th': player_7, '7th': player_8}
+    player_list = {'1st': player_1, '2nd': player_2, '3rd': player_3, '4th': player_4, '5th': player_5,
+                   '6th': player_6, '7th': player_7, '8th': player_8}
     sorted_player_list = sorted(player_list)
     print(sorted_player_list)
 
@@ -23,10 +23,10 @@ def pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6,
     # Pairs of players are generated according the rank of each group of players. The best player of the first group
     # will play with the best player of the 2nd group. The 2nd best player of the first group will play with the 2nd
     # best player of the 2nd group and so on.
-    pair_of_player_a = {'1st': player_3, '3rd': player_6}
-    pair_of_player_b = {'2nd': player_1, '4th': player_5}
-    pair_of_player_c = {'5th': player_4, '6th': player_7}
-    pair_of_player_d = {'8th': player_2, '7th': player_8}
+    pair_of_player_a = {'1st': player_1, '2nd': player_2}
+    pair_of_player_b = {'3rd': player_3, '4th': player_4}
+    pair_of_player_c = {'5th': player_5, '6th': player_6}
+    pair_of_player_d = {'7th': player_7, '8th': player_8}
     print(pair_of_player_a, pair_of_player_b, pair_of_player_c, pair_of_player_d)
 
 
