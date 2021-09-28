@@ -2,25 +2,32 @@ from tinydb import TinyDB
 
 
 class Match:
-    def __init__(self, player_1, player_2, score_player_1, score_player_2):
-        self.player_1 = player_1
-        self.score_player_1 = score_player_1
-        self.player_2 = player_2
-        self.score_player_2 = score_player_2
+    def __init__(self, round_number, match_number, player_a, player_b, score_player_a, score_player_b):
+        self.round_number = round_number
+        self.match_number = match_number
+        self.player_a = player_a
+        self.score_player_a = score_player_a
+        self.player_b = player_b
+        self.score_player_b = score_player_b
 
     def __str__(self):
-        return self.player_1 + " " + self.score_player_1 + " " + self.player_2 + " " + self.score_player_2
+        return self.round_number + " " + self.match_number + " " + self.player_a + " " + self.score_player_a + " " + \
+               self.player_b + " " + self.score_player_b
 
 
 if __name__ == '__main__':
-    player_1 = input("enter the firstname and surname of player 1: ")
-    score_player_1 = input("enter the score of player 1: ")
-    player_2 = input("enter the firstname and surname of player 2: ")
-    score_player_2 = input("enter the score of player 2: ")
-    match = Match(player_1, player_2, score_player_1, score_player_2)
+    round_number = input("enter the round number: ")
+    match_number = input("enter the match number: ")
+    player_a = input("enter the firstname and surname of player a: ")
+    score_player_a = input("enter the score of player a: ")
+    player_b = input("enter the firstname and surname of player b: ")
+    score_player_b = input("enter the score of player b: ")
+    match = Match(round_number, match_number, player_a, player_b, score_player_a, score_player_b)
     print("Here is the result of the match: " + str(match))
     match_database = TinyDB('Match.json')
-    match_database.insert({'player_1': player_1})
-    match_database.insert({'score_of_player_1': score_player_1})
-    match_database.insert({'player_2': player_2})
-    match_database.insert({'score_of_player_2': score_player_2})
+    match_database.insert({'round_number': round_number})
+    match_database.insert({'match_number': match_number})
+    match_database.insert({'player_a': player_a})
+    match_database.insert({'score_of_player_a': score_player_a})
+    match_database.insert({'player_b': player_b})
+    match_database.insert({'score_of_player_b': score_player_b})
