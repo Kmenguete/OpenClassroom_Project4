@@ -16,7 +16,8 @@ def sort_player_by_alphabetical_order():
     player_6 = player_database.search(Player.surname == 'Mohamed Said Ali') + player_database.search(Player.firstname == 'Aymane')
     player_7 = player_database.search(Player.surname == 'Robineau') + player_database.search(Player.firstname == 'Chloe')
     player_8 = player_database.search(Player.surname == 'Sehili') + player_database.search(Player.firstname == 'Asma')
-    print(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8)
+    print("This is all the players of a tournament sorted by alphabetical order: ", player_1, player_2, player_3,
+          player_4, player_5, player_6, player_7, player_8)
 
 
 def sort_player_by_rank():
@@ -28,19 +29,20 @@ def sort_player_by_rank():
     player_6 = player_database.search(Player.surname == 'Dionne') + player_database.search(Player.firstname == 'Vanessa')
     player_7 = player_database.search(Player.surname == 'Mohamed Said Ali') + player_database.search(Player.firstname == 'Aymane')
     player_8 = player_database.search(Player.surname == 'Bourdon') + player_database.search(Player.firstname == 'Laurie-anne')
-    print(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8)
+    print("This all the players of a tournament sorted by rank: ", player_1, player_2, player_3, player_4, player_5,
+          player_6, player_7, player_8)
 
 
 def display_all_tournament():
-    print(tournament_database.all())
+    print("This is a tournament: ", tournament_database.all())
 
 
 def display_all_round_of_a_tournament():
-    print(round_database.all())
+    print("This is all rounds of one tournament: ", round_database.all())
 
 
 def display_all_match_of_a_tournament():
-    print(match_database.all())
+    print("This is all matches of one tournament: ", match_database.all())
 
 
 sort_player_by_alphabetical_order()
