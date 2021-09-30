@@ -1,4 +1,5 @@
 from OpenClassroom_projet4.Execution.Player_execution import Player
+from OpenClassroom_projet4.Execution.Round_execution import Round
 from OpenClassroom_projet4.Execution.Tournament_execution import Tournament
 
 if __name__ == '__main__':
@@ -24,3 +25,13 @@ if __name__ == '__main__':
     player_8 = input("Enter the player 8: ")
     player = Player(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8)
     print("Here is your 8 players: " + str(player))
+
+if __name__ == '__main__':
+    name_of_tournament = input("enter the name of the tournament: ")
+    round_number = input("enter the round number: ")
+    match_1 = input("enter the pair of players for the match 1: ")
+    match_2 = input("enter the pair of players for the match 2: ")
+    match_3 = input("enter the pair of players for the match 3: ")
+    match_4 = input("enter the pair of players for the match 4: ")
+    round = Round(name_of_tournament, round_number, match_1, match_2, match_3, match_4)
+    print("Here is the 4 pairs of match for the current round: " + str(round))
