@@ -1,3 +1,4 @@
+from OpenClassroom_projet4.Execution.Match_execution import Match
 from OpenClassroom_projet4.Execution.Player_execution import Player
 from OpenClassroom_projet4.Execution.Round_execution import Round
 from OpenClassroom_projet4.Execution.Swiss_tournament_system import split_total_number_of_players, pairs_of_players
@@ -38,3 +39,13 @@ if __name__ == '__main__':
     match_4 = input("enter the pair of players for the match 4: ")
     round = Round(name_of_tournament, round_number, match_1, match_2, match_3, match_4)
     print("Here is the 4 pairs of match for the current round: " + str(round))
+
+if __name__ == '__main__':
+    round_number = input("enter the round number: ")
+    match_number = input("enter the match number: ")
+    player_a = input("enter the firstname and surname of player a: ")
+    score_player_a = input("enter the score of player a: ")
+    player_b = input("enter the firstname and surname of player b: ")
+    score_player_b = input("enter the score of player b: ")
+    match = Match(round_number, match_number, player_a, player_b, score_player_a, score_player_b)
+    print("Here is the result of the match: " + str(match))
