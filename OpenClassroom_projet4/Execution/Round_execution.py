@@ -23,4 +23,3 @@ if __name__ == '__main__':
     match_4 = input("enter the pair of players for the match 4: ")
     round = Round(name_of_tournament, round_number, match_1, match_2, match_3, match_4)
     print("Here is the 4 pairs of match for the current round: " + str(round))
-
