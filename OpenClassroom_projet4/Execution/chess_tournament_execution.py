@@ -1,5 +1,6 @@
 from OpenClassroom_projet4.Execution.Player_execution import Player
 from OpenClassroom_projet4.Execution.Round_execution import Round
+from OpenClassroom_projet4.Execution.Swiss_tournament_system import split_total_number_of_players, pairs_of_players
 from OpenClassroom_projet4.Execution.Tournament_execution import Tournament
 
 if __name__ == '__main__':
@@ -25,6 +26,8 @@ if __name__ == '__main__':
     player_8 = input("Enter the player 8: ")
     player = Player(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8)
     print("Here is your 8 players: " + str(player))
+    split_total_number_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8)
+    pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8)
 
 if __name__ == '__main__':
     name_of_tournament = input("enter the name of the tournament: ")
