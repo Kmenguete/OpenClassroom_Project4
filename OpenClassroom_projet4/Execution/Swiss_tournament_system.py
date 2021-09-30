@@ -1,3 +1,5 @@
+import random
+
 
 def sort_player_by_rank(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8):
     # The goal of this function is to sort players by rank.
@@ -21,15 +23,19 @@ def split_total_number_of_players(player_1, player_2, player_3, player_4, player
 
 
 def pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8):
-    # Pairs of players are generated according the rank of each group of players. The best player of the first group
-    # will play with the best player of the 2nd group. The 2nd best player of the first group will play with the 2nd
-    # best player of the 2nd group and so on.
-    match_1 = [player_1, player_5]
-    match_2 = [player_2, player_6]
-    match_3 = [player_3, player_7]
-    match_4 = [player_4, player_8]
-    print("Here is the match one: ", match_1, "Here is the match two: ", match_2, "Here is the match three: ", match_3,
-          "Here is the match four: ", match_4)
+    # We want to generate pairs of players randomly
+    player_list = [player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8]
+    matches = {}
+    while len(player_list) > 1:
+        r1 = random.randrange(0, len(player_list))
+        elem1 = player_list.pop(r1)
+        r2 = random.randrange(0, len(player_list))
+        elem2 = player_list.pop(r2)
+        matches[elem1] = elem2
+        i = 1
+        for key, value in matches.items():
+            print("Match {}: {} and {}".format(i, key, value))
+            i += 1
 
 
 def sort_players_by_score_round(player_1, player_2, player_3, player_4, player_5, player_6, player_7,
