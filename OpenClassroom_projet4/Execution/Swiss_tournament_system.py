@@ -23,19 +23,18 @@ def split_total_number_of_players(player_1, player_2, player_3, player_4, player
 
 
 def pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8):
-    # We want to generate pairs of players randomly
-    player_list = [player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8]
-    matches = {}
-    while len(player_list) > 1:
-        r1 = random.randrange(0, len(player_list))
-        elem1 = player_list.pop(r1)
-        r2 = random.randrange(0, len(player_list))
-        elem2 = player_list.pop(r2)
-        matches[elem1] = elem2
-        i = 1
-        for key, value in matches.items():
-            print("Match {}: {} and {}".format(i, key, value))
-            i += 1
+    # We want to generate pairs of players randomly from player_list_a and player_list_b
+    # a player from player_list_a is randomly selected to play with a randomly selected player from player_list_b
+    player_list_a = [player_1, player_2, player_3, player_4]
+    player_list_b = [player_5, player_6, player_7, player_8]
+    random.shuffle(player_list_a)
+    random.shuffle(player_list_b)
+    # Merge the two lists into a new list of pairs
+    match_list = zip(player_list_a, player_list_b)
+    print("Here is your randomly generated matches. Each parenthesis is a match. Player_a is on the left and "
+          "player_b is on the right.")
+    for match in match_list:
+        print(match)
 
 
 def sort_players_by_score_round(player_1, player_2, player_3, player_4, player_5, player_6, player_7,
