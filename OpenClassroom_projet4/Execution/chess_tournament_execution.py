@@ -82,50 +82,49 @@ if __name__ == '__main__':
                                 player_8 = player_h.firstname + " " + player_h.surname
                                 pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7,
                                                  player_8)
-
-if __name__ == '__main__':
-    name_of_tournament = input("enter the name of the tournament: ")
-    round_number = input("enter the round number: ")
-    match_list = input("enter the randomly generated matches: ")
-    round = Round(name_of_tournament, round_number, match_list)
-    print("Here are the matches for the current round: " + str(round))
-
-if __name__ == '__main__':
-    round_number = input("enter the round number: ")
-    match_number = input("enter the match number: ")
-    player_a = input("enter the firstname and surname of player a: ")
-    score_player_a = input("enter the score of player a: ")
-    player_b = input("enter the firstname and surname of player b: ")
-    score_player_b = input("enter the score of player b: ")
-    match = Match(round_number, match_number, player_a, player_b, score_player_a, score_player_b)
-    print("Here is the result of the match: " + str(match))
-
-if __name__ == '__main__':
-    round_number = input("enter the round number: ")
-    match_number = input("enter the match number: ")
-    player_a = input("enter the firstname and surname of player a: ")
-    score_player_a = input("enter the score of player a: ")
-    player_b = input("enter the firstname and surname of player b: ")
-    score_player_b = input("enter the score of player b: ")
-    match = Match(round_number, match_number, player_a, player_b, score_player_a, score_player_b)
-    print("Here is the result of the match: " + str(match))
-
-if __name__ == '__main__':
-    round_number = input("enter the round number: ")
-    match_number = input("enter the match number: ")
-    player_a = input("enter the firstname and surname of player a: ")
-    score_player_a = input("enter the score of player a: ")
-    player_b = input("enter the firstname and surname of player b: ")
-    score_player_b = input("enter the score of player b: ")
-    match = Match(round_number, match_number, player_a, player_b, score_player_a, score_player_b)
-    print("Here is the result of the match: " + str(match))
-
-if __name__ == '__main__':
-    round_number = input("enter the round number: ")
-    match_number = input("enter the match number: ")
-    player_a = input("enter the firstname and surname of player a: ")
-    score_player_a = input("enter the score of player a: ")
-    player_b = input("enter the firstname and surname of player b: ")
-    score_player_b = input("enter the score of player b: ")
-    match = Match(round_number, match_number, player_a, player_b, score_player_a, score_player_b)
-    print("Here is the result of the match: " + str(match))
+                                if __name__ == '__main__':
+                                    name_of_tournament = input("enter the name of the tournament: ")
+                                    round_number = input("enter the round number: ")
+                                    match_list = input("enter the randomly generated matches: ")
+                                    round = Round(name_of_tournament, round_number, match_list)
+                                    print("Here are the matches for the current round: " + str(round))
+                                    if __name__ == '__main__':
+                                        round_number = input("enter the round number: ")
+                                        match_number = input("enter the match number: ")
+                                        player_a = input("enter the firstname and surname of player a: ")
+                                        score_player_a = input("enter the score of player a: ")
+                                        player_b = input("enter the firstname and surname of player b: ")
+                                        score_player_b = input("enter the score of player b: ")
+                                        match = Match(round_number, match_number, player_a, player_b, score_player_a,
+                                                      score_player_b)
+                                        print("Here is the result of the match: " + str(match))
+                                        if __name__ == '__main__':
+                                            round_number = input("enter the round number: ")
+                                            match_number = input("enter the match number: ")
+                                            player_a = input("enter the firstname and surname of player a: ")
+                                            score_player_a = input("enter the score of player a: ")
+                                            player_b = input("enter the firstname and surname of player b: ")
+                                            score_player_b = input("enter the score of player b: ")
+                                            match = Match(round_number, match_number, player_a, player_b,
+                                                          score_player_a, score_player_b)
+                                            print("Here is the result of the match: " + str(match))
+                                            if __name__ == '__main__':
+                                                round_number = input("enter the round number: ")
+                                                match_number = input("enter the match number: ")
+                                                player_a = input("enter the firstname and surname of player a: ")
+                                                score_player_a = input("enter the score of player a: ")
+                                                player_b = input("enter the firstname and surname of player b: ")
+                                                score_player_b = input("enter the score of player b: ")
+                                                match = Match(round_number, match_number, player_a, player_b,
+                                                              score_player_a, score_player_b)
+                                                print("Here is the result of the match: " + str(match))
+                                                if __name__ == '__main__':
+                                                    round_number = input("enter the round number: ")
+                                                    match_number = input("enter the match number: ")
+                                                    player_a = input("enter the firstname and surname of player a: ")
+                                                    score_player_a = input("enter the score of player a: ")
+                                                    player_b = input("enter the firstname and surname of player b: ")
+                                                    score_player_b = input("enter the score of player b: ")
+                                                    match = Match(round_number, match_number, player_a, player_b,
+                                                                  score_player_a, score_player_b)
+                                                    print("Here is the result of the match: " + str(match))
