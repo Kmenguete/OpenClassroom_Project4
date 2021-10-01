@@ -1,7 +1,6 @@
 from OpenClassroom_projet4.Execution.Match_execution import Match
 from OpenClassroom_projet4.Execution.Player_execution import Player
 from OpenClassroom_projet4.Execution.Round_execution import Round
-from OpenClassroom_projet4.Execution.Swiss_tournament_system import pairs_of_players
 from OpenClassroom_projet4.Execution.Tournament_execution import Tournament
 
 if __name__ == '__main__':
@@ -17,27 +16,75 @@ if __name__ == '__main__':
     print("You have successfully created the following tournament: " + str(tournament))
 
 if __name__ == '__main__':
-    player_1 = input("Enter the player 1: ")
-    player_2 = input("Enter the player 2: ")
-    player_3 = input("Enter the player 3: ")
-    player_4 = input("Enter the player 4: ")
-    player_5 = input("Enter the player 5: ")
-    player_6 = input("Enter the player 6: ")
-    player_7 = input("Enter the player 7: ")
-    player_8 = input("Enter the player 8: ")
-    player = Player(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8)
-    print("Here is your 8 players: " + str(player))
-    pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8)
+    surname = input("Enter the surname: ")
+    firstname = input("Enter the firstname: ")
+    birthdate = input("Enter the birthdate: ")
+    sex = input("Enter the sex: ")
+    player = Player(surname, firstname, birthdate, sex)
+    print("You have successfully created the player 1: " + str(player))
+
+if __name__ == '__main__':
+    surname = input("Enter the surname: ")
+    firstname = input("Enter the firstname: ")
+    birthdate = input("Enter the birthdate: ")
+    sex = input("Enter the sex: ")
+    player = Player(surname, firstname, birthdate, sex)
+    print("You have successfully created the player 2: " + str(player))
+
+if __name__ == '__main__':
+    surname = input("Enter the surname: ")
+    firstname = input("Enter the firstname: ")
+    birthdate = input("Enter the birthdate: ")
+    sex = input("Enter the sex: ")
+    player = Player(surname, firstname, birthdate, sex)
+    print("You have successfully created the player 3: " + str(player))
+
+if __name__ == '__main__':
+    surname = input("Enter the surname: ")
+    firstname = input("Enter the firstname: ")
+    birthdate = input("Enter the birthdate: ")
+    sex = input("Enter the sex: ")
+    player = Player(surname, firstname, birthdate, sex)
+    print("You have successfully created the player 4: " + str(player))
+
+if __name__ == '__main__':
+    surname = input("Enter the surname: ")
+    firstname = input("Enter the firstname: ")
+    birthdate = input("Enter the birthdate: ")
+    sex = input("Enter the sex: ")
+    player = Player(surname, firstname, birthdate, sex)
+    print("You have successfully created the player 5: " + str(player))
+
+if __name__ == '__main__':
+    surname = input("Enter the surname: ")
+    firstname = input("Enter the firstname: ")
+    birthdate = input("Enter the birthdate: ")
+    sex = input("Enter the sex: ")
+    player = Player(surname, firstname, birthdate, sex)
+    print("You have successfully created the player 6: " + str(player))
+
+if __name__ == '__main__':
+    surname = input("Enter the surname: ")
+    firstname = input("Enter the firstname: ")
+    birthdate = input("Enter the birthdate: ")
+    sex = input("Enter the sex: ")
+    player = Player(surname, firstname, birthdate, sex)
+    print("You have successfully created the player 7: " + str(player))
+
+if __name__ == '__main__':
+    surname = input("Enter the surname: ")
+    firstname = input("Enter the firstname: ")
+    birthdate = input("Enter the birthdate: ")
+    sex = input("Enter the sex: ")
+    player = Player(surname, firstname, birthdate, sex)
+    print("You have successfully created the player 8: " + str(player))
 
 if __name__ == '__main__':
     name_of_tournament = input("enter the name of the tournament: ")
     round_number = input("enter the round number: ")
-    match_1 = input("enter the pair of players for the match 1: ")
-    match_2 = input("enter the pair of players for the match 2: ")
-    match_3 = input("enter the pair of players for the match 3: ")
-    match_4 = input("enter the pair of players for the match 4: ")
-    round = Round(name_of_tournament, round_number, match_1, match_2, match_3, match_4)
-    print("Here is the 4 pairs of match for the current round: " + str(round))
+    match_list = input("enter the randomly generated matches: ")
+    round = Round(name_of_tournament, round_number, match_list)
+    print("Here are the matches for the current round: " + str(round))
 
 if __name__ == '__main__':
     round_number = input("enter the round number: ")
