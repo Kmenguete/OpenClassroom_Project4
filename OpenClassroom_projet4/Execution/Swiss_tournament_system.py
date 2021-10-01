@@ -37,17 +37,18 @@ def pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6,
         print(match)
 
 
-def sort_players_by_score_round(player_1, player_2, player_3, player_4, player_5, player_6, player_7,
-                                player_8):
-    # When a round is finished, players should be sorted according their total number of points for the round.
-    # This new sorted list will be the new rank for the next round. If two players has the same number of points,
-    # they are sorted by rank.
-    player_list = {'1st': player_1, '2nd': player_2, '3rd': player_3, '4th': player_4, '5th': player_5,
-                   '6th': player_6, '7th': player_7, '8th': player_8}
-    sorted_player_list = sorted(player_list)
-    print("When a round is finished, please, update the rank of players according their scores, if two players has "
-          "the same score then promote "
-          "the best rank of the last round: ", sorted_player_list)
+def sort_players_by_score_round(player_1, score_player_1, player_2, score_player_2, player_3, score_player_3, player_4,
+                                score_player_4, player_5, score_player_5, player_6, score_player_6, player_7,
+                                score_player_7, player_8, score_player_8):
+    # We want to sort players by their score at the end of each round. We sort players in descending order.
+    # Consequently, we sort our dictionary by value in descending order.
+    player_list = {player_1: score_player_1, player_2: score_player_2, player_3: score_player_3,
+                   player_4: score_player_4, player_5: score_player_5, player_6: score_player_6,
+                   player_7: score_player_7, player_8: score_player_8}
+    sorted_player_list = sorted(player_list.items(), key=lambda x: x[1], reverse=True)
+    print("Players are sorted by their score in descending order at the end of each round:")
+    for player in sorted_player_list:
+        print(player[0], player[1])
 
 
 def generate_new_pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7,
