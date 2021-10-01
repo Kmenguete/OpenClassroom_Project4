@@ -143,8 +143,8 @@ if __name__ == '__main__':
                                                                                    score_player_5,
                                                                                    score_player_6, score_player_7,
                                                                                    score_player_8)
-                                                        print(
-                                                            "Here is the score of each player at the end of the round")
+                                                        print("Here is the score of each player at the end of the round"
+                                                              )
                                                         sort_players_by_score_round(player_1, score_player_1, player_2,
                                                                                     score_player_2, player_3,
                                                                                     score_player_3, player_4,
