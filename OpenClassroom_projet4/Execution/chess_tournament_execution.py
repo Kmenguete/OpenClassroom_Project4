@@ -1,8 +1,9 @@
 from OpenClassroom_projet4.Execution.Match_execution import Match
 from OpenClassroom_projet4.Execution.Player_execution import Player
 from OpenClassroom_projet4.Execution.Round_execution import Round
-from OpenClassroom_projet4.Execution.Swiss_tournament_system import pairs_of_players
+from OpenClassroom_projet4.Execution.Swiss_tournament_system import pairs_of_players, sort_players_by_score_round
 from OpenClassroom_projet4.Execution.Tournament_execution import Tournament
+from OpenClassroom_projet4.Execution.score_player import ScorePlayer
 
 if __name__ == '__main__':
     name_of_tournament = input("enter the name of tournament: ")
@@ -128,3 +129,27 @@ if __name__ == '__main__':
                                                     match = Match(round_number, match_number, player_a, player_b,
                                                                   score_player_a, score_player_b)
                                                     print("Here is the result of the match: " + str(match))
+                                                    if __name__ == '__main__':
+                                                        score_player_1 = input("Enter the score of player 1: ")
+                                                        score_player_2 = input("Enter the score of player 2: ")
+                                                        score_player_3 = input("Enter the score of player 3: ")
+                                                        score_player_4 = input("Enter the score of player 4: ")
+                                                        score_player_5 = input("Enter the score of player 5: ")
+                                                        score_player_6 = input("Enter the score of player 6: ")
+                                                        score_player_7 = input("Enter the score of player 7: ")
+                                                        score_player_8 = input("Enter the score of player 8: ")
+                                                        score_player = ScorePlayer(score_player_1, score_player_2,
+                                                                                   score_player_3, score_player_4,
+                                                                                   score_player_5,
+                                                                                   score_player_6, score_player_7,
+                                                                                   score_player_8)
+                                                        print(
+                                                            "Here is the score of each player at the end of the round")
+                                                        sort_players_by_score_round(player_1, score_player_1, player_2,
+                                                                                    score_player_2, player_3,
+                                                                                    score_player_3, player_4,
+                                                                                    score_player_4, player_5,
+                                                                                    score_player_5, player_6,
+                                                                                    score_player_6, player_7,
+                                                                                    score_player_7, player_8,
+                                                                                    score_player_8)
