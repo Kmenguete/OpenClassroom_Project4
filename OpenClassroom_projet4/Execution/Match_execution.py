@@ -11,8 +11,8 @@ class Match:
         self.score_player_b = score_player_b
 
     def __str__(self):
-        return self.round_number + " " + self.match_number + " " + self.player_a + " " + self.score_player_a + " " + \
-               self.player_b + " " + self.score_player_b
+        return '{}, {}, {}, {}, {}, {}'.format(self.round_number, self.match_number, self.player_a, self.player_b,
+                                               self.score_player_a, self.score_player_b)
 
 
 if __name__ == '__main__':
