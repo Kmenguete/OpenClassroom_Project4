@@ -62,8 +62,16 @@ def generate_new_pairs_of_players(player_1, player_2, player_3, player_4, player
     match_4 = [player_7, player_8]
     print("Here is the match one: ", match_1, "Here is the match two: ", match_2, "Here is the match three: ", match_3,
           "Here is the match four: ", match_4)
-    print("If the player 1 has already met the player 2 then he meet the player 3. If the player 3 has already met "
-          "the player 4 then he meet the player 5 and so on.")
-    print("Please, repeat the process until the end of tournament")
-
+    if ('player_1', 'player_2') in globals():
+        match_1 = [player_1, player_3]
+        print("Player 1 has already met player 2, here is match one: ", match_1)
+    if ('player_3', 'player_4') in globals():
+        match_2 = [player_3, player_5]
+        print("Player 3 has already met player 4, here is match two: ", match_2)
+    if ('player_5', 'player_6') in globals():
+        match_3 = [player_5, player_7]
+        print("Player 5 has already met player 6, here is match three: ", match_3)
+    if ('player_7', 'player_8') in globals():
+        match_4 = [player_7, player_1]
+        print("Player 7 has already met player 8, here is match four: ", match_4)
 # I repeat the two last functions until the end of tournament.

@@ -1,7 +1,8 @@
 from OpenClassroom_projet4.Execution.Match_execution import Match
 from OpenClassroom_projet4.Execution.Player_execution import Player
 from OpenClassroom_projet4.Execution.Round_execution import Round
-from OpenClassroom_projet4.Execution.Swiss_tournament_system import pairs_of_players, sort_players_by_score_round
+from OpenClassroom_projet4.Execution.Swiss_tournament_system import pairs_of_players, sort_players_by_score_round, \
+    generate_new_pairs_of_players
 from OpenClassroom_projet4.Execution.Tournament_execution import Tournament
 from OpenClassroom_projet4.Execution.score_player import ScorePlayer
 
@@ -142,3 +143,6 @@ if __name__ == '__main__':
                                                                 score_player_6, player_7,
                                                                 score_player_7, player_8,
                                                                 score_player_8)
+                                    generate_new_pairs_of_players(player_1, player_2, player_3, player_4, player_5,
+                                                                  player_6, player_7,
+                                                                  player_8)
