@@ -1,8 +1,7 @@
 from OpenClassroom_projet4.Execution.Match_execution import Match
 from OpenClassroom_projet4.Execution.Player_execution import Player
 from OpenClassroom_projet4.Execution.Round_execution import Round
-from OpenClassroom_projet4.Execution.Swiss_tournament_system import pairs_of_players, sort_players_by_score_round, \
-    generate_new_pairs_of_players
+from OpenClassroom_projet4.Execution.Swiss_tournament_system import pairs_of_players, sort_players_by_score_round
 from OpenClassroom_projet4.Execution.Tournament_execution import Tournament
 from OpenClassroom_projet4.Execution.score_player import ScorePlayer
 
@@ -85,64 +84,136 @@ if __name__ == '__main__':
                                 pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7,
                                                  player_8)
                                 if __name__ == '__main__':
-                                    name_of_tournament = input("enter the name of the tournament: ")
-                                    round_number = input("enter the round number: ")
-                                    match_list = input("enter the randomly generated matches: ")
-                                    round = Round(name_of_tournament, round_number, match_list)
-                                    print("Here are the matches for the current round: " + str(round))
-                                    if __name__ == '__main__':
-                                        number_matches = int(input("Enter the number of matches: "))
-                                        matches = []
-                                        for n in range(number_matches):
-                                            if n == 0:
-                                                round_number = input("enter the round number: ")
-                                                match_number = input("enter the match number: ")
-                                                player_a = input("enter the firstname and surname of player a: ")
-                                                score_player_a = input("enter the score of player a: ")
-                                                player_b = input("enter the firstname and surname of player b: ")
-                                                score_player_b = input("enter the score of player b: ")
-                                                match = Match(round_number, match_number, player_a, player_b,
-                                                              score_player_a,
-                                                              score_player_b)
-                                                print("Here is the result of the match: " + str(match))
-                                            else:
-                                                round_number = input("enter the round number: ")
-                                                match_number = input("enter the match number: ")
-                                                player_a = input("enter the firstname and surname of player a: ")
-                                                score_player_a = input("enter the score of player a: ")
-                                                player_b = input("enter the firstname and surname of player b: ")
-                                                score_player_b = input("enter the score of player b: ")
-                                                match = Match(round_number, match_number, player_a, player_b,
-                                                              score_player_a,
-                                                              score_player_b)
-                                                print("Here is the result of the match: " + str(match))
-                                            matches.append(Match(round_number, match_number, player_a, player_b,
-                                                                 score_player_a,
-                                                                 score_player_b))
-                                if __name__ == '__main__':
-                                    score_player_1 = input("Enter the score of player 1: ")
-                                    score_player_2 = input("Enter the score of player 2: ")
-                                    score_player_3 = input("Enter the score of player 3: ")
-                                    score_player_4 = input("Enter the score of player 4: ")
-                                    score_player_5 = input("Enter the score of player 5: ")
-                                    score_player_6 = input("Enter the score of player 6: ")
-                                    score_player_7 = input("Enter the score of player 7: ")
-                                    score_player_8 = input("Enter the score of player 8: ")
-                                    score_player = ScorePlayer(score_player_1, score_player_2,
-                                                               score_player_3, score_player_4,
-                                                               score_player_5,
-                                                               score_player_6, score_player_7,
-                                                               score_player_8)
-                                    print("Here is the score of each player at the end of the round"
-                                          )
-                                    sort_players_by_score_round(player_1, score_player_1, player_2,
-                                                                score_player_2, player_3,
-                                                                score_player_3, player_4,
-                                                                score_player_4, player_5,
-                                                                score_player_5, player_6,
-                                                                score_player_6, player_7,
-                                                                score_player_7, player_8,
-                                                                score_player_8)
-                                    generate_new_pairs_of_players(player_1, player_2, player_3, player_4, player_5,
-                                                                  player_6, player_7,
-                                                                  player_8)
+                                    number_rounds = int(input("Enter the number of rounds: "))
+                                    rounds = []
+                                    for i in range(number_rounds):
+                                        if i == 0:
+                                            name_of_tournament = input("enter the name of the tournament: ")
+                                            round_number = input("enter the round number: ")
+                                            match_list = input("enter the randomly generated matches: ")
+                                            round = Round(name_of_tournament, round_number, match_list)
+                                            print("Here are the matches for the current round: " + str(round))
+                                            if __name__ == '__main__':
+                                                number_matches = int(input("Enter the number of matches: "))
+                                                matches = []
+                                                for n in range(number_matches):
+                                                    if n == 0:
+                                                        round_number = input("enter the round number: ")
+                                                        match_number = input("enter the match number: ")
+                                                        player_a = input(
+                                                            "enter the firstname and surname of player a: ")
+                                                        score_player_a = input("enter the score of player a: ")
+                                                        player_b = input(
+                                                            "enter the firstname and surname of player b: ")
+                                                        score_player_b = input("enter the score of player b: ")
+                                                        match = Match(round_number, match_number, player_a, player_b,
+                                                                      score_player_a,
+                                                                      score_player_b)
+                                                        print("Here is the result of the match: " + str(match))
+                                                    else:
+                                                        round_number = input("enter the round number: ")
+                                                        match_number = input("enter the match number: ")
+                                                        player_a = input(
+                                                            "enter the firstname and surname of player a: ")
+                                                        score_player_a = input("enter the score of player a: ")
+                                                        player_b = input(
+                                                            "enter the firstname and surname of player b: ")
+                                                        score_player_b = input("enter the score of player b: ")
+                                                        match = Match(round_number, match_number, player_a, player_b,
+                                                                      score_player_a,
+                                                                      score_player_b)
+                                                        print("Here is the result of the match: " + str(match))
+                                                    matches.append(Match(round_number, match_number, player_a, player_b,
+                                                                         score_player_a,
+                                                                         score_player_b))
+                                        else:
+                                            score_player_1 = input("Enter the score of player 1: ")
+                                            score_player_2 = input("Enter the score of player 2: ")
+                                            score_player_3 = input("Enter the score of player 3: ")
+                                            score_player_4 = input("Enter the score of player 4: ")
+                                            score_player_5 = input("Enter the score of player 5: ")
+                                            score_player_6 = input("Enter the score of player 6: ")
+                                            score_player_7 = input("Enter the score of player 7: ")
+                                            score_player_8 = input("Enter the score of player 8: ")
+                                            score_player = ScorePlayer(score_player_1, score_player_2, score_player_3,
+                                                                       score_player_4, score_player_5,
+                                                                       score_player_6, score_player_7, score_player_8)
+                                            sort_players_by_score_round(player_1, score_player_1, player_2,
+                                                                        score_player_2, player_3,
+                                                                        score_player_3, player_4,
+                                                                        score_player_4, player_5,
+                                                                        score_player_5, player_6,
+                                                                        score_player_6, player_7,
+                                                                        score_player_7, player_8,
+                                                                        score_player_8)
+                                            pairs_of_players(player_1, player_2, player_3, player_4,
+                                                             player_5, player_6,
+                                                             player_7,
+                                                             player_8)
+                                            name_of_tournament = input("enter the name of the tournament: ")
+                                            round_number = input("enter the round number: ")
+                                            match_list = input("enter the randomly generated matches: ")
+                                            round = Round(name_of_tournament, round_number, match_list)
+                                            print("Here are the matches for the current round: " + str(round))
+                                            if __name__ == '__main__':
+                                                number_matches = int(input("Enter the number of matches: "))
+                                                matches = []
+                                                for n in range(number_matches):
+                                                    if n == 0:
+                                                        round_number = input("enter the round number: ")
+                                                        match_number = input("enter the match number: ")
+                                                        player_a = input(
+                                                            "enter the firstname and surname of player a: ")
+                                                        score_player_a = input("enter the score of player a: ")
+                                                        player_b = input(
+                                                            "enter the firstname and surname of player b: ")
+                                                        score_player_b = input("enter the score of player b: ")
+                                                        match = Match(round_number, match_number, player_a, player_b,
+                                                                      score_player_a,
+                                                                      score_player_b)
+                                                        print("Here is the result of the match: " + str(match))
+                                                    else:
+                                                        round_number = input("enter the round number: ")
+                                                        match_number = input("enter the match number: ")
+                                                        player_a = input(
+                                                            "enter the firstname and surname of player a: ")
+                                                        score_player_a = input("enter the score of player a: ")
+                                                        player_b = input(
+                                                            "enter the firstname and surname of player b: ")
+                                                        score_player_b = input("enter the score of player b: ")
+                                                        match = Match(round_number, match_number, player_a, player_b,
+                                                                      score_player_a,
+                                                                      score_player_b)
+                                                        print("Here is the result of the match: " + str(match))
+                                                    matches.append(Match(round_number, match_number, player_a, player_b,
+                                                                         score_player_a,
+                                                                         score_player_b))
+                                            score_player_1 = input("Enter the score of player 1: ")
+                                            score_player_2 = input("Enter the score of player 2: ")
+                                            score_player_3 = input("Enter the score of player 3: ")
+                                            score_player_4 = input("Enter the score of player 4: ")
+                                            score_player_5 = input("Enter the score of player 5: ")
+                                            score_player_6 = input("Enter the score of player 6: ")
+                                            score_player_7 = input("Enter the score of player 7: ")
+                                            score_player_8 = input("Enter the score of player 8: ")
+                                            score_player = ScorePlayer(score_player_1, score_player_2,
+                                                                       score_player_3, score_player_4,
+                                                                       score_player_5,
+                                                                       score_player_6, score_player_7,
+                                                                       score_player_8)
+                                            print(
+                                                "Here is the score of each player at the end of the round" +
+                                                str(score_player))
+                                            sort_players_by_score_round(player_1, score_player_1, player_2,
+                                                                        score_player_2, player_3,
+                                                                        score_player_3, player_4,
+                                                                        score_player_4, player_5,
+                                                                        score_player_5, player_6,
+                                                                        score_player_6, player_7,
+                                                                        score_player_7, player_8,
+                                                                        score_player_8)
+                                            pairs_of_players(player_1, player_2, player_3, player_4,
+                                                             player_5, player_6,
+                                                             player_7,
+                                                             player_8)
+                                        rounds.append(Round(name_of_tournament, round_number, match_list))

@@ -29,4 +29,4 @@ if __name__ == '__main__':
     score_player_8 = input("Enter the score of player 8: ")
     score_player = ScorePlayer(score_player_1, score_player_2, score_player_3, score_player_4, score_player_5,
                                score_player_6, score_player_7, score_player_8)
-    print("Here is the score of each player at the end of the round")
+    print("Here is the score of each player at the end of the round" + str(score_player))

@@ -7,7 +7,7 @@ class Round:
         self.match_list = match_list
 
     def __str__(self):
-        return self.name_of_tournament + " " + self.round_number + " " + self.match_list
+        return '{}, {}, {}'.format(self.name_of_tournament, self.round_number, self.match_list)
 
 
 if __name__ == '__main__':
