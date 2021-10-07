@@ -24,16 +24,6 @@ def generate_match_first_round(player_1, rank_player_1, player_2, rank_player_2,
         print(match)
 
 
-def split_total_number_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7,
-                                  player_8):
-    # We want to split players in two group. The first half return the first half of the group. The second half return
-    # the second half of the group.
-    player_list = [player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8]
-    first_half = player_list[:4]
-    second_half = player_list[4:]
-    print("Here this is the first half: ", first_half, "Here this is the second half: ", second_half)
-
-
 def pairs_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8):
     # We want to generate pairs of players randomly from player_list_a and player_list_b
     # a player from player_list_a is randomly selected to play with a randomly selected player from player_list_b
