@@ -1,15 +1,27 @@
 import random
 
 
-def sort_player_by_rank(player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8):
-    # The goal of this function is to sort players by rank.
-    # My Player class instances will be store in variables player_1, player_2, player_3...etc.
-    # The rank of my players are the key of my dictionary. my dictionary will be sorted by key.
-    player_list = {'1st': player_1, '2nd': player_2, '3rd': player_3, '4th': player_4, '5th': player_5,
-                   '6th': player_6, '7th': player_7, '8th': player_8}
-    sorted_player_list = sorted(player_list)
-    print("At the beginning of the first round, please, sort the players according the rank of each one: ",
-          sorted_player_list)
+def generate_match_first_round(player_1, rank_player_1, player_2, rank_player_2, player_3, rank_player_3, player_4,
+                               rank_player_4, player_5, rank_player_5, player_6, rank_player_6, player_7,
+                               rank_player_7, player_8, rank_player_8):
+    # We first sort players by rank. To do this, we then sort our dictionary by value.
+    player_list = {player_1: rank_player_1, player_2: rank_player_2, player_3: rank_player_3, player_4: rank_player_4,
+                   player_5: rank_player_5, player_6: rank_player_6, player_7: rank_player_7, player_8: rank_player_8}
+    sorted_player_list = sorted(player_list.items(), key=lambda x: x[1])
+    print("At the beginning of the first round, players are sorted by rank.")
+    for player in sorted_player_list:
+        print(player[0], player[1])
+    # Once, we sorted our players by rank, we split them in two part(an upper half and a lower half).
+    first_half = sorted_player_list[:4]
+    second_half = sorted_player_list[4:]
+    print("Here is the first half: ", first_half, "Here is the second half: ", second_half)
+    # And finally, we generates matches according rank and group. The best player of the first group meet the best
+    # player of the second group. The second best player of the first group meet the second best player of the second
+    # group and so on.
+    match_list = zip(first_half, second_half)
+    print("Here is the match for the first round.")
+    for match in match_list:
+        print(match)
 
 
 def split_total_number_of_players(player_1, player_2, player_3, player_4, player_5, player_6, player_7,
