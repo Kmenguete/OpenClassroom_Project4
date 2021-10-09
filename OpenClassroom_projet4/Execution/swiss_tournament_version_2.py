@@ -20,6 +20,7 @@ def pairs_of_players(player_list):
         i = 1
         for key, value in matches.items():
             print("match {}: {} and {}".format(i, key, value))
+            i += 1
 
 
 def sort_players_by_score_round(player_1, score_player_1, player_2, score_player_2, player_3, score_player_3, player_4,
