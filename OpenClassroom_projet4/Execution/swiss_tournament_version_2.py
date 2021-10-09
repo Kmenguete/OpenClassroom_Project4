@@ -58,22 +58,15 @@ def generate_new_pairs_of_players(player_list):
     # For the next round, the player 1 meet the player 2, the player 3 meet the player 4 and so on.
     # If the player 1 has already met the player 2 then he meet the player 3. If the player 3 has already
     # met the player 4 then he meet the player 5 and so on.
-    match_1 = ((player_list[0]), (player_list[1]))
-    match_2 = ((player_list[2]), (player_list[3]))
-    match_3 = ((player_list[4]), (player_list[5]))
-    match_4 = ((player_list[6]), (player_list[7]))
-    print("Here is the match one: ", match_1, "Here is the match two: ", match_2, "Here is the match three: ", match_3,
-          "Here is the match four: ", match_4)
-    if ((player_list[0]), (player_list[1])) in globals():
-        match_1 = ((player_list[0]), (player_list[2]))
-        print("Player 1 has already met player 2, here is match one: ", match_1)
-    if ((player_list[2]), (player_list[3])) in globals():
-        match_2 = ((player_list[2]), (player_list[4]))
-        print("Player 3 has already met player 4, here is match two: ", match_2)
-    if ((player_list[4]), (player_list[5])) in globals():
-        match_3 = ((player_list[4]), (player_list[6]))
-        print("Player 5 has already met player 6, here is match three: ", match_3)
-    if ((player_list[6]), (player_list[7])) in globals():
-        match_4 = ((player_list[6]), (player_list[8]))
-        print("Player 7 has already met player 8, here is match four: ", match_4)
-# I repeat the two last functions until the end of tournament.
+    for player in player_list:
+        match_next_round = (player[0], player[1])
+        print("Here are the matches for the next round: ")
+        print(match_next_round)
+        i = 0
+        n = 1
+        if match_next_round in globals():
+            match_next_round = (player[0], player[2])
+            print("The player {} has already met the player {}. Here is the match for the next round: ".format(i, n),
+                  match_next_round)
+            i += 1
+            n += 1
