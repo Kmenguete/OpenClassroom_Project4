@@ -5,9 +5,7 @@ def generate_match_first_round(*player):
     return player
 
 
-def pairs_of_players(*player):
-    # We want to generate pairs of players randomly from player_list
-    player_list = [*player]
+def pairs_of_players(player_list):
     matches = {}
     while len(player_list) > 1:
         # We split our list in two part(player list a and player list b)

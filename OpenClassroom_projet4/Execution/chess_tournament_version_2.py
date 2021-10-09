@@ -1,6 +1,7 @@
 from OpenClassroom_projet4.Execution.Match_execution import Match
 from OpenClassroom_projet4.Execution.Player_execution import Player
 from OpenClassroom_projet4.Execution.Tournament_execution import Tournament
+from OpenClassroom_projet4.Execution.swiss_tournament_version_2 import pairs_of_players
 
 if __name__ == '__main__':
     name_of_tournament = input("enter the name of tournament: ")
@@ -27,6 +28,8 @@ if __name__ == '__main__':
             player = Player(surname, firstname, birthdate, sex, rank)
             print("You have successfully created a player: " + str(player))
         player_list.append(player)
+    pairs_of_players(player_list)
+
 
 number_rounds = int(input("Enter the number of rounds: "))
 round_list = []
