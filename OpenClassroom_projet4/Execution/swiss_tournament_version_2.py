@@ -58,7 +58,6 @@ def generate_new_pairs_of_players(player_list):
     # For the next round, the player 1 meet the player 2, the player 3 meet the player 4 and so on.
     # If the player 1 has already met the player 2 then he meet the player 3. If the player 3 has already
     # met the player 4 then he meet the player 5 and so on.
-
     match_1 = ((player_list[0]), (player_list[1]))
     match_2 = ((player_list[2]), (player_list[3]))
     match_3 = ((player_list[4]), (player_list[5]))
