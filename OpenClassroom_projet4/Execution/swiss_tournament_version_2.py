@@ -1,12 +1,12 @@
+import operator
 import random
 
 
 def generate_match_first_round(player_list):
     # We first sort players by rank.
-    sorted_player_list = sorted(player_list)
+    sorted_player_list = sorted(player_list, key=operator.attrgetter("rank"))
     print("At the beginning of the first round, players are sorted by rank.")
-    for player in sorted_player_list:
-        print(player[0], player[1])
+    print(sorted_player_list)
 
     # Once, we sorted our players by rank, we split them in two part(an upper half and a lower half).
     first_half = sorted_player_list[:len(sorted_player_list) // 2]
@@ -17,7 +17,7 @@ def generate_match_first_round(player_list):
     # group and so on.
     match_list = zip(first_half, second_half)
     print("Here are the matches of the first round. Each parenthesis is a match. Player a is on the left and player b"
-          "on the right.")
+          " on the right.")
     for match in match_list:
         print(match)
 
@@ -60,7 +60,7 @@ def generate_new_pairs_of_players(player_list):
     # met the player 4 then he meet the player 5 and so on.
     for player in player_list:
         match_next_round = (player[0], player[1])
-        print("Here are the matches for the next round: ")
+        print("Here is the match for the next round: ")
         print(match_next_round)
         i = 0
         n = 1

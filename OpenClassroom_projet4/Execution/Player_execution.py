@@ -1,5 +1,4 @@
 
-
 class Player:
     def __init__(self, surname, firstname, birthdate, sex, rank):
         self.surname = surname
@@ -7,6 +6,9 @@ class Player:
         self.birthdate = birthdate
         self.sex = sex
         self.rank = rank
+
+    def __repr__(self):
+        return "Player(" + repr(self.rank) + ")"
 
     def __str__(self):
         return self.surname + " " + self.firstname + " " + self.birthdate + " " + self.sex + " " + self.rank
