@@ -6,6 +6,10 @@ class Player:
         self.birthdate = birthdate
         self.sex = sex
         self.rank = rank
+        self.player_list = []
+
+    def __getitem__(self, index):
+        return self.player_list[index]
 
     def __repr__(self):
         return "Player(" + repr(self.rank) + ")"
