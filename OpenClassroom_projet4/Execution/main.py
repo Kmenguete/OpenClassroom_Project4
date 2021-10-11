@@ -81,7 +81,6 @@ if __name__ == '__main__':
                 print(
                     "The player {} has already met the player {}. Here is the match for the next round: ".format(i, n),
                     match_next_round)
-                i += 1
                 n += 1
 
         for match in round.matches:
