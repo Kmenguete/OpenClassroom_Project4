@@ -79,19 +79,29 @@ if __name__ == '__main__':
                 odd_players.append(tournament.players[player])
                 new_player_pairs = list(list(x) for x in zip(odd_players, even_players))
                 print(tuple(new_player_pairs))
+                for new_player_pair in new_player_pairs:
+                    print("creating match")
+                    match = Match(new_player_pair[0], new_player_pair[1])
+                    match_list.append(match)
+                    if new_player_pair in round.matches:
+                        print("A match with these players already exist. Please, promote the following match: ")
+                    else:
+                        print("No previous match found with these players")
 
-        for match in round.matches:
-            print("Player A: " + match.player_a.last_name)
-            print("Player B: " + match.player_b.last_name)
-            while True:
-                winner = input("Enter winner (A or B): ")
-                if winner != 'A' and winner != 'B':
-                    print("Invalid value for player, please enter either A or B")
-                else:
-                    if winner == 'A':
-                        match.score_player_a = 1
-                        match.score_player_b = 0
-                    elif winner == 'B':
-                        match.score_player_b = 1
-                        match.score_player_a = 0
-                    break
+                for match in round.matches:
+                    print("Player A: " + match.player_a.last_name)
+                    print("Player B: " + match.player_b.last_name)
+                    while True:
+                        winner = input("Enter winner (A or B): ")
+                        if winner != 'A' and winner != 'B':
+                            print("Invalid value for player, please enter either A or B")
+                        else:
+                            if winner == 'A':
+                                match.score_player_a = 1
+                                match.score_player_b = 0
+                            elif winner == 'B':
+                                match.score_player_b = 1
+                                match.score_player_a = 0
+                            break
+
+
