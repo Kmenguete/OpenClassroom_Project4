@@ -1,14 +1,15 @@
-from OpenClassroom_projet4.controller.Controller import Controller
 
 
 class Player:
-    def _init_(self, surname, firstname, date_of_birth, sex, rank):
-        self.surname = surname
+    def __init__(self, last_name, firstname, rank, date_of_birth=None, sex=None):
+        self.last_name = last_name
         self.firstname = firstname
         self.date_of_birth = date_of_birth
         self.sex = sex
-        self.rank = rank
+        self.rank = int(rank)
 
+    def __str__(self):
+        return self.last_name + self.rank
 
-def controller_update():
-    return Controller
+    def __repr__(self):
+        return "Player(" + repr(self.last_name + str(self.rank)) + ")"

@@ -1,14 +1,12 @@
-from OpenClassroom_projet4.controller.Controller import Controller
+from dataclasses import dataclass
+from datetime import datetime
 
 
-class Round:
-    def _init_(self, name_of_tournament, round_number, match_number, score_player_1, score_player_2):
-        self.name_of_tournament = name_of_tournament
-        self.round_number = round_number
-        self.match_number = match_number
-        self.score_player_1 = score_player_1
-        self.score_player_2 = score_player_2
+@dataclass
+class Tour:
+    round_name: str
+    start_date: datetime
+    matches: list
 
-
-def controller_update():
-    return Controller
+    def set_matches(self, matches):
+        self.matches = matches

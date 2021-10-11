@@ -1,17 +1,15 @@
-from OpenClassroom_projet4.controller.Controller import Controller
+from OpenClassroom_projet4.model.Round_model import Tour
+
+DEFAULT_ROUNDS_NUMBER = 4
 
 
 class Tournament:
-    def _init_(self, name_of_tournament, place_of_tournament, date_of_tournament, duration_of_tournament,
-               number_of_round, number_of_match, description_of_tournament):
-        self.name_of_tournament = name_of_tournament
-        self.place_of_tournament = place_of_tournament
-        self.date_of_tournament = date_of_tournament
-        self.duration_of_tournament = duration_of_tournament
-        self.number_of_round = number_of_round
-        self.number_of_match = number_of_match
-        self.description_of_tournament = description_of_tournament
-
-
-def controller_update():
-    return Controller
+    def __init__(self, name, place, date, description, number_of_rounds=DEFAULT_ROUNDS_NUMBER, rounds: Tour = None,
+                 players=None):
+        self.name = name
+        self.place = place
+        self.date = date
+        self.number_of_rounds = number_of_rounds
+        self.rounds = rounds
+        self.players = players
+        self.description = description
