@@ -69,7 +69,21 @@ if __name__ == '__main__':
     # End of step 4
 
     for round in tournament.rounds:
-        # generate new pairs
+        # Step 5: we generate new pairs of player for the next round and we play matches for the next round
+        for player in tournament.players:
+            match_next_round = (player[0], player[1])
+            print("Here is the match for the next round: ")
+            print(match_next_round)
+            i = 0
+            n = 1
+            if match_next_round in player_pairs:
+                match_next_round = (player[0], player[2])
+                print(
+                    "The player {} has already met the player {}. Here is the match for the next round: ".format(i, n),
+                    match_next_round)
+                i += 1
+                n += 1
+
         for match in round.matches:
             print("Player A: " + match.player_a.last_name)
             print("Player B: " + match.player_b.last_name)
