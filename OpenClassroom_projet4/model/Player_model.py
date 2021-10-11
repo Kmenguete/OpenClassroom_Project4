@@ -8,6 +8,9 @@ class Player:
         self.sex = sex
         self.rank = int(rank)
 
+    def __getitem__(self, player_list, item):
+        return player_list[item]
+
     def __str__(self):
         return self.last_name + self.rank
 
