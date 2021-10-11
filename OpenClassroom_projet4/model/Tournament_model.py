@@ -13,3 +13,9 @@ class Tournament:
         self.rounds = rounds
         self.players = players
         self.description = description
+
+    def __len__(self):
+        return len(self.players)
+
+    def __getitem__(self, players, i):
+        return self.players[i]
