@@ -103,5 +103,3 @@ if __name__ == '__main__':
                                 match.score_player_b = 1
                                 match.score_player_a = 0
                             break
-
-
