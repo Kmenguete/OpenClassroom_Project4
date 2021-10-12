@@ -83,7 +83,7 @@ if __name__ == '__main__':
                 odd_players.append(tournament.players[player])
                 new_player_pairs = list(list(x) for x in zip(odd_players, even_players))
                 print(tuple(new_player_pairs))
-                    
+
                 for new_player_pair in new_player_pairs:
                     print("creating match")
                     match = Match(new_player_pair[0], new_player_pair[1])
@@ -95,10 +95,8 @@ if __name__ == '__main__':
                                                for player in range(len(odd_players))]
                         alternative_matches_2 = [(player, (player + 1) % len(even_players))
                                                  for player in range(len(even_players))]
-                        for match in alternative_matches:
-                            print(match)
-                        for match in alternative_matches_2:
-                            print(match)
+                        print(tuple(alternative_matches))
+                        print(tuple(alternative_matches_2))
                         for alternative_match in alternative_matches:
                             print("creating match")
                             match = Match(alternative_match[0], alternative_match[1])
