@@ -70,6 +70,9 @@ if __name__ == '__main__':
 
     for round in tournament.rounds:
         # Step 5: we generate new pairs of player for the next round and we play matches for the next round
+        # for the next round player 1 meet player 2 and player 3 meet player 4 and so on.
+        # If the player 1 have already met the player 2 then he meet the player 3. If the player 3 have already
+        # met the player 4 then he meet the player 5 and so on.
         odd_players = []
         even_players = []
         for player in range(0, len(tournament.players)):
@@ -85,10 +88,30 @@ if __name__ == '__main__':
                     match_list.append(match)
                     if new_player_pair in round.matches:
                         print("A match with these players already exist. Please, promote the following match: ")
+                        alternative_matches = [(player, (player + 1) % len(odd_players))
+                                               for player in range(len(odd_players))]
+                        alternative_matches_2 = [(player, (player + 1) % len(even_players))
+                                                 for player in range(len(even_players))]
+                        print(tuple(alternative_matches))
+                        print(tuple(alternative_matches_2))
+                        for alternative_match in alternative_matches:
+                            print("creating match")
+                            match = Match(alternative_match[0], alternative_match[1])
+                            match_list.append(match)
+                        for alternative_match_2 in alternative_matches_2:
+                            print("creating match")
+                            match = Match(alternative_match_2[0], alternative_match_2[1])
+                            match_list.append(match)
                     else:
                         print("No previous match found with these players")
 
-                for match in round.matches:
+                i = 1
+                next_round = Tour("Round {}".format(i), datetime.now(), match_list)
+                round_list = [next_round]
+                tournament.rounds = round_list
+                i += 1
+
+                for match in tournament.rounds[i].matches:
                     print("Player A: " + match.player_a.last_name)
                     print("Player B: " + match.player_b.last_name)
                     while True:
