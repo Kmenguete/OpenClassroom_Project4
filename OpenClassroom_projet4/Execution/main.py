@@ -1,7 +1,7 @@
 from OpenClassroom_projet4.model.Match_model import Match
 from OpenClassroom_projet4.model.Player_model import Player
 from OpenClassroom_projet4.model.Round_model import Tour
-from OpenClassroom_projet4.model.Tournament_model import Tournament
+from OpenClassroom_projet4.model.Tournament_model import Tournament, DEFAULT_ROUNDS_NUMBER
 from datetime import date, datetime
 import operator
 
@@ -14,7 +14,8 @@ if __name__ == '__main__':
     place = input("enter the place of tournament: ")
     date = date.today()  # This is the date of today
     description = input("enter a description for this tournament: ")
-    tournament = Tournament(name=name, place=place, date=date, description=description)
+    tournament = Tournament(name=name, place=place, date=date, description=description,
+                            number_of_rounds=DEFAULT_ROUNDS_NUMBER)
     # End of step 1
 
     # Step 2: add players (the number of players is defined in the DEFAULT_PLAYERS_NUMBER constant variable)
@@ -68,7 +69,7 @@ if __name__ == '__main__':
                 break
     # End of step 4
 
-    for round in tournament.rounds:
+    for round in range(1, tournament.number_of_rounds):
         # Step 5: we generate new pairs of player for the next round and we play matches for the next round
         # for the next round player 1 meet player 2 and player 3 meet player 4 and so on.
         # If the player 1 have already met the player 2 then he meet the player 3. If the player 3 have already
