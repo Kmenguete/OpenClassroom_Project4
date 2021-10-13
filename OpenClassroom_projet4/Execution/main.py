@@ -113,18 +113,13 @@ if __name__ == '__main__':
         for match in tournament.rounds[1].matches:
             if match in tournament.rounds[1].matches:
                 alternative_matches = list(itertools.combinations(even_players, 2))
-                print(tuple(alternative_matches))
-                match_list = []
-                for alternative_match in alternative_matches:
-                    print("creating match")
-                    match = Match(alternative_match[0], alternative_match[1])
-                    match_list.append(match)
                 alternative_matches_2 = list(itertools.combinations(odd_players, 2))
-                print(tuple(alternative_matches_2))
+                matches_other_round = alternative_matches + alternative_matches_2
+                print(tuple(matches_other_round))
                 match_list = []
-                for alternative_match_2 in alternative_matches_2:
+                for match_other_round in matches_other_round:
                     print("creating match")
-                    match = Match(alternative_match_2[0], alternative_match_2[1])
+                    match = Match(match_other_round[0], match_other_round[1])
                     match_list.append(match)
             else:
                 print("No previous match found with these players")
