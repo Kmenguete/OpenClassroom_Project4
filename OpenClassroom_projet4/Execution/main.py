@@ -85,11 +85,8 @@ if __name__ == '__main__':
                 match = Match(new_player_pair[0], new_player_pair[1])
                 match_list.append(match)
 
-    for round in range(1, tournament.number_of_rounds):
-        # Step 5: we generate new pairs of player for the next round and we play matches for the next round
-        # for the next round player 1 meet player 2 and player 3 meet player 4 and so on.
-        # If the player 1 have already met the player 2 then he meet the player 3. If the player 3 have already
-        # met the player 4 then he meet the player 5 and so on.
+    f = 1
+    while f < tournament.number_of_rounds:
         i = 1
         next_round = Tour("Round {}".format(i), datetime.now(), match_list)
         round_list = [first_round, next_round]
@@ -119,3 +116,6 @@ if __name__ == '__main__':
             print("creating match")
             match = Match(match_other_round[0], match_other_round[1])
             match_list.append(match)
+        f += 1
+    else:
+        print("The tournament is finished !!!")
