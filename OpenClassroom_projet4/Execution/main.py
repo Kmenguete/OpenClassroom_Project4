@@ -110,17 +110,20 @@ if __name__ == '__main__':
             i += 1
         for match in tournament.rounds[1].matches:
             if match in tournament.rounds[1].matches:
-                print("A match with these players already exist. Please, promote the following matches: ")
-                alternative_matches = [(player, (player + 1) % len(odd_players))
-                                       for player in range(len(odd_players))]
-                alternative_matches_2 = [(player, (player + 1) % len(even_players))
-                                         for player in range(len(even_players))]
+                alternative_matches = [even_players[n] + even_players[n+1] for n in range(0, len(even_players)-1, 2)]
+                if len(even_players) % 2 == 1:
+                    alternative_matches.append(even_players[len(even_players)-1])
                 print(tuple(alternative_matches))
-                print(tuple(alternative_matches_2))
+                match_list = []
                 for alternative_match in alternative_matches:
                     print("creating match")
                     match = Match(alternative_match[0], alternative_match[1])
                     match_list.append(match)
+                alternative_matches_2 = [odd_players[f] + odd_players[f+1] for f in range(0, len(odd_players)-1, 2)]
+                if len(odd_players) % 2 == 1:
+                    alternative_matches_2.append(odd_players[len(odd_players)-1])
+                print(tuple(alternative_matches_2))
+                match_list = []
                 for alternative_match_2 in alternative_matches_2:
                     print("creating match")
                     match = Match(alternative_match_2[0], alternative_match_2[1])
