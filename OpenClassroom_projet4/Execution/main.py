@@ -1,3 +1,5 @@
+import itertools
+
 from OpenClassroom_projet4.model.Match_model import Match
 from OpenClassroom_projet4.model.Player_model import Player
 from OpenClassroom_projet4.model.Round_model import Tour
@@ -110,18 +112,14 @@ if __name__ == '__main__':
             i += 1
         for match in tournament.rounds[1].matches:
             if match in tournament.rounds[1].matches:
-                alternative_matches = [even_players[n] + even_players[n+1] for n in range(0, len(even_players)-1, 2)]
-                if len(even_players) % 2 == 1:
-                    alternative_matches.append(even_players[len(even_players)-1])
+                alternative_matches = list(itertools.combinations(even_players, 2))
                 print(tuple(alternative_matches))
                 match_list = []
                 for alternative_match in alternative_matches:
                     print("creating match")
                     match = Match(alternative_match[0], alternative_match[1])
                     match_list.append(match)
-                alternative_matches_2 = [odd_players[f] + odd_players[f+1] for f in range(0, len(odd_players)-1, 2)]
-                if len(odd_players) % 2 == 1:
-                    alternative_matches_2.append(odd_players[len(odd_players)-1])
+                alternative_matches_2 = list(itertools.combinations(odd_players, 2))
                 print(tuple(alternative_matches_2))
                 match_list = []
                 for alternative_match_2 in alternative_matches_2:
