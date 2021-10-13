@@ -16,3 +16,6 @@ class Player:
 
     def __repr__(self):
         return "Player(" + repr(self.last_name + " " + str(self.rank)) + ")"
+
+    def __add__(self, other):
+        return self.last_name + " " + str(self.rank) + " " + other.last_name + " " + str(other.rank)
