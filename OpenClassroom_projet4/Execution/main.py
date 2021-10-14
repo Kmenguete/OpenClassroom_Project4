@@ -77,13 +77,14 @@ if __name__ == '__main__':
             even_players.append(tournament.players[player])
         else:
             odd_players.append(tournament.players[player])
-            new_player_pairs = list(list(x) for x in zip(odd_players, even_players))
-            print(tuple(new_player_pairs))
-            match_list = []
-            for new_player_pair in new_player_pairs:
-                print("creating match")
-                match = Match(new_player_pair[0], new_player_pair[1])
-                match_list.append(match)
+
+    new_player_pairs = list(list(x) for x in zip(odd_players, even_players))
+    print(tuple(new_player_pairs))
+    match_list = []
+    for new_player_pair in new_player_pairs:
+        print("creating match")
+        match = Match(new_player_pair[0], new_player_pair[1])
+        match_list.append(match)
 
     f = 1
     while f < tournament.number_of_rounds:
