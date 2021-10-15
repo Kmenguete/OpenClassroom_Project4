@@ -78,12 +78,16 @@ if __name__ == '__main__':
         if tournament.players[n] == tournament.rounds[0].matches[h].player_a and \
                 tournament.rounds[0].matches[h].score_player_a == 1:
             winner_list.append(tournament.players[n])
-        elif tournament.players[n + 4] == tournament.rounds[0].matches[h].player_b and \
-                tournament.rounds[0].matches[h].score_player_b == 1:
-            winner_list.append(tournament.players[n + 4])
         else:
             loser_list.append(tournament.players[n])
-            loser_list.append(tournament.players[n + 4])
+        n += 1
+
+    for h in range(0, len(tournament.rounds[0].matches)):
+        if tournament.players[n] == tournament.rounds[0].matches[h].player_b and \
+                tournament.rounds[0].matches[h].score_player_b == 1:
+            winner_list.append(tournament.players[n])
+        else:
+            loser_list.append(tournament.players[n])
         n += 1
 
     sorted_winner_list = sorted(winner_list, key=operator.attrgetter("rank"))
