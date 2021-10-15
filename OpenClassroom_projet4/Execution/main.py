@@ -96,6 +96,10 @@ if __name__ == '__main__':
     print("Here the rank is updated according the score of each player.")
     print(new_player_list)
 
+    for i in range(0, len(new_player_list)):
+        new_player_list[i] = tournament.players[i].rank
+        print(new_player_list)
+
     odd_players = []
     even_players = []
     for player in range(0, len(tournament.players)):
