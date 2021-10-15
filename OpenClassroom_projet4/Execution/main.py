@@ -7,7 +7,7 @@ from OpenClassroom_projet4.model.Tournament_model import Tournament, DEFAULT_ROU
 from datetime import date, datetime
 import operator
 
-DEFAULT_PLAYERS_NUMBER = 4
+DEFAULT_PLAYERS_NUMBER = 6
 
 if __name__ == '__main__':
     # Step 1: create a new tournament
@@ -70,6 +70,26 @@ if __name__ == '__main__':
                     match.score_player_a = 0
                 break
     # End of step 4
+    winner_list = []
+    loser_list = []
+    new_player_list = []
+    for n in range(0, len(tournament.players)):
+        for h in range(0, len(tournament.rounds[0].matches)):
+            if tournament.players[n].last_name == tournament.rounds[0].matches[h].player_a.last_name and \
+                    tournament.rounds[0].matches[h].score_player_a == 1:
+
+                winner_list.append(tournament.players[n].last_name)
+            elif tournament.players[n].last_name == tournament.rounds[0].matches[h].player_b.last_name and \
+                    tournament.rounds[0].matches[h].score_player_b == 1:
+                winner_list.append(tournament.players[n].last_name)
+            else:
+                loser_list.append(tournament.players[n].last_name)
+            sorted_winner_list = sorted(winner_list, key=operator.attrgetter("rank"))
+            sorted_loser_list = sorted(loser_list, key=operator.attrgetter("rank"))
+            new_player_list = sorted_winner_list + sorted_loser_list
+            print("Here the rank is updated according the score of each player.")
+            print(new_player_list)
+
     odd_players = []
     even_players = []
     for player in range(0, len(tournament.players)):
