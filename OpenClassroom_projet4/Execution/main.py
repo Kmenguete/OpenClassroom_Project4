@@ -7,7 +7,7 @@ from OpenClassroom_projet4.model.Tournament_model import Tournament, DEFAULT_ROU
 from datetime import date, datetime
 import operator
 
-DEFAULT_PLAYERS_NUMBER = 6
+DEFAULT_PLAYERS_NUMBER = 8
 
 if __name__ == '__main__':
     # Step 1: create a new tournament
@@ -73,19 +73,21 @@ if __name__ == '__main__':
     winner_list = []
     loser_list = []
     new_player_list = []
+
     for n in range(0, len(tournament.players)):
         h = 0
         while h < len(tournament.rounds[0].matches):
-            if tournament.players[n].last_name == tournament.rounds[0].matches[h].player_a.last_name and \
+            if tournament.players[n] == tournament.rounds[0].matches[h].player_a and \
                     tournament.rounds[0].matches[h].score_player_a == 1:
 
-                winner_list.append(tournament.players[n].last_name)
-            elif tournament.players[n].last_name == tournament.rounds[0].matches[h].player_b.last_name and \
+                winner_list.append(tournament.players[n])
+            elif tournament.players[n] == tournament.rounds[0].matches[h].player_b and \
                     tournament.rounds[0].matches[h].score_player_b == 1:
-                winner_list.append(tournament.players[n].last_name)
+                winner_list.append(tournament.players[n])
             else:
-                loser_list.append(tournament.players[n].last_name) 
+                loser_list.append(tournament.players[n])
             h += 1
+
     sorted_winner_list = sorted(winner_list, key=operator.attrgetter("rank"))
     sorted_loser_list = sorted(loser_list, key=operator.attrgetter("rank"))
     new_player_list = sorted_winner_list + sorted_loser_list
