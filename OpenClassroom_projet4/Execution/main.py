@@ -94,11 +94,8 @@ if __name__ == '__main__':
     sorted_loser_list = sorted(loser_list, key=operator.attrgetter("rank"))
     new_player_list = sorted_winner_list + sorted_loser_list
     print("Here the rank is updated according the score of each player.")
+    tournament.players = new_player_list
     print(new_player_list)
-
-    for i in range(0, len(new_player_list)):
-        new_player_list[i] = tournament.players[i].rank
-        print(new_player_list)
 
     odd_players = []
     even_players = []
