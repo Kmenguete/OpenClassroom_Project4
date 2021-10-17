@@ -20,8 +20,6 @@ class Player:
     def __add__(self, other):
         return self.last_name + " " + str(self.rank) + " " + other.last_name + " " + str(other.rank)
 
-    def update_rank(self):
-        index = self.rank
-        player = self.last_name + " " + str(self.rank)
-        player_list = [*player]
+    def update_rank(self, player_list, index):
+        self.rank = index + 1
         return player_list[index]
