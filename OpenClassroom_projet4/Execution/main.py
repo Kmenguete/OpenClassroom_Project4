@@ -96,7 +96,7 @@ if __name__ == '__main__':
     print("Here the rank is updated according the score of each player.")
     tournament.players = new_player_list
     for i in range(0, len(tournament.players)):
-        tournament.players[i].update_rank()
+        tournament.players[i].update_rank(tournament.players, i)
 
     print(tournament.players)
 
