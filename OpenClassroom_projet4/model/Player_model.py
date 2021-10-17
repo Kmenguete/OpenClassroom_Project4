@@ -8,7 +8,7 @@ class Player:
         self.rank = int(rank)
 
     def __getitem__(self, player):
-        player = self.last_name
+        player = self.last_name + " " + str(self.rank)
         return player
 
     def __str__(self):
@@ -19,3 +19,9 @@ class Player:
 
     def __add__(self, other):
         return self.last_name + " " + str(self.rank) + " " + other.last_name + " " + str(other.rank)
+
+    def update_rank(self):
+        index = self.rank
+        player = self.last_name + " " + str(self.rank)
+        player_list = [*player]
+        return player_list[index]
