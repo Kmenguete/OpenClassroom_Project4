@@ -161,5 +161,6 @@ if __name__ == '__main__':
             tournament.players[i].update_rank(tournament.players, i)
 
         print(tournament.players)
+        f += 1
     else:
         print("The tournament is finished !!!")
