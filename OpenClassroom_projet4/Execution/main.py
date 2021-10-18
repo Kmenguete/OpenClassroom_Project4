@@ -1,5 +1,3 @@
-import itertools
-
 from OpenClassroom_projet4.model.Match_model import Match
 from OpenClassroom_projet4.model.Player_model import Player
 from OpenClassroom_projet4.model.Round_model import Tour
@@ -99,25 +97,21 @@ if __name__ == '__main__':
         tournament.players[i].update_rank(tournament.players, i)
 
     print(tournament.players)
-
-    odd_players = []
-    even_players = []
-    for player in range(0, len(tournament.players)):
-        if player % 2 == 0:
-            even_players.append(tournament.players[player])
-        else:
-            odd_players.append(tournament.players[player])
-
-    new_player_pairs = list(list(x) for x in zip(odd_players, even_players))
-    print(tuple(new_player_pairs))
-    match_list = []
-    for new_player_pair in new_player_pairs:
-        print("creating match")
-        match = Match(new_player_pair[0], new_player_pair[1])
-        match_list.append(match)
-
     f = 1
     while f < tournament.number_of_rounds:
+        non_available_players = []
+        match_list = []
+        for index in range(0, len(tournament.players)):
+            player_a = tournament.players[index]
+            if player_a in non_available_players:
+                pass
+            else:
+                player_b = tournament.get_next_available_player(player_a, index + 1, non_available_players)
+                non_available_players.append(player_a)
+                non_available_players.append(player_b)
+                print("creating match")
+                match = Match(player_a, player_b)
+                match_list.append(match)
         i = 1
         next_round = Tour("Round {}".format(i), datetime.now(), match_list)
         round_list = [first_round, next_round]
@@ -138,15 +132,31 @@ if __name__ == '__main__':
                         match.score_player_a = 0
                     break
             i += 1
-        alternative_matches = list(itertools.combinations(even_players, 2))
-        alternative_matches_2 = list(itertools.combinations(odd_players, 2))
-        matches_other_round = alternative_matches + alternative_matches_2
-        print(tuple(matches_other_round))
-        match_list = []
-        for match_other_round in matches_other_round:
-            print("creating match")
-            match = Match(match_other_round[0], match_other_round[1])
-            match_list.append(match)
-        f += 1
+        n = 0
+        for h in range(0, len(tournament.rounds[f].matches)):
+            if tournament.players[n] == tournament.rounds[f].matches[h].player_a and \
+                    tournament.rounds[f].matches[h].score_player_a == 1:
+                winner_list.append(tournament.players[n])
+            else:
+                loser_list.append(tournament.players[n])
+            n += 1
+
+        for h in range(0, len(tournament.rounds[f].matches)):
+            if tournament.players[n] == tournament.rounds[f].matches[h].player_b and \
+                    tournament.rounds[f].matches[h].score_player_b == 1:
+                winner_list.append(tournament.players[n])
+            else:
+                loser_list.append(tournament.players[n])
+            n += 1
+
+        sorted_winner_list = sorted(winner_list, key=operator.attrgetter("rank"))
+        sorted_loser_list = sorted(loser_list, key=operator.attrgetter("rank"))
+        new_player_list = sorted_winner_list + sorted_loser_list
+        print("Here the rank is updated according the score of each player.")
+        tournament.players = new_player_list
+        for i in range(0, len(tournament.players)):
+            tournament.players[i].update_rank(tournament.players, i)
+
+        print(tournament.players)
     else:
         print("The tournament is finished !!!")
