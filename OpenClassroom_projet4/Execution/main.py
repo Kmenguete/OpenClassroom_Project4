@@ -100,9 +100,7 @@ if __name__ == '__main__':
     next_winner_list = []
     next_loser_list = []
     next_player_list = []
-    lists = [*next_player_list]
-    f = 1
-    while f < tournament.number_of_rounds:
+    for f in range(1, tournament.number_of_rounds):
         non_available_players = []
         match_list = []
         for index in range(0, len(tournament.players)):
@@ -162,9 +160,5 @@ if __name__ == '__main__':
             tournament.players[i].update_rank(tournament.players, i)
 
         print(tournament.players)
-        lists.append([*next_winner_list, *next_loser_list])
-        lists.append([*next_sorted_winner_list, *next_sorted_loser_list])
-        lists.append([*next_player_list])
-        f += 1
     else:
         print("The tournament is finished !!!")
