@@ -97,11 +97,6 @@ if __name__ == '__main__':
         tournament.players[i].update_rank(tournament.players, i)
 
     print(tournament.players)
-    winner_lists = []
-    loser_lists = []
-    sorted_winner_lists = []
-    sorted_loser_lists = []
-    new_player_lists = []
 
     for f in range(1, tournament.number_of_rounds):
         non_available_players = []
@@ -136,33 +131,4 @@ if __name__ == '__main__':
                         match.score_player_b = 1
                         match.score_player_a = 0
                     break
-            i += 1
-        n = 0
-        for h in range(0, len(tournament.rounds[f].matches)):
-            if tournament.players[f][n] == tournament.rounds[f].matches[h].player_a and \
-                    tournament.rounds[f].matches[h].score_player_a == 1:
-                winner_lists[f].append(tournament.players[f][n])
-            else:
-                loser_lists[f].append(tournament.players[f][n])
-            n += 1
-
-        for h in range(0, len(tournament.rounds[f].matches)):
-            if tournament.players[f][n] == tournament.rounds[f].matches[h].player_b and \
-                    tournament.rounds[f].matches[h].score_player_b == 1:
-                winner_lists[f].append(tournament.players[f][n])
-            else:
-                loser_lists[f].append(tournament.players[f][n])
-            n += 1
-
-        sorted_winner_lists[f] = sorted(winner_lists[f], key=operator.attrgetter("rank"))
-        sorted_loser_lists[f] = sorted(loser_lists[f], key=operator.attrgetter("rank"))
-        new_player_lists[f] = sorted_winner_lists[f] + sorted_loser_lists[f]
-        print("Here the rank is updated according the score of each player.")
-        tournament.players[f] = new_player_lists[f]
-        for i in range(0, len(tournament.players)):
-            tournament.players[f][i].update_rank(tournament.players, i)
-        winner_lists.append([winner_lists[f]])
-        loser_lists.append([loser_lists[f]])
-        sorted_winner_lists.append([sorted_winner_lists[f]])
-        sorted_loser_lists.append([sorted_loser_lists[f]])
-        new_player_lists.append([new_player_lists[f]])
+            i += 1 
