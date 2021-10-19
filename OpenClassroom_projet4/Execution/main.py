@@ -117,8 +117,11 @@ if __name__ == '__main__':
         round_list = [first_round, next_round]
         tournament.rounds = round_list
         for match in tournament.rounds[i].matches:
-            print("Player A: " + match.player_a.last_name)
-            print("Player B: " + match.player_b.last_name)
+            print("Player A: " + match.player_a.last_name) 
+            try:
+                print("Player B: " + match.player_b.last_name)
+            except:
+                print("Unfortunately, there is no longer player b for this match.")
             while True:
                 winner = input("Enter winner (A or B): ")
                 if winner != 'A' and winner != 'B':
