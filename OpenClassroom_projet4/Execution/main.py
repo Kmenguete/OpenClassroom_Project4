@@ -117,7 +117,7 @@ if __name__ == '__main__':
         round_list = [first_round, next_round]
         tournament.rounds = round_list
         for match in tournament.rounds[i].matches:
-            print("Player A: " + match.player_a.last_name) 
+            print("Player A: " + match.player_a.last_name)
             try:
                 print("Player B: " + match.player_b.last_name)
             except:
@@ -193,3 +193,6 @@ if __name__ == '__main__':
                 tournament.players[i].update_rank(tournament.players, i)
 
             print(tournament.players)
+        finally:
+            print("If there is no longer rounds, then the tournament is finished and the last rank of the last round"
+                  " will be the final rank.")
