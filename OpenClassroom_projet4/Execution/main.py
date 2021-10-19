@@ -136,29 +136,57 @@ if __name__ == '__main__':
                         match.score_player_a = 0
                     break
             i += 1
-        n = 0
-        for h in range(0, len(tournament.rounds[f].matches)):
-            if tournament.players[n] == tournament.rounds[f].matches[h].player_a and \
-                    tournament.rounds[f].matches[h].score_player_a == 1:
-                next_winner_list.append(tournament.players[n])
-            else:
-                next_loser_list.append(tournament.players[n])
-            n += 1
+        try:
+            n = 0
+            for h in range(0, len(tournament.rounds[f].matches)):
+                if tournament.players[n] == tournament.rounds[f].matches[h].player_a and \
+                        tournament.rounds[f].matches[h].score_player_a == 1:
+                    next_winner_list.append(tournament.players[n])
+                else:
+                    next_loser_list.append(tournament.players[n])
+                n += 1
 
-        for h in range(0, len(tournament.rounds[f].matches)):
-            if tournament.players[n] == tournament.rounds[f].matches[h].player_b and \
-                    tournament.rounds[f].matches[h].score_player_b == 1:
-                next_winner_list.append(tournament.players[n])
-            else:
-                next_loser_list.append(tournament.players[n])
-            n += 1
+            for h in range(0, len(tournament.rounds[f].matches)):
+                if tournament.players[n] == tournament.rounds[f].matches[h].player_b and \
+                        tournament.rounds[f].matches[h].score_player_b == 1:
+                    next_winner_list.append(tournament.players[n])
+                else:
+                    next_loser_list.append(tournament.players[n])
+                n += 1
 
-        next_sorted_winner_list = sorted(next_winner_list, key=operator.attrgetter("rank"))
-        next_sorted_loser_list = sorted(next_loser_list, key=operator.attrgetter("rank"))
-        next_player_list = next_sorted_winner_list + next_sorted_loser_list
-        print("Here the rank is updated according the score of each player.")
-        tournament.players = next_player_list
-        for i in range(0, len(tournament.players)):
-            tournament.players[i].update_rank(tournament.players, i)
+            next_sorted_winner_list = sorted(next_winner_list, key=operator.attrgetter("rank"))
+            next_sorted_loser_list = sorted(next_loser_list, key=operator.attrgetter("rank"))
+            next_player_list = next_sorted_winner_list + next_sorted_loser_list
+            print("Here the rank is updated according the score of each player.")
+            tournament.players = next_player_list
+            for i in range(0, len(tournament.players)):
+                tournament.players[i].update_rank(tournament.players, i)
 
-        print(tournament.players)
+            print(tournament.players)
+        except:
+            n = 0
+            for h in range(0, len(tournament.rounds[f - 1].matches)):
+                if tournament.players[n] == tournament.rounds[f - 1].matches[h].player_a and \
+                        tournament.rounds[f - 1].matches[h].score_player_a == 1:
+                    next_winner_list.append(tournament.players[n])
+                else:
+                    next_loser_list.append(tournament.players[n])
+                n += 1
+
+            for h in range(0, len(tournament.rounds[f - 1].matches)):
+                if tournament.players[n] == tournament.rounds[f - 1].matches[h].player_b and \
+                        tournament.rounds[f - 1].matches[h].score_player_b == 1:
+                    next_winner_list.append(tournament.players[n])
+                else:
+                    next_loser_list.append(tournament.players[n])
+                n += 1
+
+            next_sorted_winner_list = sorted(next_winner_list, key=operator.attrgetter("rank"))
+            next_sorted_loser_list = sorted(next_loser_list, key=operator.attrgetter("rank"))
+            next_player_list = next_sorted_winner_list + next_sorted_loser_list
+            print("Here the rank is updated according the score of each player.")
+            tournament.players = next_player_list
+            for i in range(0, len(tournament.players)):
+                tournament.players[i].update_rank(tournament.players, i)
+
+            print(tournament.players)
