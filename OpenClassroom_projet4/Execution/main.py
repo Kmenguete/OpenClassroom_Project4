@@ -165,34 +165,36 @@ if __name__ == '__main__':
                 tournament.players[i].update_rank(tournament.players, i)
 
             print(tournament.players)
-        except:
-            print("Finally try this !!!")
-            n = 0
-            for h in range(0, len(tournament.rounds[f-1].matches)):
-                if tournament.players[n] == tournament.rounds[f-1].matches[h].player_a and \
-                        tournament.rounds[f-1].matches[h].score_player_a == 1:
-                    winner_list.append(tournament.players[n])
-                else:
-                    loser_list.append(tournament.players[n])
-                n += 1
+        except IndexError:
+            try:
+                print("Finally try this !!!")
+                n = 0
+                for h in range(0, len(tournament.rounds[f - 1].matches)):
+                    if tournament.players[n] == tournament.rounds[f - 1].matches[h].player_a and \
+                            tournament.rounds[f - 1].matches[h].score_player_a == 1:
+                        winner_list.append(tournament.players[n])
+                    else:
+                        loser_list.append(tournament.players[n])
+                    n += 1
 
-            for h in range(0, len(tournament.rounds[f-1].matches)):
-                if tournament.players[n] == tournament.rounds[f-1].matches[h].player_b and \
-                        tournament.rounds[f-1].matches[h].score_player_b == 1:
-                    winner_list.append(tournament.players[n])
-                else:
-                    loser_list.append(tournament.players[n])
-                n += 1
+                for h in range(0, len(tournament.rounds[f - 1].matches)):
+                    if tournament.players[n] == tournament.rounds[f - 1].matches[h].player_b and \
+                            tournament.rounds[f - 1].matches[h].score_player_b == 1:
+                        winner_list.append(tournament.players[n])
+                    else:
+                        loser_list.append(tournament.players[n])
+                    n += 1
 
-            sorted_winner_list = sorted(winner_list, key=operator.attrgetter("rank"))
-            sorted_loser_list = sorted(loser_list, key=operator.attrgetter("rank"))
-            new_player_list = sorted_winner_list + sorted_loser_list
-            print("Here the rank is updated according the score of each player.")
-            tournament.players = new_player_list
-            for i in range(0, len(tournament.players)):
-                tournament.players[i].update_rank(tournament.players, i)
+                sorted_winner_list = sorted(winner_list, key=operator.attrgetter("rank"))
+                sorted_loser_list = sorted(loser_list, key=operator.attrgetter("rank"))
+                new_player_list = sorted_winner_list + sorted_loser_list
+                print("Here the rank is updated according the score of each player.")
+                tournament.players = new_player_list
+                for i in range(0, len(tournament.players)):
+                    tournament.players[i].update_rank(tournament.players, i)
 
-            print(tournament.players)
-        finally:
-            print("If there is no longer rounds, then the tournament is finished and the last rank of the last round"
-                  " will be the final rank.")
+                print(tournament.players)
+            except:
+                print(
+                    "There is no longer rounds, then the tournament is finished and the last rank of the last round"
+                    " will be the final rank.")
