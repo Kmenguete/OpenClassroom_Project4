@@ -97,9 +97,11 @@ if __name__ == '__main__':
         tournament.players[i].update_rank(tournament.players, i)
 
     print(tournament.players)
+
     next_winner_list = []
     next_loser_list = []
     next_player_list = []
+
     for f in range(1, tournament.number_of_rounds):
         non_available_players = []
         match_list = []
