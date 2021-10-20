@@ -207,11 +207,14 @@ if __name__ == '__main__':
                     n += 1
 
                 for h in range(0, len(tournament.rounds[f - 3].matches)):
-                    if tournament.players[n] == tournament.rounds[f - 3].matches[h].player_b and \
-                            tournament.rounds[f - 3].matches[h].score_player_b == 1:
-                        winner_list.append(tournament.players[n])
-                    else:
-                        loser_list.append(tournament.players[n])
+                    try:
+                        if tournament.players[n] == tournament.rounds[f - 3].matches[h].player_b and \
+                                tournament.rounds[f - 3].matches[h].score_player_b == 1:
+                            winner_list.append(tournament.players[n])
+                        else:
+                            loser_list.append(tournament.players[n])
+                    except: 
+                        print("No player b found for this match")
                     n += 1
 
                 sorted_winner_list = sorted(winner_list, key=operator.attrgetter("rank"))
