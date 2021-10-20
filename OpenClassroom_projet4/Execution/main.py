@@ -138,9 +138,9 @@ if __name__ == '__main__':
             except:
                 print("Unfortunately, there is no longer player b for this match.")
             while True:
-                winner = input("Enter winner (A or B): ")
-                if winner != 'A' and winner != 'B':
-                    print("Invalid value for player, please enter either A or B")
+                winner = input("Enter winner (A or B) If there is no winner then type None: ")
+                if winner != 'A' and winner != 'B' and winner != 'None':
+                    print("Invalid value")
                 else:
                     if winner == 'A':
                         match.score_player_a = 1
@@ -148,10 +148,14 @@ if __name__ == '__main__':
                     elif winner == 'B':
                         match.score_player_b = 1
                         match.score_player_a = 0
+                    elif winner == 'None':
+                        match.score_player_b = 0.5
+                        match.score_player_a = 0.5
                     break
             i += 1
         winner_list = []
         loser_list = []
+        none_winner_loser_list = []
         new_player_list = []
         try:
             n = 0
@@ -159,6 +163,9 @@ if __name__ == '__main__':
                 if tournament.players[n] == tournament.rounds[f].matches[h].player_a and \
                         tournament.rounds[f].matches[h].score_player_a == 1:
                     winner_list.append(tournament.players[n])
+                elif tournament.players[n] == tournament.rounds[f].matches[h].player_a and \
+                        tournament.rounds[f].matches[h].score_player_a == 0.5:
+                    none_winner_loser_list.append(tournament.players[n])
                 else:
                     loser_list.append(tournament.players[n])
                 n += 1
@@ -167,13 +174,17 @@ if __name__ == '__main__':
                 if tournament.players[n] == tournament.rounds[f].matches[h].player_b and \
                         tournament.rounds[f].matches[h].score_player_b == 1:
                     winner_list.append(tournament.players[n])
+                elif tournament.players[n] == tournament.rounds[f].matches[h].player_b and \
+                        tournament.rounds[f].matches[h].score_player_b == 0.5:
+                    none_winner_loser_list.append(tournament.players[n])
                 else:
                     loser_list.append(tournament.players[n])
                 n += 1
 
             sorted_winner_list = sorted(winner_list, key=operator.attrgetter("rank"))
+            sorted_none_winner_loser_list = sorted(none_winner_loser_list, key=operator.attrgetter("rank"))
             sorted_loser_list = sorted(loser_list, key=operator.attrgetter("rank"))
-            new_player_list = sorted_winner_list + sorted_loser_list
+            new_player_list = sorted_winner_list + sorted_none_winner_loser_list + sorted_loser_list
             print("Here the rank is updated according the score of each player.")
             tournament.players = new_player_list
             for i in range(0, len(tournament.players)):
@@ -187,6 +198,9 @@ if __name__ == '__main__':
                     if tournament.players[n] == tournament.rounds[f - 1].matches[h].player_a and \
                             tournament.rounds[f - 1].matches[h].score_player_a == 1:
                         winner_list.append(tournament.players[n])
+                    elif tournament.players[n] == tournament.rounds[f - 1].matches[h].player_a and \
+                            tournament.rounds[f - 1].matches[h].score_player_a == 0.5:
+                        none_winner_loser_list.append(tournament.players[n])
                     else:
                         loser_list.append(tournament.players[n])
                     n += 1
@@ -195,13 +209,17 @@ if __name__ == '__main__':
                     if tournament.players[n] == tournament.rounds[f - 1].matches[h].player_b and \
                             tournament.rounds[f - 1].matches[h].score_player_b == 1:
                         winner_list.append(tournament.players[n])
+                    elif tournament.players[n] == tournament.rounds[f - 1].matches[h].player_b and \
+                            tournament.rounds[f - 1].matches[h].score_player_b == 0.5:
+                        none_winner_loser_list.append(tournament.players[n])
                     else:
                         loser_list.append(tournament.players[n])
                     n += 1
 
                 sorted_winner_list = sorted(winner_list, key=operator.attrgetter("rank"))
+                sorted_none_winner_loser_list = sorted(none_winner_loser_list, key=operator.attrgetter("rank"))
                 sorted_loser_list = sorted(loser_list, key=operator.attrgetter("rank"))
-                new_player_list = sorted_winner_list + sorted_loser_list
+                new_player_list = sorted_winner_list + sorted_none_winner_loser_list + sorted_loser_list
                 print("Here the rank is updated according the score of each player.")
                 tournament.players = new_player_list
                 for i in range(0, len(tournament.players)):
@@ -214,6 +232,9 @@ if __name__ == '__main__':
                     if tournament.players[n] == tournament.rounds[f - 3].matches[h].player_a and \
                             tournament.rounds[f - 3].matches[h].score_player_a == 1:
                         winner_list.append(tournament.players[n])
+                    elif tournament.players[n] == tournament.rounds[f - 3].matches[h].player_a and \
+                            tournament.rounds[f - 3].matches[h].score_player_a == 0.5:
+                        none_winner_loser_list.append(tournament.players[n])
                     else:
                         loser_list.append(tournament.players[n])
                     n += 1
@@ -223,6 +244,9 @@ if __name__ == '__main__':
                         if tournament.players[n] == tournament.rounds[f - 3].matches[h].player_b and \
                                 tournament.rounds[f - 3].matches[h].score_player_b == 1:
                             winner_list.append(tournament.players[n])
+                        elif tournament.players[n] == tournament.rounds[f - 3].matches[h].player_b and \
+                                tournament.rounds[f - 3].matches[h].score_player_b == 0.5:
+                            none_winner_loser_list.append(tournament.players[n])
                         else:
                             loser_list.append(tournament.players[n])
                     except:
@@ -230,8 +254,9 @@ if __name__ == '__main__':
                     n += 1
 
                 sorted_winner_list = sorted(winner_list, key=operator.attrgetter("rank"))
+                sorted_none_winner_loser_list = sorted(none_winner_loser_list, key=operator.attrgetter("rank"))
                 sorted_loser_list = sorted(loser_list, key=operator.attrgetter("rank"))
-                new_player_list = sorted_winner_list + sorted_loser_list
+                new_player_list = sorted_winner_list + sorted_none_winner_loser_list + sorted_loser_list
                 print("Here the rank is updated according the score of each player.")
                 tournament.players = new_player_list
                 for i in range(0, len(tournament.players)):
