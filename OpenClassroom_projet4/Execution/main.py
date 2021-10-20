@@ -135,26 +135,26 @@ if __name__ == '__main__':
         round_list = [first_round, next_round]
         tournament.rounds = round_list
         for match in tournament.rounds[i].matches:
-            print("Player A: " + match.player_a.last_name)
             try:
+                print("Player A: " + match.player_a.last_name)
                 print("Player B: " + match.player_b.last_name)
+                while True:
+                    winner = input("Enter winner (A or B) If there is no winner then type None: ")
+                    if winner != 'A' and winner != 'B' and winner != 'None':
+                        print("Invalid value")
+                    else:
+                        if winner == 'A':
+                            match.score_player_a = 1
+                            match.score_player_b = 0
+                        elif winner == 'B':
+                            match.score_player_b = 1
+                            match.score_player_a = 0
+                        elif winner == 'None':
+                            match.score_player_b = 0.5
+                            match.score_player_a = 0.5
+                        break
             except:
-                print("Unfortunately, there is no longer player b for this match.")
-            while True:
-                winner = input("Enter winner (A or B) If there is no winner then type None: ")
-                if winner != 'A' and winner != 'B' and winner != 'None':
-                    print("Invalid value")
-                else:
-                    if winner == 'A':
-                        match.score_player_a = 1
-                        match.score_player_b = 0
-                    elif winner == 'B':
-                        match.score_player_b = 1
-                        match.score_player_a = 0
-                    elif winner == 'None':
-                        match.score_player_b = 0.5
-                        match.score_player_a = 0.5
-                    break
+                print("Unfortunately, there is no longer player b for this match, then player a cannot play.")
             i += 1
         winner_list = []
         loser_list = []
