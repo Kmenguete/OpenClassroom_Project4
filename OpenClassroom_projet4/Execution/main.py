@@ -170,7 +170,6 @@ if __name__ == '__main__':
             print(tournament.players)
         except IndexError:
             try:
-                print("Finally try this !!!")
                 n = 0
                 for h in range(0, len(tournament.rounds[f - 1].matches)):
                     if tournament.players[n] == tournament.rounds[f - 1].matches[h].player_a and \
@@ -199,5 +198,5 @@ if __name__ == '__main__':
                 print(tournament.players)
             except:
                 print(
-                    "There is no longer rounds, then the tournament is finished and the last rank of the last round"
+                    "If there is no longer rounds, then the tournament is finished and the last rank of the last round"
                     " will be the final rank.")
