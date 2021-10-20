@@ -57,18 +57,19 @@ if __name__ == '__main__':
         print("Player B: " + match.player_b.last_name)
         while True:
             winner = input("Enter winner (A or B) If there is no winner then type None: ")
-            if winner == 'A':
-                match.score_player_a = 1
-                match.score_player_b = 0
-            elif winner == 'B':
-                match.score_player_b = 1
-                match.score_player_a = 0
-            elif winner == 'None':
-                match.score_player_b = 0.5
-                match.score_player_a = 0.5
-            else:
+            if winner != 'A' and winner != 'B' and winner != 'None':
                 print("Invalid value")
-            break
+            else:
+                if winner == 'A':
+                    match.score_player_a = 1
+                    match.score_player_b = 0
+                elif winner == 'B':
+                    match.score_player_b = 1
+                    match.score_player_a = 0
+                elif winner == 'None':
+                    match.score_player_b = 0.5
+                    match.score_player_a = 0.5
+                break
 
     # End of step 4
     winner_list = []
