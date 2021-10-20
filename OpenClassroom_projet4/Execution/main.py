@@ -71,7 +71,7 @@ if __name__ == '__main__':
                     match.score_player_a = 0.5
                 break
 
-    # End of step 4
+    # Step 5: we update the rank of each player according their scores.
     winner_list = []
     loser_list = []
     none_winner_loser_list = []
@@ -109,6 +109,9 @@ if __name__ == '__main__':
         tournament.players[i].update_rank(tournament.players, i)
 
     print(tournament.players)
+    # Step 6: we generate new matches according the rank of each player at the end of each round.
+    # Step 7: When a round is finished, we update rank according score of each player in each match.
+    # We repeat the step 6 and the step 7 until the end of the tournament.
 
     for f in range(1, tournament.number_of_rounds):
         non_available_players = []
@@ -215,7 +218,7 @@ if __name__ == '__main__':
                     else:
                         loser_list.append(tournament.players[n])
                 except:
-                    print("No player b found in this match.")
+                    print("No player b found in this match")
                 n += 1
 
             sorted_winner_list = sorted(winner_list, key=operator.attrgetter("rank"))
@@ -228,3 +231,5 @@ if __name__ == '__main__':
                 tournament.players[i].update_rank(tournament.players, i)
 
             print(tournament.players)
+    print("The tournament is finished. The last rank is the final rank of this tournament. Then, the player with the "
+          "1st position is the winner of this tournament.")
