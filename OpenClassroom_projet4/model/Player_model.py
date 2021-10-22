@@ -1,11 +1,15 @@
+import uuid
+
 
 class Player:
-    def __init__(self, last_name, firstname, rank, date_of_birth=None, sex=None):
+    def __init__(self, last_name, firstname, rank, total_score=0, date_of_birth=None, sex=None, player_id=uuid.uuid1()):
+        self.player_id = player_id
         self.last_name = last_name
         self.firstname = firstname
         self.date_of_birth = date_of_birth
         self.sex = sex
         self.rank = int(rank)
+        self.total_score = total_score
 
     def __getitem__(self, player):
         player = self.last_name + " " + str(self.rank)

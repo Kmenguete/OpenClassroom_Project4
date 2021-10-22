@@ -3,13 +3,14 @@ DEFAULT_ROUNDS_NUMBER = 4
 
 class Tournament:
     def __init__(self, name, place, date, description, number_of_rounds=DEFAULT_ROUNDS_NUMBER, rounds=None,
-                 players=None):
+                 players=None, players_dict=None):
         self.name = name
         self.place = place
         self.date = date
         self.number_of_rounds = number_of_rounds
         self.rounds = rounds
         self.players = players
+        self.players_dict = players_dict
         self.description = description
 
     def __len__(self):
@@ -33,3 +34,12 @@ class Tournament:
             self.get_next_available_player(player_a, next_player_index + 1, non_available_players)
         else:
             return self.players[next_player_index]
+
+    def seek_player_and_update_score(self, index, new_score):
+        self.players[index].total_score += new_score
+
+    def create_list_dict(self):
+        player_list = self.players
+        new_players_dict = {index: {player_list[index].player_id: player_list[index].total_score} for index in
+                            range(0, len(player_list))}
+        return new_players_dict
