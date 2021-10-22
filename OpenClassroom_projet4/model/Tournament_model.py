@@ -35,8 +35,9 @@ class Tournament:
         else:
             return self.players[next_player_index]
 
-    def seek_player_and_update_score(self, index, new_score):
-        self.players[index].total_score += new_score
+    def seek_player_and_update_score(self, new_score):
+        for index in range(0, len(self.players)):
+            self.players[index].total_score += new_score
 
     def create_list_dict(self):
         player_list = self.players
