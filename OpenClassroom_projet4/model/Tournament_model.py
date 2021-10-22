@@ -41,6 +41,8 @@ class Tournament:
 
     def create_list_dict(self):
         player_list = self.players
-        new_players_dict = {index: {player_list[index].player_id: player_list[index].total_score} for index in
-                            range(0, len(player_list))}
+        index = 0
+        new_players_dict = {player_list[index]:  player_list[index].total_score for
+                            player_list[index] in player_list}
+        index += 1
         return new_players_dict
