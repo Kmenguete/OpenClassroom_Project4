@@ -73,8 +73,10 @@ if __name__ == '__main__':
                 elif winner == 'None':
                     match.score_player_b = 0.5
                     match.score_player_a = 0.5
-                    tournament.seek_player_and_update_score(match.score_player_a)
-                    tournament.seek_player_and_update_score(match.score_player_b)
+                    tournament.seek_player_and_update_score(
+                        match.score_player_a)
+                    tournament.seek_player_and_update_score(
+                        match.score_player_b)
                 break
 
     # Step 5: we sort players by their score.
