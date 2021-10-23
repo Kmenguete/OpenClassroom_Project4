@@ -38,11 +38,9 @@ class Tournament:
     def seek_player_and_update_score(self, new_score):
         players_dict = self.players_dict
         player_list = self.players
-        index = 0
-        new_players_dict = {player_list[index]: new_score for
-                            player_list[index] in player_list}
+        new_players_dict = {player: new_score for
+                            player in player_list}
         players_dict.update(new_players_dict)
-        index += 1
         return new_players_dict
 
     def create_list_dict(self):
