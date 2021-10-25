@@ -1,4 +1,12 @@
+
 DEFAULT_ROUNDS_NUMBER = 4
+
+
+def create_list_dict(players_list):
+    new_players_dict = {}
+    for player in players_list:
+        new_players_dict[player.player_id] = player.total_score
+    return new_players_dict
 
 
 class Tournament:
@@ -29,24 +37,23 @@ class Tournament:
         return already_happened
 
     def get_next_available_player(self, player_a, next_player_index, non_available_players):
+        print("next player index is : " + str(next_player_index))
         if self.check_if_match_already_happened(player_a, self.players[next_player_index]) or \
                 self.players[next_player_index] in non_available_players:
             self.get_next_available_player(player_a, next_player_index + 1, non_available_players)
         else:
-            return self.players[next_player_index]
+            new_player = self.players[next_player_index]
+            if new_player is not None:
+                print("new player is : " + new_player.last_name)
+            else:
+                print("new player is none")
+            return new_player
 
-    def seek_player_and_update_score(self, new_score):
-        players_dict = self.players_dict
-        player_list = self.players
-        new_players_dict = {player: new_score for
-                            player in player_list}
-        players_dict.update(new_players_dict)
-        return new_players_dict
+    def seek_player_and_update_score(self, player, new_score):
+        self.players_dict[player.player_id] = player.total_score + new_score
 
-    def create_list_dict(self):
-        player_list = self.players
-        index = 0
-        new_players_dict = {player_list[index]:  player_list[index].total_score for
-                            player_list[index] in player_list}
-        index += 1
-        return new_players_dict
+    def display_players(self):
+        print("******************** list of players with length: {} *******************".format(len(self.players_dict)))
+        for player in self.players_dict.items():
+            print(player)
+

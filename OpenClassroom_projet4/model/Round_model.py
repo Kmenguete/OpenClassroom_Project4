@@ -10,3 +10,8 @@ class Tour:
 
     def set_matches(self, matches):
         self.matches = matches
+
+    def show_matches(self):
+        print("*********** list of matches in " + self.round_name + " ****************")
+        for match in self.matches:
+            print(match.display_match())
