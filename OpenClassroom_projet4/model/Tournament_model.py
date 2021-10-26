@@ -38,7 +38,6 @@ class Tournament:
 
     def get_next_available_player(self, player_a, next_player_index, non_available_players):
         if next_player_index < len(self.players):
-            print("next player index is : " + str(next_player_index))
             if self.check_if_match_already_happened(player_a, self.players[next_player_index]) or \
                     self.players[next_player_index] in non_available_players:
                 self.get_next_available_player(player_a, next_player_index + 1, non_available_players)
