@@ -77,7 +77,6 @@ if __name__ == '__main__':
                 break
 
     # Step 5: we sort players by their score.
-
     sorted_dictionary_by_total_score = sorted(tournament.players_dict.items(), key=lambda x: x[1], reverse=True)
     tournament.players_dict = dict()
     for player_id, total_score in sorted_dictionary_by_total_score:
