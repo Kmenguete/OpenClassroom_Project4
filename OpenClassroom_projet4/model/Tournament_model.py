@@ -56,4 +56,3 @@ class Tournament:
         print("******************** list of players with length: {} *******************".format(len(self.players_dict)))
         for player in self.players_dict.items():
             print(player)
-
