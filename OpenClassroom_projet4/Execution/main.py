@@ -82,7 +82,6 @@ if __name__ == '__main__':
     tournament.players_dict = dict()
     for player_id, total_score in sorted_dictionary_by_total_score:
         tournament.players_dict.setdefault(player_id, []).append(total_score)
-    print(tournament.players_dict)
     tournament.display_players()
 
     for index in range(1, tournament.number_of_rounds):
@@ -130,7 +129,6 @@ if __name__ == '__main__':
         tournament.players_dict = dict()
         for player_id, total_score in sorted_dictionary_by_total_score:
             tournament.players_dict.setdefault(player_id, []).append(total_score)
-        print(tournament.players_dict)
         tournament.display_players()
 
     sorted_player_list = sorted(tournament.players, key=operator.attrgetter("total_score"), reverse=True)
