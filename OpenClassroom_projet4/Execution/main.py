@@ -96,12 +96,16 @@ if __name__ == '__main__':
                     match_list.append(match)
                     print("creating match")
                 else:
-                    player_b = tournament.get_next_available_player(player_a, index_player - 1, non_available_players)
-                    non_available_players.append(player_a)
-                    non_available_players.append(player_b)
-                    match = Match(player_a, player_b)
-                    match_list.append(match)
-                    print("creating match")
+                    while len(tournament.rounds[index].matches) < (len(tournament.players)/2) + 1:
+                        player_b = tournament.get_next_available_player(player_a, index_player - 1,
+                                                                        non_available_players)
+                        non_available_players.append(player_a)
+                        non_available_players.append(player_b)
+                        match = Match(player_a, player_b)
+                        match_list.append(match)
+                        print("creating match")
+                    else:
+                        print("Every matches have been generated with success.")
 
         next_round = Tour("Round {}".format(index + 1), datetime.now(), match_list)
         tournament.rounds.append(next_round)
