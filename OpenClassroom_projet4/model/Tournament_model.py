@@ -41,12 +41,7 @@ class Tournament:
             if self.check_if_match_already_happened(player_a, self.players[next_player_index]):
                 self.get_next_available_player(player_a, next_player_index + 1, non_available_players)
             else:
-                new_player = self.players[next_player_index]
-                if new_player is not None:
-                    print("new player is : " + new_player.last_name)
-                else:
-                    print("new player is none")
-                return new_player
+                return self.players[next_player_index]
         else:
             print("There is no longer player available.")
 
