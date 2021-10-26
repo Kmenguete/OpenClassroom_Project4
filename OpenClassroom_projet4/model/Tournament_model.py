@@ -37,17 +37,20 @@ class Tournament:
         return already_happened
 
     def get_next_available_player(self, player_a, next_player_index, non_available_players):
-        print("next player index is : " + str(next_player_index))
-        if self.check_if_match_already_happened(player_a, self.players[next_player_index]) or \
-                self.players[next_player_index] in non_available_players:
-            self.get_next_available_player(player_a, next_player_index + 1, non_available_players)
-        else:
-            new_player = self.players[next_player_index]
-            if new_player is not None:
-                print("new player is : " + new_player.last_name)
+        if next_player_index < len(self.players):
+            print("next player index is : " + str(next_player_index))
+            if self.check_if_match_already_happened(player_a, self.players[next_player_index]) or \
+                    self.players[next_player_index] in non_available_players:
+                self.get_next_available_player(player_a, next_player_index + 1, non_available_players)
             else:
-                print("new player is none")
-            return new_player
+                new_player = self.players[next_player_index]
+                if new_player is not None:
+                    print("new player is : " + new_player.last_name)
+                else:
+                    print("new player is none")
+                return new_player
+        else:
+            print("There is no longer player available.")
 
     def seek_player_and_update_score(self, player, new_score):
         self.players_dict[player.player_id] = player.total_score + new_score
