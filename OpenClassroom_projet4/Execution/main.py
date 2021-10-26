@@ -84,8 +84,7 @@ if __name__ == '__main__':
     for index in range(1, tournament.number_of_rounds):
         non_available_players = []
         match_list = []
-        for index_player in range(0, len(tournament.players)):
-            player_a = tournament.players[index_player]
+        for index_player, player_a in enumerate(tournament.players):
             if player_a in non_available_players:
                 pass
             else:
@@ -95,13 +94,11 @@ if __name__ == '__main__':
                     non_available_players.append(player_b)
                     match = Match(player_a, player_b)
                     match_list.append(match)
-                    print("new match generated: {}".format(match.display_match()))
+                    print("creating match")
                 else:
-                    print("player b is none.")
-                    pass
+                    print("There is no longer player b.")
 
         next_round = Tour("Round {}".format(index + 1), datetime.now(), match_list)
-        next_round.show_matches()
         tournament.rounds.append(next_round)
         for match in tournament.rounds[index].matches:
             print("Player A: " + match.player_a.last_name)
