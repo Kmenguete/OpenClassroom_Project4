@@ -37,10 +37,11 @@ class Tournament:
         return already_happened
 
     def get_next_available_player(self, player_a, next_player_index, non_available_players):
-        if self.check_if_match_already_happened(player_a, self.players[next_player_index]):
-            self.get_next_available_player(player_a, next_player_index + 1, non_available_players)
-        else:
-            return self.players[next_player_index]
+        while next_player_index < len(self.players):
+            if self.check_if_match_already_happened(player_a, self.players[next_player_index]):
+                self.get_next_available_player(player_a, next_player_index + 1, non_available_players)
+            else:
+                return self.players[next_player_index]
 
     def seek_player_and_update_score(self, player, new_score):
         self.players_dict[player.player_id] = player.total_score + new_score
