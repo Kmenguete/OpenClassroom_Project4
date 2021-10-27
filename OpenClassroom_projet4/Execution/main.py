@@ -119,13 +119,6 @@ if __name__ == '__main__':
                     tournament.seek_player_and_update_score(match.player_a, match.score_player_a)
                     tournament.seek_player_and_update_score(match.player_b, match.score_player_b)
                     break
-        for index_player in range(0, len(tournament.players)):
-            if tournament.players[index_player].player_id in tournament.players_dict:
-                tournament.players_dict[tournament.players[index_player].player_id] += \
-                    tournament.players[index_player].total_score
-            else:
-                tournament.players_dict[tournament.players[index_player].player_id] = \
-                    tournament.players[index_player].total_score
         sorted_dictionary_by_total_score = sorted(tournament.players_dict.items(), key=lambda x: x[1], reverse=True)
         tournament.players_dict = dict(sorted_dictionary_by_total_score)
         tournament.display_players()
