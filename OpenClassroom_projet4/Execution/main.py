@@ -84,7 +84,8 @@ if __name__ == '__main__':
     for index in range(1, tournament.number_of_rounds):
         non_available_players = []
         match_list = []
-        for index_player, player_a in enumerate(tournament.players):
+        for index_player in range(len(tournament.players)-1):
+            player_a = tournament.players[index_player]
             if player_a in non_available_players:
                 pass
             else:
