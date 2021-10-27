@@ -44,7 +44,11 @@ class Tournament:
             return self.players[next_player_index]
 
     def seek_player_and_update_score(self, player, new_score):
-        self.players_dict[player.player_id] = player.total_score + new_score
+        if player.player_id in self.players_dict:
+            self.players_dict[player.player_id] += new_score
+        else:
+            self.players_dict[player.player_id] = player.total_score + new_score
+        return self.players_dict
 
     def display_players(self):
         print("******************** list of players with length: {} *******************".format(len(self.players_dict)))
