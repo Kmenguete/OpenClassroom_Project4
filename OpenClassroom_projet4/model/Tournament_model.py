@@ -1,4 +1,3 @@
-
 DEFAULT_ROUNDS_NUMBER = 4
 
 
@@ -39,17 +38,10 @@ class Tournament:
     def get_next_available_player(self, player_a, next_player_index, non_available_players):
         index = next_player_index
         while self.check_if_match_already_happened(player_a, self.players[index]) or \
-                 self.players[index] in non_available_players:
+                self.players[index] in non_available_players:
             index += 1
         player_b = self.players[index]
         return player_b
-
-        # if self.check_if_match_already_happened(player_a, self.players[next_player_index]) or \
-        #         self.players[next_player_index] in non_available_players:
-        #     self.get_next_available_player(player_a, next_player_index + 1, non_available_players)
-        #     # return self.players[next_player_index + 1]
-        # else:
-        #     return self.players[next_player_index]
 
     def seek_player_and_update_score(self, player, new_score):
         if player.player_id in self.players_dict:
