@@ -89,13 +89,16 @@ if __name__ == '__main__':
             if player_a in non_available_players:
                 pass
             else:
-                player_b = tournament.get_next_available_player(player_a, index_player + 1,
-                                                                non_available_players)
-                non_available_players.append(player_a)
-                non_available_players.append(player_b)
-                match = Match(player_a, player_b)
-                match_list.append(match)
-                print("creating match")
+                try:
+                    player_b = tournament.get_next_available_player(player_a, index_player + 1,
+                                                                    non_available_players)
+                    non_available_players.append(player_a)
+                    non_available_players.append(player_b)
+                    match = Match(player_a, player_b)
+                    match_list.append(match)
+                    print("creating match")
+                except IndexError:
+                    print("Unable to get player B as opponent of player A: " + player_a.last_name)
 
         next_round = Tour("Round {}".format(index + 1), datetime.now(), match_list)
         tournament.rounds.append(next_round)
