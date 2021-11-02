@@ -126,6 +126,10 @@ if __name__ == '__main__':
         tournament.players_dict = dict(sorted_dictionary_by_total_score)
         tournament.display_players()
 
+    for player_index in range(0, len(tournament.players)):
+        tournament.players[player_index].total_score = \
+            tournament.players_dict[tournament.players[player_index].player_id]
+
     sorted_player_list = sorted(tournament.players, key=operator.attrgetter("total_score"), reverse=True)
     tournament.players = sorted_player_list
     for player_index in range(0, len(tournament.players)):
