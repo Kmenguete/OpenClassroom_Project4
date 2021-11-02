@@ -13,17 +13,18 @@ class Player:
         self.total_score = total_score
 
     def __getitem__(self, player):
-        player = self.last_name + " " + str(self.rank)
+        player = self.firstname + " " + self.last_name + " " + "rank: " + str(self.rank)
         return player
 
     def __str__(self):
-        return self.last_name + " " + str(self.rank)
+        return self.firstname + " " + self.last_name + " " + "rank: " + str(self.rank)
 
     def __repr__(self):
-        return "Player(" + repr(self.last_name + " " + str(self.rank)) + ")"
+        return "Player(" + repr(self.firstname + " " + self.last_name + " " + "rank: " + str(self.rank)) + ")"
 
     def __add__(self, other):
-        return self.last_name + " " + str(self.rank) + " " + other.last_name + " " + str(other.rank)
+        return self.firstname + " " + self.last_name + " " + "rank: " + str(self.rank) + " " + other.firstname + " " + \
+               other.last_name + " " + "rank: " + str(other.rank)
 
     def update_rank(self, player_list, index):
         self.rank = index + 1

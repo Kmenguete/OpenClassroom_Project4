@@ -8,5 +8,7 @@ class Match:
         self.score_player_b = score_player_b
 
     def display_match(self):
-        print("Match: " + self.player_a.last_name + " vs " + self.player_b.last_name)
-        return "Match: " + self.player_a.last_name + " vs " + self.player_b.last_name
+        print("Match: " + self.player_a.firstname + " " + self.player_a.last_name + " vs " + self.player_b.firstname +
+              " " + self.player_b.last_name)
+        return "Match: " + self.player_a.firstname + " " + self.player_a.last_name + " vs " + self.player_b.firstname + \
+               " " + self.player_b.last_name
