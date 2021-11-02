@@ -41,9 +41,9 @@ if __name__ == '__main__':
     # And now we create matches from player pairs
     match_list = []
     for player_pair in player_pairs:
-        print("creating match")
         match = Match(player_pair[0], player_pair[1])
         match_list.append(match)
+        match.display_match()
     # Step 3 part 2: create a round attach the match list and attach the round to the tournament
     first_round = Tour("Round 1", datetime.now(), match_list)
     round_list = [first_round]
@@ -96,7 +96,7 @@ if __name__ == '__main__':
                     non_available_players.append(player_b)
                     match = Match(player_a, player_b)
                     match_list.append(match)
-                    print("creating match")
+                    match.display_match()
                 except IndexError:
                     print("Unable to get player B as opponent of player A: " + player_a.last_name)
 
@@ -132,7 +132,15 @@ if __name__ == '__main__':
 
     sorted_player_list = sorted(tournament.players, key=operator.attrgetter("total_score"), reverse=True)
     tournament.players = sorted_player_list
+    print("Here is the final score of each player at the end of the tournament: ")
+    for player_index in range(0, len(tournament.players)):
+        print(tournament.players[player_index].firstname + " " + tournament.players[player_index].last_name + ": " +
+              str(tournament.players[player_index].total_score))
+
     for player_index in range(0, len(tournament.players)):
         tournament.players[player_index].update_rank(tournament.players, player_index)
 
+    print("The tournament is finished. At the end of the tournament, each player are sorted by their score and"
+          " the rank is updated according the final total score of each player. \n If several players have the same "
+          "total score then the former rank is promoted.")
     print(tournament.players)
