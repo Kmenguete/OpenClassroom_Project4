@@ -77,9 +77,13 @@ if __name__ == '__main__':
                 break
 
     # Step 5: we sort players by their score.
-    sorted_dictionary_by_total_score = sorted(tournament.players_dict.items(), key=lambda x: x[1], reverse=True)
-    tournament.players_dict = dict(sorted_dictionary_by_total_score)
-    tournament.display_players()
+    def sort_players_by_total_score():
+        sorted_dictionary_by_total_score = sorted(tournament.players_dict.items(), key=lambda x: x[1], reverse=True)
+        tournament.players_dict = dict(sorted_dictionary_by_total_score)
+        tournament.display_players()
+
+
+    sort_players_by_total_score()
 
     for index in range(1, tournament.number_of_rounds):
         non_available_players = []
@@ -123,9 +127,7 @@ if __name__ == '__main__':
                     tournament.seek_player_and_update_score(match.player_a, match.score_player_a)
                     tournament.seek_player_and_update_score(match.player_b, match.score_player_b)
                     break
-        sorted_dictionary_by_total_score = sorted(tournament.players_dict.items(), key=lambda x: x[1], reverse=True)
-        tournament.players_dict = dict(sorted_dictionary_by_total_score)
-        tournament.display_players()
+        sort_players_by_total_score()
 
     for player_index in range(0, len(tournament.players)):
         tournament.players[player_index].total_score = \
