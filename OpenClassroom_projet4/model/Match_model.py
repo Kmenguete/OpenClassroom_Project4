@@ -9,3 +9,4 @@ class Match:
 
     def display_match(self):
         print("Match: " + self.player_a.last_name + " vs " + self.player_b.last_name)
+        return "Match: " + self.player_a.last_name + " vs " + self.player_b.last_name

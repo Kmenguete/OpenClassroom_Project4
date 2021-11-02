@@ -52,5 +52,7 @@ class Tournament:
 
     def display_players(self):
         print("******************** list of players with length: {} *******************".format(len(self.players_dict)))
+        print("Here our players are sorted by their score. On the left, this is the player ID. Each player ID is "
+              "unique. On the right this is the total score of each player.")
         for player in self.players_dict.items():
             print(player)
