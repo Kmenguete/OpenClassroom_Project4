@@ -56,8 +56,8 @@ if __name__ == '__main__':
     # Step 4: Enter the result of the first round
     print("\n *************************** Now we need the result of the first round **********************")
     for match in tournament.rounds[0].matches:
-        print("Player A: " + match.player_a.last_name)
-        print("Player B: " + match.player_b.last_name)
+        print("Player A: " + match.player_a.firstname + " " + match.player_a.last_name)
+        print("Player B: " + match.player_b.firstname + " " + match.player_b.last_name)
         while True:
             winner = input("Enter winner (A or B) If there is no winner then type None: ")
             if winner != 'A' and winner != 'B' and winner != 'None':
@@ -98,13 +98,14 @@ if __name__ == '__main__':
                     match_list.append(match)
                     match.display_match()
                 except IndexError:
-                    print("Unable to get player B as opponent of player A: " + player_a.last_name)
+                    print("Unable to get player B as opponent of player A: " + player_a.firstname + " " +
+                          player_a.last_name)
 
         next_round = Tour("Round {}".format(index + 1), datetime.now(), match_list)
         tournament.rounds.append(next_round)
         for match in tournament.rounds[index].matches:
-            print("Player A: " + match.player_a.last_name)
-            print("Player B: " + match.player_b.last_name)
+            print("Player A: " + match.player_a.firstname + " " + match.player_a.last_name)
+            print("Player B: " + match.player_b.firstname + " " + match.player_b.last_name)
             while True:
                 winner = input("Enter winner (A or B) If there is no winner then type None: ")
                 if winner != 'A' and winner != 'B' and winner != 'None':
