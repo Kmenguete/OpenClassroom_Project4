@@ -52,6 +52,9 @@ if __name__ == '__main__':
     tournament.players_dict = create_list_dict(tournament.players)
 
     # End of step 3
+    def seek_player_and_update_score(player_a, player_b, score_player_a, score_player_b):
+        tournament.seek_player_and_update_score(player_a, score_player_a)
+        tournament.seek_player_and_update_score(player_b, score_player_b)
 
     # Step 4: Enter the result of the first round
     print("\n *************************** Now we need the result of the first round **********************")
@@ -72,8 +75,7 @@ if __name__ == '__main__':
                 elif winner == 'None':
                     match.score_player_b = 0.5
                     match.score_player_a = 0.5
-                tournament.seek_player_and_update_score(match.player_a, match.score_player_a)
-                tournament.seek_player_and_update_score(match.player_b, match.score_player_b)
+                seek_player_and_update_score(match.player_a, match.player_b, match.score_player_a, match.score_player_b)
                 break
 
     # Step 5: we sort players by their score.
@@ -124,8 +126,8 @@ if __name__ == '__main__':
                     elif winner == 'None':
                         match.score_player_b = 0.5
                         match.score_player_a = 0.5
-                    tournament.seek_player_and_update_score(match.player_a, match.score_player_a)
-                    tournament.seek_player_and_update_score(match.player_b, match.score_player_b)
+                    seek_player_and_update_score(match.player_a, match.player_b, match.score_player_a,
+                                                 match.score_player_b)
                     break
         sort_players_by_total_score()
 
