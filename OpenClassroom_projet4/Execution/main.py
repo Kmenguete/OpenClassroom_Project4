@@ -1,9 +1,16 @@
+from OpenClassroom_projet4.controller.add_final_score_to_players import add_final_score_to_players
+from OpenClassroom_projet4.controller.display_players_and_their_final_scores import \
+    display_players_and_their_final_scores
+from OpenClassroom_projet4.controller.generate_matches_first_round import generate_matches_first_round
+from OpenClassroom_projet4.controller.generate_matches_next_round import generate_matches_next_round
+from OpenClassroom_projet4.controller.sort_player_by_final_score import sort_player_by_final_score
+from OpenClassroom_projet4.controller.sort_players_by_rank import sort_players_by_rank
+from OpenClassroom_projet4.controller.update_rank_of_players import update_rank_of_players
 from OpenClassroom_projet4.model.Match_model import Match
 from OpenClassroom_projet4.model.Player_model import Player
 from OpenClassroom_projet4.model.Round_model import Tour
 from OpenClassroom_projet4.model.Tournament_model import Tournament, DEFAULT_ROUNDS_NUMBER, create_list_dict
 from datetime import date, datetime
-import operator
 
 DEFAULT_PLAYERS_NUMBER = 8
 
@@ -32,12 +39,9 @@ if __name__ == '__main__':
     # End of step 2
 
     # Step 3: Generate first round players pair
-    print("\n ****************************** We are generating the player pair... ****************************")
-    sorted_player_list = sorted(tournament.players, key=operator.attrgetter("rank"))
-    first_half = sorted_player_list[:len(sorted_player_list) // 2]
-    second_half = sorted_player_list[len(sorted_player_list) // 2:]
-    player_pairs = list(list(x) for x in zip(first_half, second_half))
-    print(tuple(player_pairs))
+    generate_matches_first_round(tournament.players)
+    player_pairs = generate_matches_first_round(tournament.players)
+    sorted_player_list = sort_players_by_rank(tournament.players)
     # And now we create matches from player pairs
     match_list = []
     for player_pair in player_pairs:
@@ -88,24 +92,7 @@ if __name__ == '__main__':
     sort_players_by_total_score()
 
     for index in range(1, tournament.number_of_rounds):
-        non_available_players = []
-        match_list = []
-        for index_player in range(len(tournament.players)-1):
-            player_a = tournament.players[index_player]
-            if player_a in non_available_players:
-                pass
-            else:
-                try:
-                    player_b = tournament.get_next_available_player(player_a, index_player + 1,
-                                                                    non_available_players)
-                    non_available_players.append(player_a)
-                    non_available_players.append(player_b)
-                    match = Match(player_a, player_b)
-                    match_list.append(match)
-                    match.display_match()
-                except IndexError:
-                    print("Unable to get player B as opponent of player A: " + player_a.firstname + " " +
-                          player_a.last_name)
+        generate_matches_next_round(tournament.players)
 
         next_round = Tour("Round {}".format(index + 1), datetime.now(), match_list)
         tournament.rounds.append(next_round)
@@ -131,19 +118,12 @@ if __name__ == '__main__':
                     break
         sort_players_by_total_score()
 
-    for player_index in range(0, len(tournament.players)):
-        tournament.players[player_index].total_score = \
-            tournament.players_dict[tournament.players[player_index].player_id]
+    add_final_score_to_players(tournament.players, tournament.players_dict)
 
-    sorted_player_list = sorted(tournament.players, key=operator.attrgetter("total_score"), reverse=True)
-    tournament.players = sorted_player_list
-    print("Here is the final score of each player at the end of the tournament: ")
-    for player_index in range(0, len(tournament.players)):
-        print(tournament.players[player_index].firstname + " " + tournament.players[player_index].last_name + ": " +
-              str(tournament.players[player_index].total_score))
+    sort_player_by_final_score(tournament.players)
+    display_players_and_their_final_scores(tournament.players)
 
-    for player_index in range(0, len(tournament.players)):
-        tournament.players[player_index].update_rank(tournament.players, player_index)
+    update_rank_of_players(tournament.players)
 
     print("The tournament is finished. At the end of the tournament, each player are sorted by their score and"
           " the rank is updated according the final total score of each player. \n If several players have the same "
