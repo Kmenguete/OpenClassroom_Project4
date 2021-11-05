@@ -39,7 +39,6 @@ if __name__ == '__main__':
     # End of step 2
 
     # Step 3: Generate first round players pair
-    generate_matches_first_round(tournament.players)
     player_pairs = generate_matches_first_round(tournament.players)
     sorted_player_list = sort_players_by_rank(tournament.players)
     # And now we create matches from player pairs
@@ -92,7 +91,7 @@ if __name__ == '__main__':
     sort_players_by_total_score()
 
     for index in range(1, tournament.number_of_rounds):
-        generate_matches_next_round(tournament.players)
+        generate_matches_next_round(tournament.players, tournament)
 
         next_round = Tour("Round {}".format(index + 1), datetime.now(), match_list)
         tournament.rounds.append(next_round)
