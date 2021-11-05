@@ -91,7 +91,7 @@ if __name__ == '__main__':
     sort_players_by_total_score()
 
     for index in range(1, tournament.number_of_rounds):
-        generate_matches_next_round(tournament.players, tournament)
+        match_list = generate_matches_next_round(tournament.players, tournament)
 
         next_round = Tour("Round {}".format(index + 1), datetime.now(), match_list)
         tournament.rounds.append(next_round)
