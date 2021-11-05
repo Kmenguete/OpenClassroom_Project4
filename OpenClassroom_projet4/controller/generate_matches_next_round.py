@@ -19,4 +19,3 @@ def generate_matches_next_round(player_list, tournament):
             except IndexError:
                 print("Unable to get player B as opponent of player A: " + player_a.firstname + " " +
                       player_a.last_name)
-    return match_list
