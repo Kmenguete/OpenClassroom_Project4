@@ -119,7 +119,7 @@ if __name__ == '__main__':
 
     add_final_score_to_players(tournament.players, tournament.players_dict)
 
-    sort_player_by_final_score(tournament.players)
+    tournament.players = sort_player_by_final_score(tournament.players)
     display_players_and_their_final_scores(tournament.players)
 
     update_rank_of_players(tournament.players)
