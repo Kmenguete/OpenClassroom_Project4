@@ -1,8 +1,7 @@
-from OpenClassroom_projet4.Execution.main import tournament
 from OpenClassroom_projet4.model.Match_model import Match
 
 
-def generate_matches_next_round(player_list):
+def generate_matches_next_round(player_list, tournament):
     non_available_players = []
     match_list = []
     for index_player in range(len(player_list) - 1):
@@ -17,7 +16,7 @@ def generate_matches_next_round(player_list):
                 match = Match(player_a, player_b)
                 match_list.append(match)
                 match.display_match()
-                return match
             except IndexError:
                 print("Unable to get player B as opponent of player A: " + player_a.firstname + " " +
                       player_a.last_name)
+    return tournament
