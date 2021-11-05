@@ -96,7 +96,7 @@ if __name__ == '__main__':
 
         next_round = Tour("Round {}".format(index + 1), datetime.now(), match_list)
         tournament.rounds.append(next_round)
-        for match in next_matches:
+        for match in tournament.rounds[index].matches:
             print("Player A: " + match.player_a.firstname + " " + match.player_a.last_name)
             print("Player B: " + match.player_b.firstname + " " + match.player_b.last_name)
             while True:
