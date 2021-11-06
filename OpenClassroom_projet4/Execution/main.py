@@ -6,6 +6,7 @@ from OpenClassroom_projet4.controller.generate_matches_next_round import generat
 from OpenClassroom_projet4.controller.seek_player_and_update_score import seek_player_and_update_score
 from OpenClassroom_projet4.controller.sort_player_by_final_score import sort_player_by_final_score
 from OpenClassroom_projet4.controller.sort_players_by_rank import sort_players_by_rank
+from OpenClassroom_projet4.controller.sort_players_by_total_score import sort_players_by_total_score
 from OpenClassroom_projet4.controller.update_rank_of_players import update_rank_of_players
 from OpenClassroom_projet4.model.Match_model import Match
 from OpenClassroom_projet4.model.Player_model import Player
@@ -79,13 +80,8 @@ if __name__ == '__main__':
                 break
 
     # Step 5: we sort players by their score.
-    def sort_players_by_total_score():
-        sorted_dictionary_by_total_score = sorted(tournament.players_dict.items(), key=lambda x: x[1], reverse=True)
-        tournament.players_dict = dict(sorted_dictionary_by_total_score)
-        tournament.display_players()
 
-
-    sort_players_by_total_score()
+    sort_players_by_total_score(tournament)
 
     for index in range(1, tournament.number_of_rounds):
         match_list = generate_matches_next_round(tournament.players, tournament)
@@ -112,7 +108,7 @@ if __name__ == '__main__':
                     seek_player_and_update_score(match.player_a, match.player_b, match.score_player_a,
                                                  match.score_player_b, tournament)
                     break
-        sort_players_by_total_score()
+        sort_players_by_total_score(tournament)
 
     add_final_score_to_players(tournament.players, tournament.players_dict)
 
