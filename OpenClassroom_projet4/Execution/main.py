@@ -3,6 +3,7 @@ from OpenClassroom_projet4.controller.display_players_and_their_final_scores imp
     display_players_and_their_final_scores
 from OpenClassroom_projet4.controller.generate_matches_first_round import generate_matches_first_round
 from OpenClassroom_projet4.controller.generate_matches_next_round import generate_matches_next_round
+from OpenClassroom_projet4.controller.seek_player_and_update_score import seek_player_and_update_score
 from OpenClassroom_projet4.controller.sort_player_by_final_score import sort_player_by_final_score
 from OpenClassroom_projet4.controller.sort_players_by_rank import sort_players_by_rank
 from OpenClassroom_projet4.controller.update_rank_of_players import update_rank_of_players
@@ -54,11 +55,6 @@ if __name__ == '__main__':
     tournament.players = sorted_player_list
     tournament.players_dict = create_list_dict(tournament.players)
 
-    # End of step 3
-    def seek_player_and_update_score(player_a, player_b, score_player_a, score_player_b):
-        tournament.seek_player_and_update_score(player_a, score_player_a)
-        tournament.seek_player_and_update_score(player_b, score_player_b)
-
     # Step 4: Enter the result of the first round
     print("\n *************************** Now we need the result of the first round **********************")
     for match in tournament.rounds[0].matches:
@@ -78,7 +74,8 @@ if __name__ == '__main__':
                 elif winner == 'None':
                     match.score_player_b = 0.5
                     match.score_player_a = 0.5
-                seek_player_and_update_score(match.player_a, match.player_b, match.score_player_a, match.score_player_b)
+                seek_player_and_update_score(match.player_a, match.player_b, match.score_player_a,
+                                             match.score_player_b, tournament)
                 break
 
     # Step 5: we sort players by their score.
@@ -113,7 +110,7 @@ if __name__ == '__main__':
                         match.score_player_b = 0.5
                         match.score_player_a = 0.5
                     seek_player_and_update_score(match.player_a, match.player_b, match.score_player_a,
-                                                 match.score_player_b)
+                                                 match.score_player_b, tournament)
                     break
         sort_players_by_total_score()
 
