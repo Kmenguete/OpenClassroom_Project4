@@ -43,16 +43,20 @@ class MainController:
             View.display_match_information(match)
 
     def generate_first_round(self):
+        # Step 3: Generate first round players pair
         self.player_service.player_list = self.tournament_service.tournament.players
         player_pairs = self.player_service.generate_initial_player_pair()
         sorted_player_list = self.player_service.sort_players_by_rank()
 
+        # And now we create matches from player pairs
         self.match_service.create_matches_from_player_pairs(player_pairs)
         self.render_all_matches()
 
+        # Step 3 part 2: create a round attach the match list and attach the round to the tournament
         self.tournament_service.create_first_round(self.match_service.match_list)
         self.tournament_service.tournament.players = sorted_player_list
         self.player_service.update_player_list(sorted_player_list)
         self.tournament_service.tournament.players_dict = \
             transform_player_list_to_dictionary(self.tournament_service.tournament.players)
         self.player_service.update_players_dict(self.tournament_service.tournament.players_dict)
+        # TODO This information is duplicated for now. Must find a better solution(The players dictionary).
