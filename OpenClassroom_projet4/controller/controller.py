@@ -7,6 +7,7 @@ from OpenClassroom_projet4.services.match_service import MatchService
 from OpenClassroom_projet4.services.player_service import PlayerService
 from OpenClassroom_projet4.services.tournament_service import TournamentService
 from OpenClassroom_projet4.utils.config import Config
+from OpenClassroom_projet4.utils.utils import transform_player_list_to_dictionary
 
 
 class MainController:
@@ -37,3 +38,21 @@ class MainController:
             View.display_text("\n *************** Player number {} created *****************".format(index))
         self.tournament_service.tournament.players = player_list
 
+    def render_all_matches(self):
+        for match in self.match_service.match_list:
+            View.display_match_information(match)
+
+    def generate_first_round(self):
+        self.player_service.player_list = self.tournament_service.tournament.players
+        player_pairs = self.player_service.generate_initial_player_pair()
+        sorted_player_list = self.player_service.sort_players_by_rank()
+
+        self.match_service.create_matches_from_player_pairs(player_pairs)
+        self.render_all_matches()
+
+        self.tournament_service.create_first_round(self.match_service.match_list)
+        self.tournament_service.tournament.players = sorted_player_list
+        self.player_service.update_player_list(sorted_player_list)
+        self.tournament_service.tournament.players_dict = \
+            transform_player_list_to_dictionary(self.tournament_service.tournament.players)
+        self.player_service.update_players_dict(self.tournament_service.tournament.players_dict)
