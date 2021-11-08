@@ -20,6 +20,13 @@ class MainController:
     def start(self):
         self.create_tournament()
         self.create_players()
+        self.generate_first_round()
+        self.get_initial_round_results_and_update()
+        self.player_service.sort_players_by_total_score()
+        View.display_players(self.player_service.players_dict)
+        self.create_remaining_rounds()
+        self.player_service.update_rank_of_players()
+        View.display_players(self.player_service.players_dict)
 
     def create_tournament(self):
         name_choice, place_choice, description_choice = View.get_tournament_information()
@@ -60,3 +67,46 @@ class MainController:
             transform_player_list_to_dictionary(self.tournament_service.tournament.players)
         self.player_service.update_players_dict(self.tournament_service.tournament.players_dict)
         # TODO This information is duplicated for now. Must find a better solution(The players dictionary).
+
+    def get_initial_round_results_and_update(self, round_name="Round 1"):
+        View.display_text("\n *************** Enter the results for {} **************".format(round_name))
+        score_updated_match_list = self.get_round_results(self.tournament_service.tournament.rounds[0])
+        for match in score_updated_match_list:
+            # TODO think about creating a Result class and see if it makes things better/easier/more readable
+            self.player_service.seek_player_and_update_score(match.player_a, match.score_player_a)
+            self.player_service.seek_player_and_update_score(match.player_b, match.score_player_b)
+
+    @staticmethod
+    def get_round_results(current_round):
+        updated_match_list = []
+        for match in current_round.matches:
+            View.display_opponents(match.player_a, match.player_b)
+            while True:
+                winner = View.get_choice("Enter winner (A or B) If there is no winner then type None: ")
+                if winner != Config.PLAYER_A_EXPECTED_INPUT \
+                        and winner != Config.PLAYER_B_EXPECTED_INPUT \
+                        and winner != Config.NO_WINNER_EXPECTED_INPUT:
+                    View.display_text("Invalid value")
+                else:
+                    if winner == Config.PLAYER_A_EXPECTED_INPUT:
+                        match.score_player_a = 1
+                        match.score_player_b = 0
+                    elif winner == Config.PLAYER_B_EXPECTED_INPUT:
+                        match.score_player_b = 1
+                        match.score_player_a = 0
+                    elif winner == Config.NO_WINNER_EXPECTED_INPUT:
+                        match.score_player_b = 0.5
+                        match.score_player_a = 0.5
+                    updated_match_list.append(match)
+                    break
+        return updated_match_list
+
+    def create_remaining_rounds(self):
+        for index in range(1, self.tournament_service.tournament.number_of_rounds):
+            new_match_list = self.match_service.generate_matches_for_next_round(self.player_service.player_list,
+                                                                                self.tournament_service)
+            self.tournament_service.create_next_round(index, new_match_list)
+            self.get_initial_round_results_and_update()
+            self.player_service.sort_players_by_total_score()
+
+        self.player_service.sort_players_by_total_score()
