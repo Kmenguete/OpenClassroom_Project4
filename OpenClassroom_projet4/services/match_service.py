@@ -5,7 +5,6 @@ class MatchService:
 
     def __init__(self):
         self.match_list = None
-        # TODO we may need to take this off this class
 
     def create_matches_from_player_pairs(self, player_pairs):
         match_list = []
