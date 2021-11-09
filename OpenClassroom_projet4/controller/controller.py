@@ -66,7 +66,6 @@ class MainController:
         self.tournament_service.tournament.players_dict = \
             transform_player_list_to_dictionary(self.tournament_service.tournament.players)
         self.player_service.update_players_dict(self.tournament_service.tournament.players_dict)
-        # TODO This information is duplicated for now. Must find a better solution(The players dictionary).
 
     def get_initial_round_results_and_update(self, round_name="Round 1"):
         View.display_text("\n *************** Enter the results for {} **************".format(round_name))
