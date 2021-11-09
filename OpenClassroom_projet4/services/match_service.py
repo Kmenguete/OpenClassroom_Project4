@@ -37,3 +37,4 @@ class MatchService:
                     print("Unable to get player B as opponent of player A: " + player_a.firstname + " " +
                           player_a.last_name)
         self.update_match_list(match_list)
+        return match_list
