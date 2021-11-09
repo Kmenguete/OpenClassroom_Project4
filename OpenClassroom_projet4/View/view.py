@@ -17,10 +17,10 @@ class View:
         print("************** Welcome to Kevin's Chess tournament ************* \n ")
         name_choice = input("enter the name of tournament: ")
         place_choice = input("enter the place of tournament: ")
-        date.today()
+        date_choice = date.today()
         description_choice = input("enter a description for this tournament: ")
         print("\n ************** Tournament created ************* ")
-        return name_choice, place_choice, description_choice
+        return name_choice, place_choice, date_choice, description_choice
 
     @staticmethod
     def get_player_information():
