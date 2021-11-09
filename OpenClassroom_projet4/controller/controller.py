@@ -71,10 +71,6 @@ class MainController:
     def get_initial_round_results_and_update(self, round_name="Round 1"):
         View.display_text("\n *************** Enter the results for {} **************".format(round_name))
         self.get_round_results(self.tournament_service.tournament.rounds[0])
-        # for match in score_updated_match_list:
-        #     # TODO think about creating a Result class and see if it makes things better/easier/more readable
-        #     self.player_service.seek_player_and_update_score(match.player_a, match.score_player_a)
-        #     self.player_service.seek_player_and_update_score(match.player_b, match.score_player_b)
 
     def get_round_results(self, current_round):
         updated_match_list = []
@@ -111,5 +107,3 @@ class MainController:
             self.get_round_results(current_round)
             self.player_service.sort_players_by_total_score()
             View.display_players(self.player_service.players_dict)
-
-        self.player_service.sort_players_by_total_score()
