@@ -1,5 +1,7 @@
+from datetime import date
 # 1 - Display information
 # 2 - Collect information
+
 
 class View:
     @staticmethod
@@ -15,10 +17,10 @@ class View:
         print("************** Welcome to Kevin's Chess tournament ************* \n ")
         name_choice = input("enter the name of tournament: ")
         place_choice = input("enter the place of tournament: ")
+        date.today()
         description_choice = input("enter a description for this tournament: ")
         print("\n ************** Tournament created ************* ")
         return name_choice, place_choice, description_choice
-    # TODO do not forget to auto generate the date choice
 
     @staticmethod
     def get_player_information():
