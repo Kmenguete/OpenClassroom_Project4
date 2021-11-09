@@ -1,4 +1,5 @@
 from OpenClassroom_projet4.controller.add_final_score_to_players import add_final_score_to_players
+from OpenClassroom_projet4.controller.controller import MainController
 from OpenClassroom_projet4.controller.display_players_and_their_final_scores import \
     display_players_and_their_final_scores
 from OpenClassroom_projet4.controller.generate_matches_first_round import generate_matches_first_round
@@ -17,6 +18,8 @@ from datetime import date, datetime
 DEFAULT_PLAYERS_NUMBER = 8
 
 if __name__ == '__main__':
+    MainController().start()
+    exit()
     # Step 1: create a new tournament
     print("***************************** First create a tournament ************************* \n ")
     name = input("enter the name of tournament: ")
