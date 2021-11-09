@@ -19,8 +19,9 @@ class TournamentService:
         self.tournament.rounds = round_list
 
     def create_next_round(self, round_number, match_list):
-        next_round = Tour("Round {}".format(round_number + 1), datetime.now(), match_list)
+        next_round = Tour("Round {}".format(round_number), datetime.now(), match_list)
         self.tournament.rounds.append(next_round)
+        return next_round
 
     def check_if_match_already_happened(self, player_a, player_b):
         already_happened = False
