@@ -105,8 +105,8 @@ class MainController:
         for index in range(1, self.tournament_service.tournament.number_of_rounds):
             new_match_list = self.match_service.generate_matches_for_next_round(self.player_service.player_list,
                                                                                 self.tournament_service)
-            self.tournament_service.create_next_round(index + 1, new_match_list)
-            self.get_initial_round_results_and_update()
+            current_round = self.tournament_service.create_next_round(index + 1, new_match_list)
+            self.get_round_results(current_round)
             self.player_service.sort_players_by_total_score()
 
         self.player_service.sort_players_by_total_score()
