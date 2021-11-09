@@ -70,14 +70,13 @@ class MainController:
 
     def get_initial_round_results_and_update(self, round_name="Round 1"):
         View.display_text("\n *************** Enter the results for {} **************".format(round_name))
-        score_updated_match_list = self.get_round_results(self.tournament_service.tournament.rounds[0])
-        for match in score_updated_match_list:
-            # TODO think about creating a Result class and see if it makes things better/easier/more readable
-            self.player_service.seek_player_and_update_score(match.player_a, match.score_player_a)
-            self.player_service.seek_player_and_update_score(match.player_b, match.score_player_b)
+        self.get_round_results(self.tournament_service.tournament.rounds[0])
+        # for match in score_updated_match_list:
+        #     # TODO think about creating a Result class and see if it makes things better/easier/more readable
+        #     self.player_service.seek_player_and_update_score(match.player_a, match.score_player_a)
+        #     self.player_service.seek_player_and_update_score(match.player_b, match.score_player_b)
 
-    @staticmethod
-    def get_round_results(current_round):
+    def get_round_results(self, current_round):
         updated_match_list = []
         for match in current_round.matches:
             View.display_opponents(match.player_a, match.player_b)
@@ -97,16 +96,20 @@ class MainController:
                     elif winner == Config.NO_WINNER_EXPECTED_INPUT:
                         match.score_player_b = 0.5
                         match.score_player_a = 0.5
+                    self.player_service.seek_player_and_update_score(match.player_a, match.score_player_a)
+                    self.player_service.seek_player_and_update_score(match.player_b, match.score_player_b)
                     updated_match_list.append(match)
                     break
         return updated_match_list
 
     def create_remaining_rounds(self):
         for index in range(1, self.tournament_service.tournament.number_of_rounds):
+            View.display_text("\n *************** Enter the results for Round {} **************".format(index + 1))
             new_match_list = self.match_service.generate_matches_for_next_round(self.player_service.player_list,
                                                                                 self.tournament_service)
             current_round = self.tournament_service.create_next_round(index + 1, new_match_list)
             self.get_round_results(current_round)
             self.player_service.sort_players_by_total_score()
+            View.display_players(self.player_service.players_dict)
 
         self.player_service.sort_players_by_total_score()
