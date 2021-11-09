@@ -1,5 +1,3 @@
-from datetime import date
-
 from OpenClassroom_projet4.View.view import View
 from OpenClassroom_projet4.model.Player_model import Player
 from OpenClassroom_projet4.model.Tournament_model import DEFAULT_ROUNDS_NUMBER
@@ -29,8 +27,7 @@ class MainController:
         View.display_players(self.player_service.players_dict)
 
     def create_tournament(self):
-        name_choice, place_choice, description_choice = View.get_tournament_information()
-        date_choice = date.today  # This is the date of today
+        name_choice, place_choice, date_choice, description_choice = View.get_tournament_information()
         self.tournament_service.update_tournament(name=name_choice, place=place_choice, date=date_choice,
                                                   description=description_choice,
                                                   number_of_rounds=DEFAULT_ROUNDS_NUMBER)
