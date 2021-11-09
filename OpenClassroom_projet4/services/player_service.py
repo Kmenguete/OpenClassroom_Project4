@@ -20,6 +20,7 @@ class PlayerService:
         first_half = sorted_player_list[:len(sorted_player_list) // 2]
         second_half = sorted_player_list[len(sorted_player_list) // 2:]
         initial_player_pairs = list(list(x) for x in zip(first_half, second_half))
+        print(tuple(initial_player_pairs))
         return initial_player_pairs
 
     def sort_players_by_rank(self):
