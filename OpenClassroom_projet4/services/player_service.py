@@ -28,7 +28,10 @@ class PlayerService:
         return sorted_player_list
 
     def seek_player_and_update_score(self, player, new_score):
-        self.players_dict[player.player_id].total_score += new_score
+        if player.player_id in self.players_dict:
+            self.players_dict[player.player_id].total_score += new_score
+        else:
+            self.players_dict[player.player_id].total_score = player.total_score + new_score
 
     def sort_players_by_total_score(self):
         sorted_list_by_total_score = sorted(self.players_dict.values(), key=operator.attrgetter("total_score"),
