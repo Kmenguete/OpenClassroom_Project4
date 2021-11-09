@@ -19,7 +19,7 @@ class MatchService:
 
     def generate_matches_for_next_round(self, player_list, tournament_service):
         non_available_players = []
-        self.match_list = []
+        match_list = []
         for index_player in range(len(player_list) - 1):
             player_a = player_list[index_player]
             if player_a in non_available_players:
@@ -31,9 +31,9 @@ class MatchService:
                     non_available_players.append(player_a)
                     non_available_players.append(player_b)
                     match = Match(player_a, player_b)
-                    self.match_list.append(match)
+                    match_list.append(match)
                     match.display_match()
                 except IndexError:
                     print("Unable to get player B as opponent of player A: " + player_a.firstname + " " +
                           player_a.last_name)
-        return self.match_list
+        self.update_match_list(match_list)
