@@ -14,6 +14,7 @@ class MainController:
         self.player_service = PlayerService()
         self.match_service = MatchService()
         self.tournament_service = TournamentService()
+        # self.view = View()
 
     def start(self):
         self.create_tournament()
@@ -103,3 +104,5 @@ class MainController:
             self.get_round_results(current_round)
             self.player_service.sort_players_by_total_score()
             View.display_players(self.player_service.players_dict)
+        # self.view.suggest_report(self.tournament_service.tournament.players,
+        # self.tournament_service.tournament.rounds, self.tournament_service.tournament)
