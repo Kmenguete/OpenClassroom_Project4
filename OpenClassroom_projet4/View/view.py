@@ -56,6 +56,7 @@ class View:
         else:
             if report_suggestion == 'No':
                 print("Thank you for your answer, good bye.")
+                exit()
             elif report_suggestion == 'Yes':
                 list_tournaments_suggestion = input("Do you want the list of tournaments? Yes/No: ")
                 if list_tournaments_suggestion != 'Yes' and list_tournaments_suggestion != 'No':
