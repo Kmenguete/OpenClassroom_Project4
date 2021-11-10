@@ -16,6 +16,7 @@ class ReportService:
 
     def get_tournaments_list(self, tournaments_list):
         self.tournaments_list = tournaments_list
+        print(tournaments_list)
         return tournaments_list
 
     def get_rounds_of_one_tournament(self):
