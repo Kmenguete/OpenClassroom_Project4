@@ -65,38 +65,48 @@ class View:
                     if list_tournaments_suggestion == 'Yes':
                         self.report_service.get_tournaments_list(self.tournaments_list)
                     elif list_tournaments_suggestion == 'No':
-                        player_list_suggestion = input("Do you want the list of players? Yes/No: ")
-                        if player_list_suggestion != 'Yes' and player_list_suggestion != 'No':
+                        one_tournament_suggestion = input("Do you want to select a tournament? Yes/No: ")
+                        if one_tournament_suggestion != 'Yes' and one_tournament_suggestion != 'No':
                             print("Invalid value, you should answer the question by Yes or No.")
                         else:
-                            if player_list_suggestion == 'Yes':
-                                way_of_displaying_players = \
-                                    input("Do you want players sorted alphabetically or by rank? "
-                                          "If you want players sorted alphabetically, type A, if you want players "
-                                          "sorted by rank then, type B: ")
-                                if way_of_displaying_players != 'A' and way_of_displaying_players != 'B':
-                                    print("Invalid value, you should answer the question by A or B.")
-                                else:
-                                    if way_of_displaying_players == 'A':
-                                        self.report_service.get_sorted_player_list_alphabetically(player_list)
-                                    elif way_of_displaying_players == 'B':
-                                        self.report_service.get_sorted_player_list_by_rank()
-                            elif player_list_suggestion == 'No':
-                                round_list_suggestion = input("Do you want the list of rounds? Yes/No: ")
-                                if round_list_suggestion != 'Yes' and round_list_suggestion != 'No':
+                            if one_tournament_suggestion == 'No':
+                                print("Thank you for your answer, good bye.")
+                                exit()
+                            elif one_tournament_suggestion == 'Yes':
+                                player_list_suggestion = input("Do you want the list of players? Yes/No: ")
+                                if player_list_suggestion != 'Yes' and player_list_suggestion != 'No':
                                     print("Invalid value, you should answer the question by Yes or No.")
                                 else:
-                                    if round_list_suggestion == 'Yes':
-                                        self.report_service.get_rounds_of_one_tournament()
-                                    elif round_list_suggestion == 'No':
-                                        match_list_suggestion = input("Do you want the list of every matches for the "
-                                                                      "tournament? Yes/No: ")
-                                        if match_list_suggestion != 'Yes' and match_list_suggestion != 'No':
+                                    if player_list_suggestion == 'Yes':
+                                        way_of_displaying_players = \
+                                            input("Do you want players sorted alphabetically or by rank? "
+                                                  "If you want players sorted alphabetically, type A, if "
+                                                  "you want players "
+                                                  "sorted by rank then, type B: ")
+                                        if way_of_displaying_players != 'A' and way_of_displaying_players != 'B':
+                                            print("Invalid value, you should answer the question by A or B.")
+                                        else:
+                                            if way_of_displaying_players == 'A':
+                                                self.report_service.get_sorted_player_list_alphabetically(player_list)
+                                            elif way_of_displaying_players == 'B':
+                                                self.report_service.get_sorted_player_list_by_rank()
+                                    elif player_list_suggestion == 'No':
+                                        round_list_suggestion = input("Do you want the list of rounds? Yes/No: ")
+                                        if round_list_suggestion != 'Yes' and round_list_suggestion != 'No':
                                             print("Invalid value, you should answer the question by Yes or No.")
                                         else:
-                                            if match_list_suggestion == 'Yes':
-                                                self.report_service.get_matches_of_one_tournament(round_list,
-                                                                                                  tournament)
-                                            elif match_list_suggestion == 'No':
-                                                print("Thank you for your answer, good bye.")
-                                                exit()
+                                            if round_list_suggestion == 'Yes':
+                                                self.report_service.get_rounds_of_one_tournament()
+                                            elif round_list_suggestion == 'No':
+                                                match_list_suggestion = input(
+                                                    "Do you want the list of every matches for the "
+                                                    "tournament? Yes/No: ")
+                                                if match_list_suggestion != 'Yes' and match_list_suggestion != 'No':
+                                                    print("Invalid value, you should answer the question by Yes or No.")
+                                                else:
+                                                    if match_list_suggestion == 'Yes':
+                                                        self.report_service.get_matches_of_one_tournament(round_list,
+                                                                                                          tournament)
+                                                    elif match_list_suggestion == 'No':
+                                                        print("Thank you for your answer, good bye.")
+                                                        exit()
