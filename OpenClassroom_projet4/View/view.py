@@ -49,7 +49,7 @@ class View:
     def display_players(players_dict):
         print(players_dict)
 
-    def suggest_report(self):
+    def suggest_report(self, player_list):
         report_suggestion = input("Do you want a report? Yes/No: ")
         if report_suggestion != 'Yes' and report_suggestion != 'No':
             print("Invalid value, you should answer the question by Yes or No.")
@@ -62,7 +62,7 @@ class View:
                     print("Invalid value, you should answer the question by Yes or No.")
                 else:
                     if list_tournaments_suggestion == 'Yes':
-                        print(self.report_service.get_tournaments_list(self.tournaments_list))
+                        self.report_service.get_tournaments_list(self.tournaments_list)
                     elif list_tournaments_suggestion == 'No':
                         player_list_suggestion = input("Do you want the list of players? Yes/No: ")
                         if player_list_suggestion != 'Yes' and player_list_suggestion != 'No':
@@ -75,3 +75,10 @@ class View:
                                           "sorted by rank then, type B: ")
                                 if way_of_displaying_players != 'A' and way_of_displaying_players != 'B':
                                     print("Invalid value, you should answer the question by A or B.")
+                                else:
+                                    if way_of_displaying_players == 'A':
+                                        self.report_service.get_sorted_player_list_alphabetically(player_list)
+                                    elif way_of_displaying_players == 'B':
+                                        self.report_service.get_sorted_player_list_by_rank()
+                            elif player_list_suggestion == 'No':
+                                pass
