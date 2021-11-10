@@ -1,9 +1,15 @@
 from datetime import date
 # 1 - Display information
 # 2 - Collect information
+from OpenClassroom_projet4.services.report_service import ReportService
 
 
 class View:
+
+    def __init__(self, player_list, round_list, tournaments_list):
+        self.report_service = ReportService(player_list, round_list)
+        self.tournaments_list = tournaments_list
+
     @staticmethod
     def display_text(text_to_display):
         print(text_to_display)
@@ -42,3 +48,18 @@ class View:
     @staticmethod
     def display_players(players_dict):
         print(players_dict)
+
+    def suggest_report(self):
+        report_suggestion = input("Do you want a report? Yes/No: ")
+        if report_suggestion != 'Yes' and report_suggestion != 'No':
+            print("Invalid value, you should answer the question by Yes or No.")
+        else:
+            if report_suggestion == 'No':
+                print("Thank you for your answer, good bye.")
+            elif report_suggestion == 'Yes':
+                list_tournaments_suggestion = input("Do you want the list of tournaments? Yes/No: ")
+                if list_tournaments_suggestion != 'Yes' and list_tournaments_suggestion != 'No':
+                    print("Invalid value, you should answer the question by Yes or No.")
+                else:
+                    if list_tournaments_suggestion == 'Yes':
+                        print(self.report_service.get_tournaments_list(self.tournaments_list))
