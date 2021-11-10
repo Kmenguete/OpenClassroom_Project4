@@ -6,7 +6,7 @@ from OpenClassroom_projet4.services.report_service import ReportService
 
 class View:
 
-    def __init__(self, player_list, round_list, tournaments_list):
+    def __init__(self, player_list=None, round_list=None, tournaments_list=None):
         self.report_service = ReportService(player_list, round_list)
         self.tournaments_list = tournaments_list
 
