@@ -29,7 +29,8 @@ class ReportService:
     def select_one_tournament(self, tournament_index):
         return self.tournaments_list[tournament_index]
 
-    def get_tournament_data(self, player_list, round_list, tournament):
+    def get_tournament_data(self, tournament_index, player_list, round_list, tournament):
+        self.select_one_tournament(tournament_index)
         self.get_sorted_player_list_alphabetically(player_list)
         self.get_sorted_player_list_by_rank()
         self.get_rounds_of_one_tournament()
