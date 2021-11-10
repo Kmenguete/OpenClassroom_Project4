@@ -2,9 +2,9 @@ import operator
 
 
 class ReportService:
-    def __init__(self, player_list, tournaments_list, round_list):
+    def __init__(self, player_list, round_list):
         self.player_list = player_list
-        self.tournaments_list = tournaments_list
+        self.tournaments_list = None
         self.round_list = round_list
 
     def get_sorted_player_list_alphabetically(self, player_list):
