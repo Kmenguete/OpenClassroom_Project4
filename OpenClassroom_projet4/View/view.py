@@ -49,7 +49,7 @@ class View:
     def display_players(players_dict):
         print(players_dict)
 
-    def suggest_report(self, player_list):
+    def suggest_report(self, player_list, round_list, tournament):
         report_suggestion = input("Do you want a report? Yes/No: ")
         if report_suggestion != 'Yes' and report_suggestion != 'No':
             print("Invalid value, you should answer the question by Yes or No.")
@@ -82,4 +82,21 @@ class View:
                                     elif way_of_displaying_players == 'B':
                                         self.report_service.get_sorted_player_list_by_rank()
                             elif player_list_suggestion == 'No':
-                                pass
+                                round_list_suggestion = input("Do you want the list of rounds? Yes/No: ")
+                                if round_list_suggestion != 'Yes' and round_list_suggestion != 'No':
+                                    print("Invalid value, you should answer the question by Yes or No.")
+                                else:
+                                    if round_list_suggestion == 'Yes':
+                                        self.report_service.get_rounds_of_one_tournament()
+                                    elif round_list_suggestion == 'No':
+                                        match_list_suggestion = input("Do you want the list of every matches for the "
+                                                                      "tournament? Yes/No: ")
+                                        if match_list_suggestion != 'Yes' and match_list_suggestion != 'No':
+                                            print("Invalid value, you should answer the question by Yes or No.")
+                                        else:
+                                            if match_list_suggestion == 'Yes':
+                                                self.report_service.get_matches_of_one_tournament(round_list,
+                                                                                                  tournament)
+                                            elif match_list_suggestion == 'No':
+                                                print("Thank you for your answer, good bye.")
+                                                exit()
