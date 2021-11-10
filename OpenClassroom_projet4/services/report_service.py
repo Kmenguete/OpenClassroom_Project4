@@ -23,6 +23,7 @@ class ReportService:
         return tournaments_list
 
     def get_rounds_of_one_tournament(self):
+        print(self.round_list)
         return self.round_list
 
     @staticmethod
