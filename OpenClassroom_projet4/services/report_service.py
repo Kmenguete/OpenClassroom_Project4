@@ -2,9 +2,10 @@ import operator
 
 
 class ReportService:
-    def __init__(self, player_list, tournaments_list):
+    def __init__(self, player_list, tournaments_list, round_list):
         self.player_list = player_list
         self.tournaments_list = tournaments_list
+        self.round_list = round_list
 
     def get_sorted_player_list_alphabetically(self, player_list):
         self.player_list = player_list.sort()
@@ -15,9 +16,13 @@ class ReportService:
 
     def get_tournaments_list(self, tournaments_list):
         self.tournaments_list = tournaments_list
+        return tournaments_list
 
-    def get_rounds_of_tournament(self):
-        pass
+    def get_rounds_of_one_tournament(self):
+        return self.round_list
     
-    def get_matches_of_tournament(self):
+    def get_matches_of_one_tournament(self):
         pass
+
+    def select_one_tournament(self, tournament_index):
+        return self.tournaments_list[tournament_index]
