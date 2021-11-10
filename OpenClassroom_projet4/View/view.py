@@ -63,3 +63,15 @@ class View:
                 else:
                     if list_tournaments_suggestion == 'Yes':
                         print(self.report_service.get_tournaments_list(self.tournaments_list))
+                    elif list_tournaments_suggestion == 'No':
+                        player_list_suggestion = input("Do you want the list of players? Yes/No: ")
+                        if player_list_suggestion != 'Yes' and player_list_suggestion != 'No':
+                            print("Invalid value, you should answer the question by Yes or No.")
+                        else:
+                            if player_list_suggestion == 'Yes':
+                                way_of_displaying_players = \
+                                    input("Do you want players sorted alphabetically or by rank? "
+                                          "If you want players sorted alphabetically, type A, if you want players "
+                                          "sorted by rank then, type B: ")
+                                if way_of_displaying_players != 'A' and way_of_displaying_players != 'B':
+                                    print("Invalid value, you should answer the question by A or B.")
