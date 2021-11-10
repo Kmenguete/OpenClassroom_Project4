@@ -25,6 +25,12 @@ class ReportService:
     def get_matches_of_one_tournament(round_list, tournament):
         for round_index in range(0, len(round_list)):
             print(tournament.rounds[round_index].matches)
-    
+
     def select_one_tournament(self, tournament_index):
         return self.tournaments_list[tournament_index]
+
+    def get_tournament_data(self, player_list, round_list, tournament):
+        self.get_sorted_player_list_alphabetically(player_list)
+        self.get_sorted_player_list_by_rank()
+        self.get_rounds_of_one_tournament()
+        self.get_matches_of_one_tournament(round_list, tournament)
