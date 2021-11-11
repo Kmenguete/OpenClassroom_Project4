@@ -107,3 +107,8 @@ class MainController:
             self.get_round_results(current_round)
             self.player_service.sort_players_by_total_score()
             View.display_players(self.player_service.players_dict)
+
+    def request_report(self):
+        self.report_service.suggest_report(self.tournament_service.tournament.players,
+                                           self.tournament_service.tournament.rounds,
+                                           self.tournament_service.tournament)
