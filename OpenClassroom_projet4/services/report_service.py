@@ -1,4 +1,7 @@
+from tinydb import Query
 import operator
+
+from OpenClassroom_projet4.model.tinydb_backend import DATABASE
 
 
 class ReportService:
@@ -6,13 +9,18 @@ class ReportService:
         self.player_list = player_list
         self.tournaments_list = None
         self.round_list = round_list
+        self.database = DATABASE
 
     def get_sorted_player_list_alphabetically(self, player_list):
+        players = Query()
+        self.database.search(players.type == player_list)
         self.player_list = player_list.sort()
         print(player_list)
         return player_list
 
     def get_sorted_player_list_by_rank(self):
+        players = Query()
+        self.database.search(players.type == self.player_list)
         sorted_player_list = sorted(self.player_list, key=operator.attrgetter("rank"))
         print(sorted_player_list)
         return sorted_player_list
