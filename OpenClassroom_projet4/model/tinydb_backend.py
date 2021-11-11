@@ -22,6 +22,8 @@ class DataBase:
     def save_matches_data(self):
         self.database.insert(self.match_service.match_list)
 
-    def save_rounds_data(self, index, new_match_list):
+    def save_fist_rounds_data(self):
         self.database.insert(self.tournament_service.create_first_round(self.match_service.match_list))
+
+    def save_next_rounds_data(self, index, new_match_list):
         self.database.insert(self.tournament_service.create_next_round(index + 1, new_match_list))
