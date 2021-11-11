@@ -7,7 +7,7 @@ from OpenClassroom_projet4.model.tinydb_backend import DATABASE
 class ReportService:
     def __init__(self, player_list, round_list, tournament):
         self.player_list = player_list
-        self.tournaments_list = None
+        self.tournaments_list = [*tournament]
         self.round_list = round_list
         self.tournament = tournament
         self.database = DATABASE
