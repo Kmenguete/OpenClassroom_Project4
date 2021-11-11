@@ -26,12 +26,11 @@ class ReportService:
         print(sorted_player_list)
         return sorted_player_list
 
-    def get_tournaments_list(self, tournaments_list):
+    def get_tournaments_list(self):
         tournaments = Query()
-        self.database.search(tournaments.type == tournaments_list)
-        self.tournaments_list = tournaments_list
-        print(tournaments_list)
-        return tournaments_list
+        self.database.search(tournaments.type == self.tournaments_list)
+        print(self.tournaments_list)
+        return self.tournaments_list
 
     def get_rounds_of_one_tournament(self):
         rounds = Query()
@@ -71,7 +70,7 @@ class ReportService:
                     print("Invalid value, you should answer the question by Yes or No.")
                 else:
                     if list_tournaments_suggestion == 'Yes':
-                        self.get_tournaments_list(self.tournaments_list)
+                        self.get_tournaments_list()
                     elif list_tournaments_suggestion == 'No':
                         one_tournament_suggestion = input("Do you want to select a tournament? Yes/No: ")
                         if one_tournament_suggestion != 'Yes' and one_tournament_suggestion != 'No':
