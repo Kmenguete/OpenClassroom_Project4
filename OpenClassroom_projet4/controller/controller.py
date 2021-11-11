@@ -72,7 +72,7 @@ class MainController:
         self.tournament_service.tournament.players_dict = \
             transform_player_list_to_dictionary(self.tournament_service.tournament.players)
         self.player_service.update_players_dict(self.tournament_service.tournament.players_dict)
-        self.database.save_rounds_data(0, self.tournament_service.tournament.rounds[0])
+        self.database.save_fist_rounds_data()
 
     def get_initial_round_results_and_update(self, round_name="Round 1"):
         View.display_text("\n *************** Enter the results for {} **************".format(round_name))
@@ -113,7 +113,7 @@ class MainController:
             self.get_round_results(current_round)
             self.player_service.sort_players_by_total_score()
             View.display_players(self.player_service.players_dict)
-            self.database.save_rounds_data(index, new_match_list)
+            self.database.save_next_rounds_data(index, new_match_list)
 
     def request_report(self):
         self.report_service.suggest_report(self.tournament_service.tournament.players,
