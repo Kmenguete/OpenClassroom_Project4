@@ -26,16 +26,21 @@ class ReportService:
         return sorted_player_list
 
     def get_tournaments_list(self, tournaments_list):
+        tournaments = Query()
+        self.database.search(tournaments.type == tournaments_list)
         self.tournaments_list = tournaments_list
         print(tournaments_list)
         return tournaments_list
 
     def get_rounds_of_one_tournament(self):
+        rounds = Query()
+        self.database.search(rounds.type == self.round_list)
         print(self.round_list)
         return self.round_list
 
-    @staticmethod
-    def get_matches_of_one_tournament(round_list, tournament):
+    def get_matches_of_one_tournament(self, round_list, tournament):
+        rounds = Query()
+        self.database.search(rounds.type == self.round_list)
         for round_index in range(0, len(round_list)):
             print(tournament.rounds[round_index].matches)
 
