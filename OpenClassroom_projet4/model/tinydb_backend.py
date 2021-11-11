@@ -3,7 +3,7 @@ from tinydb import TinyDB
 from OpenClassroom_projet4.services.match_service import MatchService
 from OpenClassroom_projet4.services.tournament_service import TournamentService
 
-DATABASE = TinyDB('database.json')
+DATABASE = TinyDB('database.yml')
 
 
 class DataBase:
