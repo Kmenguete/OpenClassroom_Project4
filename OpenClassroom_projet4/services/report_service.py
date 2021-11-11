@@ -5,10 +5,11 @@ from OpenClassroom_projet4.model.tinydb_backend import DATABASE
 
 
 class ReportService:
-    def __init__(self, player_list, round_list):
+    def __init__(self, player_list, round_list, tournament):
         self.player_list = player_list
         self.tournaments_list = None
         self.round_list = round_list
+        self.tournament = tournament
         self.database = DATABASE
 
     def get_sorted_player_list_alphabetically(self, player_list):
@@ -44,13 +45,13 @@ class ReportService:
         for round_index in range(0, len(round_list)):
             print(tournament.rounds[round_index].matches)
 
-    def select_one_tournament(self, tournament_index):
+    def select_one_tournament(self):
         tournaments = Query()
-        self.database.search(tournaments.type == self.tournaments_list[tournament_index])
-        return self.tournaments_list[tournament_index]
+        self.database.search(tournaments.type == self.tournament)
+        return self.tournament
 
-    def get_tournament_data(self, tournament_index, player_list, round_list, tournament):
-        self.select_one_tournament(tournament_index)
+    def get_tournament_data(self, player_list, round_list, tournament):
+        self.select_one_tournament()
         self.get_sorted_player_list_alphabetically(player_list)
         self.get_sorted_player_list_by_rank()
         self.get_rounds_of_one_tournament()
@@ -80,6 +81,7 @@ class ReportService:
                                 print("Thank you for your answer, good bye.")
                                 exit()
                             elif one_tournament_suggestion == 'Yes':
+                                self.select_one_tournament()
                                 player_list_suggestion = input("Do you want the list of players? Yes/No: ")
                                 if player_list_suggestion != 'Yes' and player_list_suggestion != 'No':
                                     print("Invalid value, you should answer the question by Yes or No.")
