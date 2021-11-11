@@ -31,6 +31,7 @@ class MainController:
         self.create_remaining_rounds()
         self.player_service.update_rank_of_players()
         View.display_players(self.player_service.players_dict)
+        self.request_report()
 
     def create_tournament(self):
         name_choice, place_choice, date_choice, description_choice = View.get_tournament_information()
