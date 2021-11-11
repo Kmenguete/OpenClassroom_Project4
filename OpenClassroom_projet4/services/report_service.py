@@ -46,7 +46,8 @@ class ReportService:
 
     def select_one_tournament(self):
         tournaments = Query()
-        self.database.search(tournaments.type == self.tournament)
+        self.database.search(tournaments.type == self.tournaments_list)
+        print(self.tournaments_list)
         return self.tournament
 
     def get_tournament_data(self, player_list, round_list, tournament):
