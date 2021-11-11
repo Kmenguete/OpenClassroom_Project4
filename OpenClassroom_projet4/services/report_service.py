@@ -97,9 +97,7 @@ class ReportService:
                                                     print("Invalid value, you should answer the question by Yes or No.")
                                                 else:
                                                     if match_list_suggestion == 'Yes':
-                                                        self.get_matches_of_one_tournament(round_list,
-                                                                                                          tournament)
+                                                        self.get_matches_of_one_tournament(round_list, tournament)
                                                     elif match_list_suggestion == 'No':
                                                         print("Thank you for your answer, good bye.")
                                                         exit()
-
