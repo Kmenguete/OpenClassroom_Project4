@@ -17,9 +17,7 @@ class MainController:
         self.match_service = MatchService()
         self.tournament_service = TournamentService()
         self.database = DataBase()
-        self.report_service = ReportService(player_list=self.tournament_service.tournament.players,
-                                            round_list=self.tournament_service.tournament.rounds,
-                                            tournament=self.tournament_service.tournament)
+        self.report_service = ReportService()
 
     def start(self):
         self.create_tournament()
