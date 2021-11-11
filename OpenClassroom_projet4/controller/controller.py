@@ -1,6 +1,7 @@
 from OpenClassroom_projet4.View.view import View
 from OpenClassroom_projet4.model.Player_model import Player
 from OpenClassroom_projet4.model.Tournament_model import DEFAULT_ROUNDS_NUMBER
+from OpenClassroom_projet4.model.tinydb_backend import DataBase
 from OpenClassroom_projet4.services.match_service import MatchService
 from OpenClassroom_projet4.services.player_service import PlayerService
 from OpenClassroom_projet4.services.report_service import ReportService
@@ -15,6 +16,7 @@ class MainController:
         self.player_service = PlayerService()
         self.match_service = MatchService()
         self.tournament_service = TournamentService()
+        self.database = DataBase()
         self.report_service = ReportService(player_list=self.tournament_service.tournament.players,
                                             round_list=self.tournament_service.tournament.rounds,
                                             tournament=self.tournament_service.tournament)
@@ -35,6 +37,7 @@ class MainController:
         self.tournament_service.update_tournament(name=name_choice, place=place_choice, date=date_choice,
                                                   description=description_choice,
                                                   number_of_rounds=DEFAULT_ROUNDS_NUMBER)
+        self.database.save_tournament_data()
 
     def create_players(self):
         player_list = []
@@ -45,6 +48,7 @@ class MainController:
             player_list.append(player)
             View.display_text("\n *************** Player number {} created *****************".format(index))
         self.tournament_service.tournament.players = player_list
+        self.database.save_players_data()
 
     def render_all_matches(self):
         for match in self.match_service.match_list:
@@ -59,6 +63,7 @@ class MainController:
         # And now we create matches from player pairs
         self.match_service.create_matches_from_player_pairs(player_pairs)
         self.render_all_matches()
+        self.database.save_matches_data()
 
         # Step 3 part 2: create a round attach the match list and attach the round to the tournament
         self.tournament_service.create_first_round(self.match_service.match_list)
@@ -67,6 +72,7 @@ class MainController:
         self.tournament_service.tournament.players_dict = \
             transform_player_list_to_dictionary(self.tournament_service.tournament.players)
         self.player_service.update_players_dict(self.tournament_service.tournament.players_dict)
+        self.database.save_rounds_data(0, self.tournament_service.tournament.rounds[0])
 
     def get_initial_round_results_and_update(self, round_name="Round 1"):
         View.display_text("\n *************** Enter the results for {} **************".format(round_name))
@@ -107,6 +113,7 @@ class MainController:
             self.get_round_results(current_round)
             self.player_service.sort_players_by_total_score()
             View.display_players(self.player_service.players_dict)
+            self.database.save_rounds_data(index, new_match_list)
 
     def request_report(self):
         self.report_service.suggest_report(self.tournament_service.tournament.players,
