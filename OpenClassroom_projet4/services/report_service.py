@@ -1,7 +1,4 @@
-from tinydb import Query
 import operator
-
-from OpenClassroom_projet4.model.tinydb_backend import DATABASE
 
 
 class ReportService:
@@ -10,54 +7,41 @@ class ReportService:
         self.tournaments_list = None
         self.round_list = None
         self.tournament = None
-        self.database = DATABASE
 
     def get_sorted_player_list_alphabetically(self, player_list):
-        players = Query()
-        self.database.search(players.type == player_list)
         self.player_list = player_list.sort()
         print(player_list)
         return player_list
 
     def get_sorted_player_list_by_rank(self):
-        players = Query()
-        self.database.search(players.type == self.player_list)
         sorted_player_list = sorted(self.player_list, key=operator.attrgetter("rank"))
         print(sorted_player_list)
         return sorted_player_list
 
     def get_tournaments_list(self):
-        tournaments = Query()
-        self.database.search(tournaments.type == self.tournaments_list)
         print(self.tournaments_list)
         return self.tournaments_list
 
     def get_rounds_of_one_tournament(self):
-        rounds = Query()
-        self.database.search(rounds.type == self.round_list)
         print(self.round_list)
         return self.round_list
 
-    def get_matches_of_one_tournament(self, round_list, tournament):
-        rounds = Query()
-        self.database.search(rounds.type == self.round_list)
-        for round_index in range(0, len(round_list)):
+    def get_matches_of_one_tournament(self, tournament):
+        for round_index in range(0, len(self.round_list)):
             print(tournament.rounds[round_index].matches)
 
     def select_one_tournament(self):
-        tournaments = Query()
-        self.database.search(tournaments.type == self.tournaments_list)
         print(self.tournaments_list)
         return self.tournament
 
-    def get_tournament_data(self, player_list, round_list, tournament):
+    def get_tournament_data(self, player_list, tournament):
         self.select_one_tournament()
         self.get_sorted_player_list_alphabetically(player_list)
         self.get_sorted_player_list_by_rank()
         self.get_rounds_of_one_tournament()
-        self.get_matches_of_one_tournament(round_list, tournament)
+        self.get_matches_of_one_tournament(tournament)
 
-    def suggest_report(self, player_list, round_list, tournament):
+    def suggest_report(self, player_list, round_list):
         report_suggestion = input("Do you want a report? Yes/No: ")
         if report_suggestion != 'Yes' and report_suggestion != 'No':
             print("Invalid value, you should answer the question by Yes or No.")
@@ -120,7 +104,7 @@ class ReportService:
                                                             "question by Yes or No.")
                                                     else:
                                                         if match_list_suggestion == 'Yes':
-                                                            self.get_matches_of_one_tournament(round_list, tournament)
+                                                            self.get_matches_of_one_tournament(round_list)
                                                         elif match_list_suggestion == 'No':
                                                             print("Thank you for your answer, good bye.")
                                                             exit()
