@@ -5,7 +5,6 @@ import operator
 class ReportService:
     def __init__(self):
         self.player_list = None
-        self.tournaments_list = None
         self.round_list = None
         self.tournament = None
 
@@ -23,11 +22,12 @@ class ReportService:
         print(sorted_player_list)
         return sorted_player_list
 
-    def get_tournaments_list(self):
-        with open('tournament_database.pickle', 'rb') as file:
-            pickle.load(file)
-        print(self.tournaments_list)
-        return self.tournaments_list
+    @staticmethod
+    def get_tournaments_list():
+        file = open('tournament_database.pickle', 'rb')
+        output = pickle.load(file)
+        print(output)
+        return output
 
     def get_rounds_of_one_tournament(self):
         with open('rounds_database.pickle', 'rb') as file:
@@ -41,11 +41,10 @@ class ReportService:
         for round_index in range(0, len(self.round_list)):
             print(tournament.rounds[round_index].matches)
 
-    def select_one_tournament(self):
+    @staticmethod
+    def select_one_tournament():
         with open('tournament_database.pickle', 'rb') as file:
             pickle.load(file)
-        print(self.tournaments_list)
-        return self.tournament
 
     def get_tournament_data(self, player_list, tournament):
         self.select_one_tournament()
