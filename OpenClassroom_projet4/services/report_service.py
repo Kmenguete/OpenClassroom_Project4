@@ -69,6 +69,7 @@ class ReportService:
                 else:
                     if list_tournaments_suggestion == 'Yes':
                         self.get_tournaments_list()
+                        exit()
                     elif list_tournaments_suggestion == 'No':
                         one_tournament_suggestion = input("Do you want to select a tournament? Yes/No: ")
                         if one_tournament_suggestion != 'Yes' and one_tournament_suggestion != 'No':
