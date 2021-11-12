@@ -3,9 +3,6 @@ import pickle
 
 class DataBase:
 
-    def __init__(self):
-        pass
-
     @staticmethod
     def save_tournament_data(tournament, filename):
         with open(filename, 'wb') as file:
