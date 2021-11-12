@@ -4,6 +4,7 @@ from OpenClassroom_projet4.model.Tournament_model import DEFAULT_ROUNDS_NUMBER
 from OpenClassroom_projet4.model.pickle_backend import DataBase
 from OpenClassroom_projet4.services.match_service import MatchService
 from OpenClassroom_projet4.services.player_service import PlayerService
+from OpenClassroom_projet4.services.report_service import ReportService
 from OpenClassroom_projet4.services.tournament_service import TournamentService
 from OpenClassroom_projet4.utils.config import Config
 from OpenClassroom_projet4.utils.utils import transform_player_list_to_dictionary
@@ -16,6 +17,7 @@ class MainController:
         self.match_service = MatchService()
         self.tournament_service = TournamentService()
         self.database = DataBase()
+        self.report_service = ReportService()
 
     def start(self):
         self.create_tournament()
@@ -28,6 +30,7 @@ class MainController:
         self.player_service.update_rank_of_players()
         View.display_players(self.player_service.players_dict)
         self.save_data()
+        self.request_report()
 
     def create_tournament(self):
         name_choice, place_choice, date_choice, description_choice = View.get_tournament_information()
@@ -114,3 +117,7 @@ class MainController:
         for round_index in range(0, self.tournament_service.tournament.number_of_rounds):
             self.database.save_matches_data(self.tournament_service.tournament.rounds[round_index].matches,
                                             'matches_database.pickle')
+
+    def request_report(self):
+        self.report_service.suggest_report(self.tournament_service.tournament.players,
+                                           self.tournament_service.tournament.rounds)
