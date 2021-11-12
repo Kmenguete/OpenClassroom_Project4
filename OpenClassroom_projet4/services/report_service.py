@@ -1,3 +1,4 @@
+import pickle
 import operator
 
 
@@ -9,28 +10,40 @@ class ReportService:
         self.tournament = None
 
     def get_sorted_player_list_alphabetically(self, player_list):
+        with open('players_database.pickle', 'rb') as file:
+            pickle.load(file)
         self.player_list = player_list.sort()
         print(player_list)
         return player_list
 
     def get_sorted_player_list_by_rank(self):
+        with open('players_database.pickle', 'rb') as file:
+            pickle.load(file)
         sorted_player_list = sorted(self.player_list, key=operator.attrgetter("rank"))
         print(sorted_player_list)
         return sorted_player_list
 
     def get_tournaments_list(self):
+        with open('tournament_database.pickle', 'rb') as file:
+            pickle.load(file)
         print(self.tournaments_list)
         return self.tournaments_list
 
     def get_rounds_of_one_tournament(self):
+        with open('rounds_database.pickle', 'rb') as file:
+            pickle.load(file)
         print(self.round_list)
         return self.round_list
 
     def get_matches_of_one_tournament(self, tournament):
+        with open('matches_database.pickle', 'rb') as file:
+            pickle.load(file)
         for round_index in range(0, len(self.round_list)):
             print(tournament.rounds[round_index].matches)
 
     def select_one_tournament(self):
+        with open('tournament_database.pickle', 'rb') as file:
+            pickle.load(file)
         print(self.tournaments_list)
         return self.tournament
 
