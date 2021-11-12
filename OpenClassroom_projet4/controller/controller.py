@@ -108,9 +108,9 @@ class MainController:
             View.display_players(self.player_service.players_dict)
 
     def save_data(self):
-        self.database.save_tournament_data(self.tournament_service.tournament, 'tournament_database.pkl')
-        self.database.save_players_data(self.tournament_service.tournament.players, 'players_database.pkl')
-        self.database.save_rounds_data(self.tournament_service.tournament.rounds, 'rounds_database.pkl')
+        self.database.save_tournament_data(self.tournament_service.tournament, 'tournament_database.json')
+        self.database.save_players_data(self.tournament_service.tournament.players, 'players_database.json')
+        self.database.save_rounds_data(self.tournament_service.tournament.rounds, 'rounds_database.json')
         for round_index in range(0, self.tournament_service.tournament.number_of_rounds):
             self.database.save_matches_data(self.tournament_service.tournament.rounds[round_index].matches,
-                                            'matches_database.pkl')
+                                            'matches_database.json')
