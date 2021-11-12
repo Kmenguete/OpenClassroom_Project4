@@ -1,6 +1,7 @@
 from OpenClassroom_projet4.View.view import View
 from OpenClassroom_projet4.model.Player_model import Player
 from OpenClassroom_projet4.model.Tournament_model import DEFAULT_ROUNDS_NUMBER
+from OpenClassroom_projet4.model.pickle_backend import DataBase
 from OpenClassroom_projet4.services.match_service import MatchService
 from OpenClassroom_projet4.services.player_service import PlayerService
 from OpenClassroom_projet4.services.tournament_service import TournamentService
@@ -14,6 +15,7 @@ class MainController:
         self.player_service = PlayerService()
         self.match_service = MatchService()
         self.tournament_service = TournamentService()
+        self.database = DataBase()
 
     def start(self):
         self.create_tournament()
@@ -25,6 +27,7 @@ class MainController:
         self.create_remaining_rounds()
         self.player_service.update_rank_of_players()
         View.display_players(self.player_service.players_dict)
+        self.save_data()
 
     def create_tournament(self):
         name_choice, place_choice, date_choice, description_choice = View.get_tournament_information()
@@ -103,3 +106,11 @@ class MainController:
             self.get_round_results(current_round)
             self.player_service.sort_players_by_total_score()
             View.display_players(self.player_service.players_dict)
+
+    def save_data(self):
+        self.database.save_tournament_data(self.tournament_service.tournament, 'tournament_database.pkl')
+        self.database.save_players_data(self.tournament_service.tournament.players, 'players_database.pkl')
+        self.database.save_rounds_data(self.tournament_service.tournament.rounds, 'rounds_database.pkl')
+        for round_index in range(0, self.tournament_service.tournament.number_of_rounds):
+            self.database.save_matches_data(self.tournament_service.tournament.rounds[round_index].matches,
+                                            'matches_database.pkl')
