@@ -36,7 +36,7 @@ class MainController:
         self.tournament_service.update_tournament(name=name_choice, place=place_choice, date=date_choice,
                                                   description=description_choice,
                                                   number_of_rounds=DEFAULT_ROUNDS_NUMBER)
-        serialized_tournament = {'name': name_choice, 'place': place_choice, 'date': date_choice,
+        serialized_tournament = {'name': name_choice, 'place': place_choice, 'date': str(date_choice),
                                  'description': description_choice, 'number of rounds': DEFAULT_ROUNDS_NUMBER}
         self.database.tournament_database.insert(serialized_tournament)
 
@@ -46,21 +46,13 @@ class MainController:
             first_name, last_name = View.get_player_information()
             rank = index + 1
             player = Player(last_name, first_name, rank)
-            serialized_player = {'firstname': player.firstname, 'last_name': player.last_name, 'rank': player.rank}
             player_list.append(player)
-            players_table = self.database.players_database.table('players')
-            players_table.truncate()
-            players_table.insert_multiple(serialized_player)
             View.display_text("\n *************** Player number {} created *****************".format(index))
         self.tournament_service.tournament.players = player_list
 
     def render_all_matches(self):
         for match in self.match_service.match_list:
             View.display_match_information(match)
-            serialized_match = {'player a': match.player_a, 'player b': match.player_b}
-            matches_table = self.database.matches_database.table('matches')
-            matches_table.truncate()
-            matches_table.insert_multiple(serialized_match)
 
     def generate_first_round(self):
         # Step 3: Generate first round players pair
