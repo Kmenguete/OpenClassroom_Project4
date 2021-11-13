@@ -26,23 +26,6 @@ class Tournament:
     def __getitem__(self, players, i):
         return self.players[i]
 
-    def __str__(self):
-        return "{name: " + self.name + ", " + "place: " + self.place + ", " + "date: " + str(self.date) + ", " + \
-               " description: " + self.description + ", " + "number of rounds: " + str(self.number_of_rounds) + \
-               " players: " + str(self.players) + "} "
-
-    def __repr__(self):
-        return "{name: " + self.name + ", " + "place: " + self.place + ", " + "date: " + str(self.date) + ", " + \
-               " description: " + self.description + ", " + "number of rounds: " + str(self.number_of_rounds) + \
-               " players: " + str(self.players) + "} "
-
-    def __add__(self, other):
-        return "{name: " + self.name + ", " + "place: " + self.place + ", " + "date: " + str(self.date) + ", " + \
-               " description: " + self.description + ", " + "number of rounds: " + str(self.number_of_rounds) + \
-               " players: " + str(self.players) + "} " + " " + "{name: " + other.name + ", " + "place: " + \
-               other.place + ", " + "date: " + str(other.date) + ", " + " description: " + other.description + ", " + \
-               "number of rounds: " + str(other.number_of_rounds) + " players: " + str(other.players) + "} "
-
     def check_if_match_already_happened(self, player_a, player_b):
         already_happened = False
         for tour in self.rounds:
