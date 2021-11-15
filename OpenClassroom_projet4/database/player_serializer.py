@@ -13,6 +13,6 @@ class PlayerSerializer:
     @staticmethod
     def deserialize(serialized_player: dict):
         return Player(last_name=serialized_player['last_name'], firstname=serialized_player['first_name'],
-                      rank=serialized_player['rank'], total_score=serialized_player['total_score'],
-                      date_of_birth=serialized_player['date_of_birth'])
+                      rank=serialized_player['rank'], player_id=serialized_player['player_id'],
+                      total_score=serialized_player['total_score'], date_of_birth=serialized_player['date_of_birth'])
     # TODO I should find a way to integrate player_id in the deserialization of players.
