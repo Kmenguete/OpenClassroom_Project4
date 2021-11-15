@@ -13,4 +13,3 @@ class MatchSerializer:
     def deserialize(serialized_match: dict):
         return Match(player_a=serialized_match['player_a'], score_player_a=serialized_match['score_player_a'],
                      player_b=serialized_match['player_b'], score_player_b=serialized_match['score_player_b'])
-        
