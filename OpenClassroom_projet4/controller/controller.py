@@ -36,9 +36,6 @@ class MainController:
         self.tournament_service.update_tournament(name=name_choice, place=place_choice, date=date_choice,
                                                   description=description_choice,
                                                   number_of_rounds=DEFAULT_ROUNDS_NUMBER)
-        serialized_tournament = {'name': name_choice, 'place': place_choice, 'date': str(date_choice),
-                                 'description': description_choice, 'number of rounds': DEFAULT_ROUNDS_NUMBER}
-        self.database.tournament_database.insert(serialized_tournament)
 
     def create_players(self):
         player_list = []
