@@ -10,5 +10,13 @@ class Match:
     def display_match(self):
         print("Match: " + self.player_a.firstname + " " + self.player_a.last_name + " vs " + self.player_b.firstname +
               " " + self.player_b.last_name)
-        return "Match: " + self.player_a.firstname + " " + self.player_a.last_name + " vs " + self.player_b.firstname + \
-               " " + self.player_b.last_name
+        return "Match: " + self.player_a.firstname + " " + self.player_a.last_name + " vs " + self.player_b.firstname \
+               + " " + self.player_b.last_name
+
+    def __str__(self):
+        return "Match: " + self.player_a + ", score: " + str(self.score_player_a) + " vs " + self.player_b + \
+               ", score: " + str(self.score_player_b)
+
+    def __repr__(self):
+        return "Match: " + self.player_a + ", score: " + str(self.score_player_a) + " vs " + self.player_b + \
+               ", score: " + str(self.score_player_b)
