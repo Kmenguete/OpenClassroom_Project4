@@ -4,6 +4,7 @@ from datetime import datetime
 
 @dataclass
 class Tour:
+    round_id: str
     round_name: str
     start_date: datetime
     matches: list
@@ -12,9 +13,9 @@ class Tour:
         self.matches = matches
 
     def __str__(self):
-        return "round_name: " + self.round_name + ", " + "start_date: " + str(self.start_date) + ", " + "match_list: " \
-               + str(self.matches)
+        return "round_id: " + self.round_id + ", " + "round_name: " + self.round_name + ", " + "start_date: " + \
+               str(self.start_date) + ", " + "match_list: " + str(self.matches)
 
     def __repr__(self):
-        return "round_name: " + self.round_name + ", " + "start_date: " + str(self.start_date) + ", " + "match_list: " \
-               + str(self.matches)
+        return "round_id: " + self.round_id + ", " + "round_name: " + self.round_name + ", " + "start_date: " + \
+               str(self.start_date) + ", " + "match_list: " + str(self.matches)
