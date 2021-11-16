@@ -14,9 +14,9 @@ class RoundTable:
         serialized_round = self.round_serializer.serialize(round)
         self.round_database.insert(serialized_round)
 
-    def get_round(self, round_name):
+    def get_round(self, round_id):
         round_query = Query()
-        serialized_round = self.round_database.search(round_query.round_name == round_name)
+        serialized_round = self.round_database.search(round_query.round_id == round_id)
         round = self.round_serializer.deserialize(serialized_round[0])
         return round
 
@@ -35,13 +35,19 @@ class RoundTable:
             rounds.append(round)
         return rounds
     
-    def update_name(self, name):
-        self.round_database.update({'round_name': name})
+    def update_round_name(self, name, round_id):
+        round = Query()
+        self.round_database.update({'round_name': name}, round.round_id == round_id)
+
+    def clear_database(self):
+        self.round_database.truncate()
 
 
 if __name__ == '__main__':
-    round_1 = Tour(round_name='Round_1', start_date='14/03/2020', matches=['match_1', 'match_2', 'match_3', 'match_4'])
-    round_2 = Tour(round_name='Round_2', start_date='21/09/2021', matches=['match_1', 'match_2', 'match_3', 'match_4'])
-    RoundTable().save_rounds([round_1, round_2])
+    round_3 = Tour(round_id='EER7FT7ZF32874RG', round_name='Round_1', start_date='14/03/2020',
+                   matches=['match_1', 'match_2', 'match_3', 'match_4'])
+    round_4 = Tour(round_id='9854UT948T458T9', round_name='Round_2', start_date='21/09/2021',
+                   matches=['match_1', 'match_2', 'match_3', 'match_4'])
+    RoundTable().save_rounds([round_3, round_4])
     dsr = RoundTable().get_rounds()
     print(dsr)
