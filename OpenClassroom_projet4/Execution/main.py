@@ -14,6 +14,7 @@ from OpenClassroom_projet4.model.Player_model import Player
 from OpenClassroom_projet4.model.Round_model import Tour
 from OpenClassroom_projet4.model.Tournament_model import Tournament, DEFAULT_ROUNDS_NUMBER, create_list_dict
 from datetime import date, datetime
+import uuid
 
 DEFAULT_PLAYERS_NUMBER = 8
 
@@ -53,7 +54,8 @@ if __name__ == '__main__':
         match_list.append(match)
         match.display_match()
     # Step 3 part 2: create a round attach the match list and attach the round to the tournament
-    first_round = Tour("Round 1", datetime.now(), match_list)
+    round_id = str(uuid.uuid4())
+    first_round = Tour(round_id, "Round 1", datetime.now(), match_list)
     round_list = [first_round]
     tournament.rounds = round_list
     tournament.players = sorted_player_list
@@ -89,7 +91,7 @@ if __name__ == '__main__':
     for index in range(1, tournament.number_of_rounds):
         match_list = generate_matches_next_round(tournament.players, tournament)
 
-        next_round = Tour("Round {}".format(index + 1), datetime.now(), match_list)
+        next_round = Tour(round_id, "Round {}".format(index + 1), datetime.now(), match_list)
         tournament.rounds.append(next_round)
         for match in tournament.rounds[index].matches:
             print("Player A: " + match.player_a.firstname + " " + match.player_a.last_name)
