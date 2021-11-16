@@ -13,13 +13,13 @@ class TournamentService:
         self.tournament = Tournament(name=name, place=place, date=date, description=description,
                                      number_of_rounds=number_of_rounds)
 
-    def create_first_round(self, match_list):
-        first_round = Tour("Round 1", datetime.now(), match_list)
+    def create_first_round(self, match_list, round_id):
+        first_round = Tour(round_id, "Round 1", datetime.now(), match_list)
         round_list = [first_round]
         self.tournament.rounds = round_list
 
-    def create_next_round(self, round_number, match_list):
-        next_round = Tour("Round {}".format(round_number), datetime.now(), match_list)
+    def create_next_round(self, round_number, match_list, round_id):
+        next_round = Tour(round_id, "Round {}".format(round_number), datetime.now(), match_list)
         self.tournament.rounds.append(next_round)
         return next_round
 
