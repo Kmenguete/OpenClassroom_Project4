@@ -39,6 +39,9 @@ class PlayerTable:
         player = Query()
         self.player_database.update({'first_name': first_name}, player.player_id == player_id)
 
+    def clear_database(self):
+        self.player_database.truncate()
+
 
 if __name__ == '__main__':
     player_1 = Player(last_name='Darden', firstname='Mike', rank=5, player_id='46464646QSDFSD64', total_score=3)
