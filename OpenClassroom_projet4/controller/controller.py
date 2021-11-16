@@ -8,6 +8,7 @@ from OpenClassroom_projet4.services.report_service import ReportService
 from OpenClassroom_projet4.services.tournament_service import TournamentService
 from OpenClassroom_projet4.utils.config import Config
 from OpenClassroom_projet4.utils.utils import transform_player_list_to_dictionary
+import uuid
 
 
 class MainController:
@@ -18,6 +19,7 @@ class MainController:
         self.tournament_service = TournamentService()
         self.database = DataBase()
         self.report_service = ReportService()
+        self.round_id = str(uuid.uuid4())
 
     def start(self):
         self.create_tournament()
@@ -62,7 +64,7 @@ class MainController:
         self.render_all_matches()
 
         # Step 3 part 2: create a round attach the match list and attach the round to the tournament
-        self.tournament_service.create_first_round(self.match_service.match_list)
+        self.tournament_service.create_first_round(self.match_service.match_list, self.round_id)
         self.tournament_service.tournament.players = sorted_player_list
         self.player_service.update_player_list(sorted_player_list)
         self.tournament_service.tournament.players_dict = \
@@ -104,7 +106,7 @@ class MainController:
             View.display_text("\n *************** Enter the results for Round {} **************".format(index + 1))
             new_match_list = self.match_service.generate_matches_for_next_round(self.player_service.player_list,
                                                                                 self.tournament_service)
-            current_round = self.tournament_service.create_next_round(index + 1, new_match_list)
+            current_round = self.tournament_service.create_next_round(index + 1, new_match_list, self.round_id)
             self.get_round_results(current_round)
             self.player_service.sort_players_by_total_score()
             View.display_players(self.player_service.players_dict)
