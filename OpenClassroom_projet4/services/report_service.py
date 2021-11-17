@@ -36,7 +36,7 @@ class ReportService:
 
     def select_one_tournament(self):
         self.tournament_table.get_tournaments()
-        tournament_selection = input('Please select one tournament: ')
+        tournament_selection = input('Please select one tournament by their id: ')
         if tournament_selection not in self.tournament_table.get_tournaments():
             print('The tournament you selected does not exist. Please, select a tournament that exist.')
         else:
@@ -58,10 +58,10 @@ class ReportService:
                 print('Thank you for your answer. Good bye !!!')
                 exit()
             else:
-                multiple_choice_question = input('If you want the list of tournaments, type A. \n '
-                                                 'If you want the list of players of one tournament, type B. \n '
-                                                 'If you want the list of rounds of one tournament, type C. \n '
-                                                 'If you want the list of matches of one tournament, type D.')
+                multiple_choice_question = input('If you want the list of tournaments, type A: \n '
+                                                 'If you want the list of players of one tournament, type B: \n '
+                                                 'If you want the list of rounds of one tournament, type C: \n '
+                                                 'If you want the list of matches of one tournament, type D:')
                 if multiple_choice_question == 'A':
                     self.tournament_table.get_tournaments()
                 elif multiple_choice_question == 'B':
