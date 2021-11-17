@@ -24,15 +24,15 @@ class ReportService:
         print(sorted_player_list)
         return sorted_player_list
 
-    @staticmethod
-    def get_tournaments_list():
-        pass
-
-    def get_rounds_of_one_tournament(self):
-        pass
-
-    def get_matches_of_one_tournament(self, tournament):
-        pass
+    def way_of_display_player_list(self):
+        way_of_display_players = input('If you want players sorted by rank. type A: \n '
+                                       'If you want players sorted alphabetically. type B: ')
+        if way_of_display_players == 'A':
+            self.get_sorted_player_list_by_rank()
+        elif way_of_display_players == 'B':
+            self.get_sorted_player_list_alphabetically(self.player_table.get_players())
+        else:
+            print('Invalid value, you should answer the question by A or B.')
 
     def select_one_tournament(self):
         self.tournament_table.get_tournaments()
@@ -41,13 +41,6 @@ class ReportService:
             print('The tournament you selected does not exist. Please, select a tournament that exist.')
         else:
             self.tournament_table.get_tournament(tournament_selection)
-
-    def get_tournament_data(self, player_list, tournament):
-        self.select_one_tournament()
-        self.get_sorted_player_list_alphabetically(player_list)
-        self.get_sorted_player_list_by_rank()
-        self.get_rounds_of_one_tournament()
-        self.get_matches_of_one_tournament(tournament)
 
     def suggest_report(self):
         report_suggestion = input('Do you want a report? Yes/No: ')
@@ -67,6 +60,7 @@ class ReportService:
                 elif multiple_choice_question == 'B':
                     self.select_one_tournament()
                     self.player_table.get_players()
+                    self.way_of_display_player_list()
                 elif multiple_choice_question == 'C':
                     self.select_one_tournament()
                     self.round_table.get_rounds()
