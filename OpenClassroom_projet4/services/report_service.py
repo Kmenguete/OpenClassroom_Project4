@@ -58,18 +58,13 @@ class ReportService:
                                                  'If you want the list of players of one tournament, type B. \n '
                                                  'If you want the list of rounds of one tournament, type C. \n '
                                                  'If you want the list of matches of one tournament, type D.')
-                if multiple_choice_question != 'A' and multiple_choice_question != 'B':
-                    print('Invalid value, you should answer the question by either A,B,C or D.')
-                elif multiple_choice_question != 'C' and multiple_choice_question != 'D':
-                    print('Invalid value, you should answer the question by either A,B,C or D.')
+                if multiple_choice_question == 'A':
+                    self.tournament_table.get_tournaments()
+                elif multiple_choice_question == 'B':
+                    self.player_table.get_players()
+                elif multiple_choice_question == 'C':
+                    self.round_table.get_rounds()
+                elif multiple_choice_question == 'D':
+                    self.match_table.get_matches()
                 else:
-                    if multiple_choice_question == 'A':
-                        self.tournament_table.get_tournaments()
-                    elif multiple_choice_question == 'B':
-                        self.player_table.get_players()
-                    elif multiple_choice_question == 'C':
-                        self.round_table.get_rounds()
-                    elif multiple_choice_question == 'D':
-                        self.match_table.get_matches()
-                    else:
-                        pass
+                    print('Invalid value, you should answer the question by either A,B,C or D.')
