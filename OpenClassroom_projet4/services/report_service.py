@@ -8,7 +8,7 @@ from OpenClassroom_projet4.database.tournament_table import TournamentTable
 
 class ReportService:
     def __init__(self):
-        
+
         self.player_table = PlayerTable()
         self.match_table = MatchTable()
         self.round_table = RoundTable()
