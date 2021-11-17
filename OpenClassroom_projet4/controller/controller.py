@@ -112,5 +112,4 @@ class MainController:
             View.display_players(self.player_service.players_dict)
 
     def request_report(self):
-        self.report_service.suggest_report(self.tournament_service.tournament.players,
-                                           self.tournament_service.tournament.rounds)
+        self.report_service.suggest_report()
