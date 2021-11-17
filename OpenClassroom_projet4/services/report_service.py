@@ -34,9 +34,13 @@ class ReportService:
     def get_matches_of_one_tournament(self, tournament):
         pass
 
-    @staticmethod
-    def select_one_tournament():
-        pass
+    def select_one_tournament(self):
+        self.tournament_table.get_tournaments()
+        tournament_selection = input('Please select one tournament: ')
+        if tournament_selection not in self.tournament_table.get_tournaments():
+            print('The tournament you selected does not exist. Please, select a tournament that exist.')
+        else:
+            self.tournament_table.get_tournament(tournament_selection)
 
     def get_tournament_data(self, player_list, tournament):
         self.select_one_tournament()
