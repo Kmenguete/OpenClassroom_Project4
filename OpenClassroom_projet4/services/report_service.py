@@ -54,4 +54,7 @@ class ReportService:
                 print('Thank you for your answer. Good bye !!!')
                 exit()
             else:
-                pass
+                multiple_choice_question = input('If you want the list of tournaments, type A. \n '
+                                                 'If you want the list of players of one tournament, type B. \n '
+                                                 'If you want the list of rounds of a tournament, type C. \n '
+                                                 'If you want the list of matches of a tournament, type D.')
