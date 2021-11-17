@@ -8,19 +8,21 @@ from OpenClassroom_projet4.database.tournament_table import TournamentTable
 
 class ReportService:
     def __init__(self):
-        self.player_list = None
+        
         self.player_table = PlayerTable()
         self.match_table = MatchTable()
         self.round_table = RoundTable()
         self.tournament_table = TournamentTable()
 
-    def get_sorted_player_list_alphabetically(self, player_list):
-        self.player_list = player_list.sort()
+    @staticmethod
+    def get_sorted_player_list_alphabetically(player_list):
+        player_list = player_list.sort()
         print(player_list)
         return player_list
 
-    def get_sorted_player_list_by_rank(self):
-        sorted_player_list = sorted(self.player_list, key=operator.attrgetter("rank"))
+    @staticmethod
+    def get_sorted_player_list_by_rank(player_list):
+        sorted_player_list = sorted(player_list, key=operator.attrgetter("rank"))
         print(sorted_player_list)
         return sorted_player_list
 
@@ -28,7 +30,7 @@ class ReportService:
         way_of_display_players = input('If you want players sorted by rank. type A: \n '
                                        'If you want players sorted alphabetically. type B: ')
         if way_of_display_players == 'A':
-            self.get_sorted_player_list_by_rank()
+            self.get_sorted_player_list_by_rank(self.player_table.get_players())
         elif way_of_display_players == 'B':
             self.get_sorted_player_list_alphabetically(self.player_table.get_players())
         else:
@@ -59,7 +61,6 @@ class ReportService:
                     self.tournament_table.get_tournaments()
                 elif multiple_choice_question == 'B':
                     self.select_one_tournament()
-                    self.player_table.get_players()
                     self.way_of_display_player_list()
                 elif multiple_choice_question == 'C':
                     self.select_one_tournament()
