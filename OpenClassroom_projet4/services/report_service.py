@@ -56,5 +56,12 @@ class ReportService:
             else:
                 multiple_choice_question = input('If you want the list of tournaments, type A. \n '
                                                  'If you want the list of players of one tournament, type B. \n '
-                                                 'If you want the list of rounds of a tournament, type C. \n '
-                                                 'If you want the list of matches of a tournament, type D.')
+                                                 'If you want the list of rounds of one tournament, type C. \n '
+                                                 'If you want the list of matches of one tournament, type D.')
+                if multiple_choice_question != 'A' and multiple_choice_question != 'B':
+                    print('Invalid value, you should answer the question by either A,B,C or D.')
+                elif multiple_choice_question != 'C' and multiple_choice_question != 'D':
+                    print('Invalid value, you should answer the question by either A,B,C or D.')
+                else:
+                    pass
+                    
