@@ -63,5 +63,13 @@ class ReportService:
                 elif multiple_choice_question != 'C' and multiple_choice_question != 'D':
                     print('Invalid value, you should answer the question by either A,B,C or D.')
                 else:
-                    pass
-                    
+                    if multiple_choice_question == 'A':
+                        self.tournament_table.get_tournaments()
+                    elif multiple_choice_question == 'B':
+                        self.player_table.get_players()
+                    elif multiple_choice_question == 'C':
+                        self.round_table.get_rounds()
+                    elif multiple_choice_question == 'D':
+                        self.match_table.get_matches()
+                    else:
+                        pass
