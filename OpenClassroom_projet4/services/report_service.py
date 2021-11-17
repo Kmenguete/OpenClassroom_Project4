@@ -46,4 +46,12 @@ class ReportService:
         self.get_matches_of_one_tournament(tournament)
 
     def suggest_report(self):
-        pass
+        report_suggestion = input('Do you want a report? Yes/No: ')
+        if report_suggestion != 'Yes' and report_suggestion != 'No':
+            print('Invalid value, you should answer the question by Yes or No.')
+        else:
+            if report_suggestion == 'No':
+                print('Thank you for your answer. Good bye !!!')
+                exit()
+            else:
+                pass
