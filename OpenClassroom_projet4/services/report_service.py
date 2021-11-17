@@ -1,11 +1,18 @@
 import operator
 
+from OpenClassroom_projet4.database.match_table import MatchTable
+from OpenClassroom_projet4.database.player_table import PlayerTable
+from OpenClassroom_projet4.database.round_table import RoundTable
+from OpenClassroom_projet4.database.tournament_table import TournamentTable
+
 
 class ReportService:
     def __init__(self):
         self.player_list = None
-        self.round_list = None
-        self.tournament = None
+        self.player_table = PlayerTable()
+        self.match_table = MatchTable()
+        self.round_table = RoundTable()
+        self.tournament_table = TournamentTable()
 
     def get_sorted_player_list_alphabetically(self, player_list):
         self.player_list = player_list.sort()
@@ -38,5 +45,5 @@ class ReportService:
         self.get_rounds_of_one_tournament()
         self.get_matches_of_one_tournament(tournament)
 
-    def suggest_report(self, player_list, round_list):
+    def suggest_report(self):
         pass
