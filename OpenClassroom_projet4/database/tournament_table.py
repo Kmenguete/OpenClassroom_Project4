@@ -1,22 +1,24 @@
-from tinydb import TinyDB, Query
+from tinydb import Query
 
 from OpenClassroom_projet4.database.tournament_serializer import TournamentSerializer
 from OpenClassroom_projet4.model.Tournament_model import Tournament
+from OpenClassroom_projet4.utils.config import Config
 
 
 class TournamentTable:
 
     def __init__(self):
-        self.tournament_database = TinyDB('tournament_database.json')
+        self.database = Config.DATABASE
         self.tournament_serializer = TournamentSerializer()
+        self.tournament_table = self.database.table('Tournament_table')
 
     def save_tournament(self, tournament):
         serialized_tournament = self.tournament_serializer.serialize(tournament)
-        self.tournament_database.insert(serialized_tournament)
+        self.tournament_table.insert(serialized_tournament)
 
     def get_tournament(self, tournament_id):
         tournament_query = Query()
-        serialized_tournament = self.tournament_database.search(tournament_query.tournament_id == tournament_id)
+        serialized_tournament = self.tournament_table.search(tournament_query.tournament_id == tournament_id)
         tournament = self.tournament_serializer.deserialize(serialized_tournament[0])
         return tournament
 
@@ -25,10 +27,10 @@ class TournamentTable:
         for tournament in tournaments:
             serialized_tournament = self.tournament_serializer.serialize(tournament)
             serialized_tournaments.append(serialized_tournament)
-        self.tournament_database.insert_multiple(serialized_tournaments)
+        self.tournament_table.insert_multiple(serialized_tournaments)
 
     def get_tournaments(self):
-        serialized_tournaments = self.tournament_database.all()
+        serialized_tournaments = self.tournament_table.all()
         tournaments = []
         for serialized_tournament in serialized_tournaments:
             tournament = self.tournament_serializer.deserialize(serialized_tournament)
@@ -37,7 +39,7 @@ class TournamentTable:
 
     def update_name(self, tournament_id, name):
         tournament = Query()
-        self.tournament_database.update({'name': name}, tournament.tournament_id == tournament_id)
+        self.tournament_table.update({'name': name}, tournament.tournament_id == tournament_id)
 
 
 if __name__ == '__main__':
