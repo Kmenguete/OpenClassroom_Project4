@@ -39,6 +39,9 @@ class MatchTable:
             matches.append(match)
         return matches
 
+    def update_matches(self, matches):
+        self.match_table.update_multiple(matches)
+
     def update_match(self, match_id):
         match = Query()
         self.match_table.update({'match_id': match_id}, match.match_id == match_id)
