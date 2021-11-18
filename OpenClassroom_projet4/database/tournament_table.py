@@ -52,6 +52,9 @@ class TournamentTable:
     def update_tournament(self, tournament):
         self.tournament_table.update(tournament)
 
+    def update_players_dict(self, players_dict):
+        self.tournament_table.update({'players_dict': players_dict})
+
     def clear_tournament_table(self):
         self.tournament_table.truncate()
 
