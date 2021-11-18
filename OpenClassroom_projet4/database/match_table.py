@@ -1,22 +1,24 @@
-from tinydb import TinyDB, Query
+from tinydb import Query
 
 from OpenClassroom_projet4.database.match_serializer import MatchSerializer
 from OpenClassroom_projet4.model.Match_model import Match
+from OpenClassroom_projet4.utils.config import Config
 
 
 class MatchTable:
 
     def __init__(self):
-        self.match_database = TinyDB('matches_database.json')
+        self.database = Config.DATABASE
         self.match_serializer = MatchSerializer()
+        self.match_table = self.database.table('Match_table')
 
     def save_match(self, match):
         serialized_match = self.match_serializer.serialize(match)
-        self.match_database.insert(serialized_match)
+        self.match_table.insert(serialized_match)
 
     def get_match(self, match_id):
         match_query = Query()
-        serialized_match = self.match_database.search(match_query.match_id == match_id)
+        serialized_match = self.match_table.search(match_query.match_id == match_id)
         match = self.match_serializer.deserialize(serialized_match[0])
         return match
 
@@ -25,10 +27,10 @@ class MatchTable:
         for match in matches:
             serialized_match = self.match_serializer.serialize(match)
             serialized_matches.append(serialized_match)
-        self.match_database.insert_multiple(serialized_matches)
+        self.match_table.insert_multiple(serialized_matches)
 
     def get_matches(self):
-        serialized_matches = self.match_database.all()
+        serialized_matches = self.database.all()
         matches = []
         for serialized_match in serialized_matches:
             match = self.match_serializer.deserialize(serialized_match)
@@ -37,10 +39,10 @@ class MatchTable:
 
     def update_match(self, match_id):
         match = Query()
-        self.match_database.update({'match_id': match_id}, match.match_id == match_id)
+        self.match_table.update({'match_id': match_id}, match.match_id == match_id)
 
-    def clear_database(self):
-        self.match_database.truncate()
+    def clear_match_table(self):
+        self.match_table.truncate()
 
 
 if __name__ == '__main__':

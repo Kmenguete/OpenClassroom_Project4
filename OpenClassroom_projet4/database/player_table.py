@@ -1,22 +1,24 @@
-from tinydb import TinyDB, Query
+from tinydb import Query
 
 from OpenClassroom_projet4.database.player_serializer import PlayerSerializer
 from OpenClassroom_projet4.model.Player_model import Player
+from OpenClassroom_projet4.utils.config import Config
 
 
 class PlayerTable:
 
     def __init__(self):
-        self.player_database = TinyDB('players_database.json')
+        self.database = Config.DATABASE
         self.player_serializer = PlayerSerializer()
+        self.player_table = self.database.table('Player_table')
 
     def save_player(self, player):
         serialized_player = self.player_serializer.serialize(player)
-        self.player_database.insert(serialized_player)
+        self.player_table.insert(serialized_player)
 
     def get_player(self, player_id):
         player_query = Query()
-        serialized_player = self.player_database.search(player_query.player_id == player_id)
+        serialized_player = self.player_table.search(player_query.player_id == player_id)
         player = self.player_serializer.deserialize(serialized_player[0])
         return player
 
@@ -25,10 +27,10 @@ class PlayerTable:
         for player in players:
             serialized_player = self.player_serializer.serialize(player)
             serialized_players.append(serialized_player)
-        self.player_database.insert_multiple(serialized_players)
+        self.player_table.insert_multiple(serialized_players)
 
     def get_players(self):
-        serialized_players = self.player_database.all()
+        serialized_players = self.player_table.all()
         players = []
         for serialized_player in serialized_players:
             player = self.player_serializer.deserialize(serialized_player)
@@ -37,10 +39,10 @@ class PlayerTable:
 
     def update_first_name(self, player_id, first_name):
         player = Query()
-        self.player_database.update({'first_name': first_name}, player.player_id == player_id)
+        self.player_table.update({'first_name': first_name}, player.player_id == player_id)
 
-    def clear_database(self):
-        self.player_database.truncate()
+    def clear_player_table(self):
+        self.player_table.truncate()
 
 
 if __name__ == '__main__':
