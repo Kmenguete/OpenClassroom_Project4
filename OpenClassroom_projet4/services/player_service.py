@@ -1,6 +1,7 @@
 import operator
 
 from OpenClassroom_projet4.database.player_table import PlayerTable
+from OpenClassroom_projet4.database.tournament_table import TournamentTable
 from OpenClassroom_projet4.utils.utils import transform_player_list_to_dictionary
 
 
@@ -10,9 +11,11 @@ class PlayerService:
         self.player_list = player_list
         self.players_dict = None
         self.player_table = PlayerTable()
+        self.tournament_table = TournamentTable()
 
     def update_players_dict(self, players_dict):
         self.players_dict = players_dict
+        self.tournament_table.update_players_dict(players_dict)
 
     def update_player_list(self, player_list):
         self.player_list = player_list
