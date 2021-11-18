@@ -31,11 +31,15 @@ class Tournament:
 
     def __str__(self):
         return "name: " + self.name + ", " + "place: " + self.place + ", " + "description: " + self.description + ", " \
-               + " number_of_rounds: " + str(self.number_of_rounds) + ", " + "tournament_id: " + self.tournament_id
+               + " number_of_rounds: " + str(self.number_of_rounds) + ", " + "tournament_id: " + self.tournament_id + \
+               " rounds: " + str(self.rounds) + " players: " + str(self.players) + " players_dict: " + \
+               str(self.players_dict)
 
     def __repr__(self):
         return "name: " + self.name + ", " + "place: " + self.place + ", " + "description: " + self.description + ", " \
-               + " number_of_rounds: " + str(self.number_of_rounds) + ", " + "tournament_id: " + self.tournament_id
+               + " number_of_rounds: " + str(self.number_of_rounds) + ", " + "tournament_id: " + self.tournament_id + \
+               " rounds: " + str(self.rounds) + " players: " + str(self.players) + " players_dict: " + \
+               str(self.players_dict)
 
     def __len__(self):
         return len(self.players)
