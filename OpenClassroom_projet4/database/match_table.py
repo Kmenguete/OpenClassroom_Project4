@@ -1,7 +1,9 @@
 from tinydb import Query
 
 from OpenClassroom_projet4.database.match_serializer import MatchSerializer
+from OpenClassroom_projet4.database.player_serializer import PlayerSerializer
 from OpenClassroom_projet4.model.Match_model import Match
+from OpenClassroom_projet4.model.Player_model import Player
 from OpenClassroom_projet4.utils.config import Config
 
 
@@ -46,9 +48,13 @@ class MatchTable:
 
 
 if __name__ == '__main__':
-    match_1 = Match(match_id='Q7STS76FS87G', player_a='Samantha Paraba', score_player_a=0, player_b='Daniel Pepeou',
+    player_3 = Player(last_name='Don', firstname='Kyrus', rank=8, player_id='46464646QSDFSD64', total_score=0)
+    player_4 = Player(last_name='Al awal', firstname='Nawal', rank=1, player_id='1234RF5456GH46TFD', total_score=4)
+    player_a = PlayerSerializer().serialize(player_3)
+    player_b = PlayerSerializer().serialize(player_4)
+    match_1 = Match(match_id='Q7STS76FS87G', player_a=player_a, score_player_a=0, player_b=player_b,
                     score_player_b=1)
-    match_2 = Match(match_id='Q7STS76FS87G', player_a='Sarah Heynes', score_player_a=0.5, player_b='Rosalie Seicheine',
+    match_2 = Match(match_id='Q7STS76FS87G', player_a=player_a, score_player_a=0.5, player_b=player_b,
                     score_player_b=0.5)
     MatchTable().save_matches([match_1, match_2])
     dsm = MatchTable().get_matches()
