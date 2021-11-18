@@ -1,5 +1,6 @@
 import operator
 
+from OpenClassroom_projet4.database.player_table import PlayerTable
 from OpenClassroom_projet4.utils.utils import transform_player_list_to_dictionary
 
 
@@ -8,12 +9,14 @@ class PlayerService:
     def __init__(self, player_list=None):
         self.player_list = player_list
         self.players_dict = None
+        self.player_table = PlayerTable()
 
     def update_players_dict(self, players_dict):
         self.players_dict = players_dict
 
     def update_player_list(self, player_list):
         self.player_list = player_list
+        self.player_table.update_players(player_list)
 
     def generate_initial_player_pair(self):
         sorted_player_list = sorted(self.player_list, key=operator.attrgetter("rank"))
