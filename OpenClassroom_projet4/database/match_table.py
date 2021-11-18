@@ -30,7 +30,7 @@ class MatchTable:
         self.match_table.insert_multiple(serialized_matches)
 
     def get_matches(self):
-        serialized_matches = self.database.all()
+        serialized_matches = self.match_table.all()
         matches = []
         for serialized_match in serialized_matches:
             match = self.match_serializer.deserialize(serialized_match)
