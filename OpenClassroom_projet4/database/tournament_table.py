@@ -49,6 +49,9 @@ class TournamentTable:
         tournament = Query()
         self.tournament_table.update({'name': name}, tournament.tournament_id == tournament_id)
 
+    def update_tournament(self, tournament):
+        self.tournament_table.update(tournament)
+
     def clear_tournament_table(self):
         self.tournament_table.truncate()
 
