@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from tinydb import Query
 
 from OpenClassroom_projet4.database.round_serializer import RoundSerializer
@@ -46,9 +48,10 @@ class RoundTable:
 
 
 if __name__ == '__main__':
-    round_3 = Tour(round_id='EER7FT7ZF32874RG', round_name='Round_1', start_date='14/03/2020',
+    now = datetime.now()
+    round_3 = Tour(round_id='EER7FT7ZF32874RG', round_name='Round_1', start_date=now,
                    matches=['match_1', 'match_2', 'match_3', 'match_4'])
-    round_4 = Tour(round_id='9854UT948T458T9', round_name='Round_2', start_date='21/09/2021',
+    round_4 = Tour(round_id='9854UT948T458T9', round_name='Round_2', start_date=now,
                    matches=['match_1', 'match_2', 'match_3', 'match_4'])
     RoundTable().save_rounds([round_3, round_4])
     dsr = RoundTable().get_rounds()
