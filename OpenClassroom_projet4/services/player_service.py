@@ -19,7 +19,7 @@ class PlayerService:
 
     def update_player_list(self, player_list):
         self.player_list = player_list
-        self.player_table.update_players(player_list)
+        self.player_table.save_players(player_list)
 
     def generate_initial_player_pair(self):
         sorted_player_list = sorted(self.player_list, key=operator.attrgetter("rank"))

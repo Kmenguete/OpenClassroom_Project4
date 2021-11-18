@@ -17,7 +17,7 @@ class MatchService:
 
     def update_match_list(self, match_list):
         self.match_list = match_list
-        self.match_table.update_matches(match_list)
+        self.match_table.save_matches(match_list)
 
     def generate_matches_for_next_round(self, player_list, tournament_service):
         non_available_players = []
