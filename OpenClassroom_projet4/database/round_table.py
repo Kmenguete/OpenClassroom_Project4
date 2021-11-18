@@ -50,6 +50,12 @@ class RoundTable:
     def clear_round_table(self):
         self.round_table.truncate()
 
+    def update_round(self, round):
+        self.round_table.update(round)
+
+    def update_rounds(self, round_list):
+        self.round_table.update(round_list)
+
 
 if __name__ == '__main__':
     now = datetime.now()
