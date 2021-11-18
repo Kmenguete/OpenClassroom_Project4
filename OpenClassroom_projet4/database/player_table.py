@@ -29,6 +29,13 @@ class PlayerTable:
             serialized_players.append(serialized_player)
         self.player_table.insert_multiple(serialized_players)
 
+    def update_players(self, players: list):
+        serialized_players = []
+        for player in players:
+            serialized_player = self.player_serializer.serialize(player)
+            serialized_players.append(serialized_player)
+        self.player_table.update_multiple(serialized_players)
+
     def get_players(self):
         serialized_players = self.player_table.all()
         players = []
