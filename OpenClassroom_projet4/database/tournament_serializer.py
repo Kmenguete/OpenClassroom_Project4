@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from OpenClassroom_projet4.model.Tournament_model import Tournament
 
 
@@ -5,7 +7,9 @@ class TournamentSerializer:
 
     @staticmethod
     def serialize(tournament: Tournament):
-        serialized_tournament = {'name': tournament.name, 'place': tournament.place, 'date': tournament.date,
+        now = datetime.now()
+        date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
+        serialized_tournament = {'name': tournament.name, 'place': tournament.place, 'date': date_time,
                                  'description': tournament.description, 'number_of_rounds': tournament.number_of_rounds,
                                  'tournament_id': tournament.tournament_id, 'rounds': tournament.rounds,
                                  'players': tournament.players, 'players_dict': tournament.players_dict}
