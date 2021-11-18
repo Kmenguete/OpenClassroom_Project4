@@ -7,7 +7,7 @@ class MatchSerializer:
     def __init__(self):
         self.player_serializer = PlayerSerializer()
 
-    def serialize(self, match: Match):  
+    def serialize(self, match: Match):
         serialized_player_a = self.player_serializer.serialize(match.player_a)
         serialized_player_b = self.player_serializer.serialize(match.player_b)
         serialized_match = {'match_id': match.match_id, 'player_a': serialized_player_a,
