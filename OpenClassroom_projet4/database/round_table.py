@@ -1,22 +1,24 @@
-from tinydb import TinyDB, Query
+from tinydb import Query
 
 from OpenClassroom_projet4.database.round_serializer import RoundSerializer
 from OpenClassroom_projet4.model.Round_model import Tour
+from OpenClassroom_projet4.utils.config import Config
 
 
 class RoundTable:
 
     def __init__(self):
-        self.round_database = TinyDB('round_database.json')
+        self.database = Config.DATABASE
         self.round_serializer = RoundSerializer()
+        self.round_table = self.database.table('Round_table')
 
     def save_round(self, round):
         serialized_round = self.round_serializer.serialize(round)
-        self.round_database.insert(serialized_round)
+        self.round_table.insert(serialized_round)
 
     def get_round(self, round_id):
         round_query = Query()
-        serialized_round = self.round_database.search(round_query.round_id == round_id)
+        serialized_round = self.round_table.search(round_query.round_id == round_id)
         round = self.round_serializer.deserialize(serialized_round[0])
         return round
 
@@ -25,10 +27,10 @@ class RoundTable:
         for round in rounds:
             serialized_round = self.round_serializer.serialize(round)
             serialized_rounds.append(serialized_round)
-        self.round_database.insert_multiple(serialized_rounds)
+        self.round_table.insert_multiple(serialized_rounds)
 
     def get_rounds(self):
-        serialized_rounds = self.round_database.all()
+        serialized_rounds = self.round_table.all()
         rounds = []
         for serialized_round in serialized_rounds:
             round = self.round_serializer.deserialize(serialized_round)
@@ -37,10 +39,10 @@ class RoundTable:
     
     def update_round_name(self, name, round_id):
         round = Query()
-        self.round_database.update({'round_name': name}, round.round_id == round_id)
+        self.round_table.update({'round_name': name}, round.round_id == round_id)
 
-    def clear_database(self):
-        self.round_database.truncate()
+    def clear_round_table(self):
+        self.round_table.truncate()
 
 
 if __name__ == '__main__':
