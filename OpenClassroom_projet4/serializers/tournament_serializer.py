@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from OpenClassroom_projet4.database.player_serializer import PlayerSerializer
-from OpenClassroom_projet4.database.round_serializer import RoundSerializer
+from OpenClassroom_projet4.serializers.player_serializer import PlayerSerializer
+from OpenClassroom_projet4.serializers.round_serializer import RoundSerializer
 from OpenClassroom_projet4.model.Tournament_model import Tournament
 from OpenClassroom_projet4.utils.config import Config
 
