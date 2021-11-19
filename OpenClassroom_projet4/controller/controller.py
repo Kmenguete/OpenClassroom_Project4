@@ -116,6 +116,7 @@ class MainController:
             updated_match_list = self.get_round_results(current_round)
             self.player_service.sort_players_by_total_score()
             View.display_players(self.player_service.players_dict)
+            return updated_match_list
 
     def request_report(self):
         self.report_service.suggest_report()
