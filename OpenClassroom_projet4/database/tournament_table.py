@@ -1,6 +1,6 @@
 from datetime import datetime
 from tinydb import Query, TinyDB
-from OpenClassroom_projet4.database.tournament_serializer import TournamentSerializer
+from OpenClassroom_projet4.serializers.tournament_serializer import TournamentSerializer
 from OpenClassroom_projet4.model.Match_model import Match
 from OpenClassroom_projet4.model.Player_model import Player
 from OpenClassroom_projet4.model.Round_model import Tour
