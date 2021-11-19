@@ -1,4 +1,3 @@
-from OpenClassroom_projet4.database.match_table import MatchTable
 from OpenClassroom_projet4.model.Match_model import Match
 
 
@@ -6,7 +5,6 @@ class MatchService:
 
     def __init__(self):
         self.match_list = None
-        self.match_table = MatchTable()
 
     def create_matches_from_player_pairs(self, player_pairs):
         match_list = []
@@ -17,7 +15,6 @@ class MatchService:
 
     def update_match_list(self, match_list):
         self.match_list = match_list
-        self.match_table.save_matches(match_list)
 
     def generate_matches_for_next_round(self, player_list, tournament_service):
         non_available_players = []
