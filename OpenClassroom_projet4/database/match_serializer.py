@@ -15,8 +15,9 @@ class MatchSerializer:
                             'score_player_b': match.score_player_b}
         return serialized_match
 
-    @staticmethod
-    def deserialize(serialized_match: dict):
-        return Match(match_id=serialized_match['match_id'], player_a=serialized_match['player_a'],
-                     score_player_a=serialized_match['score_player_a'], player_b=serialized_match['player_b'],
+    def deserialize(self, serialized_match: dict):
+        deserialized_player_a = self.player_serializer.deserialize(serialized_match['player_a'])
+        deserialized_player_b = self.player_serializer.deserialize(serialized_match['player_b'])
+        return Match(match_id=serialized_match['match_id'], player_a=deserialized_player_a,
+                     score_player_a=serialized_match['score_player_a'], player_b=deserialized_player_b,
                      score_player_b=serialized_match['score_player_b'])
