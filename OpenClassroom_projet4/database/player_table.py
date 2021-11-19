@@ -1,4 +1,4 @@
-from tinydb import Query
+from tinydb import Query, TinyDB
 
 from OpenClassroom_projet4.database.player_serializer import PlayerSerializer
 from OpenClassroom_projet4.model.Player_model import Player
@@ -8,9 +8,9 @@ from OpenClassroom_projet4.utils.config import Config
 class PlayerTable:
 
     def __init__(self):
-        self.database = Config.DATABASE
+        self.database = TinyDB('db.json')
+        self.player_table = self.database.table(Config.PLAYER_TABLE_NAME)
         self.player_serializer = PlayerSerializer()
-        self.player_table = self.database.table('Player_table')
 
     def save_player(self, player):
         serialized_player = self.player_serializer.serialize(player)
@@ -29,13 +29,6 @@ class PlayerTable:
             serialized_players.append(serialized_player)
         self.player_table.insert_multiple(serialized_players)
 
-    def update_players(self, players: list):
-        serialized_players = []
-        for player in players:
-            serialized_player = self.player_serializer.serialize(player)
-            serialized_players.append(serialized_player)
-        self.player_table.update_multiple(serialized_players)
-
     def get_players(self):
         serialized_players = self.player_table.all()
         players = []
@@ -45,10 +38,14 @@ class PlayerTable:
         return players
 
     def update_first_name(self, player_id, first_name):
-        player = Query()
-        self.player_table.update({'first_name': first_name}, player.player_id == player_id)
+        Player = Query()
+        self.player_table.update({'first_name': first_name}, Player.player_id == player_id)
 
-    def clear_player_table(self):
+    def update_player_total_score(self, player_id, total_score):
+        Player = Query()
+        self.player_table.update({'total_score': total_score}, Player.player_id == player_id)
+
+    def clear_database(self):
         self.player_table.truncate()
 
 
