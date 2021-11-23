@@ -16,7 +16,7 @@ class Player:
     def get_player_id(player_id):
         if player_id is None:
             player_id = str(uuid.uuid4())
-            return player_id
+        return player_id
 
     def __getitem__(self, player):
         player = self.firstname + " " + self.last_name + " " + "rank: " + str(self.rank) + ", " + "score: " + \
