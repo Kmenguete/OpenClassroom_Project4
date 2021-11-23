@@ -10,18 +10,9 @@ class TournamentService:
         self.tournament_table = TournamentTable()
         self.tournament = None
 
-    def update_players(self, players):
-        self.tournament_table.update_players(tournament_id=self.tournament.tournament_id, players=players)
-        self.tournament = self.tournament_table.get_tournament(tournament_id=self.tournament.tournament_id)
-
     def update_tournament(self, name, place, date, description, number_of_rounds):
-        tournament = Tournament(name=name, place=place, date=date, description=description,
-                                number_of_rounds=number_of_rounds)
-        self.tournament_table.save_tournament(tournament)
-        self.tournament = self.tournament_table.get_tournament(tournament_id=tournament.tournament_id)
-
-    def update_round_matches(self, round, match_list):
-        self.tournament_table.update_round_matches(self.tournament.tournament_id, round, match_list)
+        self.tournament = Tournament(name=name, place=place, date=date, description=description,
+                                     number_of_rounds=number_of_rounds)
 
     def create_first_round(self, match_list, round_id):
         first_round = Tour(round_id, "Round 1", datetime.now(), match_list)
@@ -53,3 +44,6 @@ class TournamentService:
             index += 1
         player_b = self.tournament.players[index]
         return player_b
+
+    def save(self):
+        self.tournament_table.delete_and_save(self.tournament)
