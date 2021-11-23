@@ -9,6 +9,8 @@ from OpenClassroom_projet4.services.tournament_service import TournamentService
 from OpenClassroom_projet4.utils.config import Config
 import uuid
 
+from OpenClassroom_projet4.utils.utils import transform_player_list_to_dictionary
+
 
 class MainController:
 
@@ -85,9 +87,10 @@ class MainController:
         self.tournament_service.create_first_round(self.match_service.match_list, self.round_id)
         self.tournament_service.tournament.players = sorted_player_list
         self.player_service.update_player_list(sorted_player_list)
-        # self.tournament_service.tournament.players_dict = \
-        #     transform_player_list_to_dictionary(self.tournament_service.tournament.players)
-        # self.player_service.update_players_dict(self.tournament_service.tournament.players_dict)
+        self.tournament_service.tournament.players_dict = \
+            transform_player_list_to_dictionary(self.tournament_service.tournament.players)
+        self.player_service.update_players_dict(self.tournament_service.tournament.players_dict)
+        self.tournament_service.save()
 
     def get_initial_round_results_and_update(self, round_name="Round 1"):
         View.display_text("\n *************** Enter the results for {} **************".format(round_name))
