@@ -55,6 +55,7 @@ class MainController:
         self.tournament_service.update_tournament(name=name_choice, place=place_choice, date=date_choice,
                                                   description=description_choice,
                                                   number_of_rounds=DEFAULT_ROUNDS_NUMBER)
+        print("Tournament === " + str(self.tournament_service.tournament))
 
     def create_players(self):
         player_list = []
@@ -64,10 +65,11 @@ class MainController:
             player = Player(last_name, first_name, rank)
             player_list.append(player)
             View.display_text("\n *************** Player number {} created *****************".format(index))
-            self.tournament_service.tournament.players = player_list
-            self.player_service.player_list = player_list
-            # self.tournament_service.update_players(player_list)
-            # self.player_service.update_player_list(player_list)
+        self.tournament_service.tournament.players = player_list
+        self.player_service.player_list = player_list
+        print("Tournament === " + str(self.tournament_service.tournament))
+        # self.tournament_service.update_players(player_list)
+        # self.player_service.update_player_list(player_list)
 
     def render_all_matches(self):
         for match in self.match_service.match_list:
@@ -87,21 +89,24 @@ class MainController:
         self.tournament_service.create_first_round(self.match_service.match_list, self.round_id)
         self.tournament_service.tournament.players = sorted_player_list
         self.player_service.update_player_list(sorted_player_list)
+        # self.tournament_service.update_players(sorted_player_list)
         self.tournament_service.tournament.players_dict = \
             transform_player_list_to_dictionary(self.tournament_service.tournament.players)
         self.player_service.update_players_dict(self.tournament_service.tournament.players_dict)
         self.tournament_service.save()
+        print("Tournament === " + str(self.tournament_service.tournament))
 
     def get_initial_round_results_and_update(self, round_name="Round 1"):
         View.display_text("\n *************** Enter the results for {} **************".format(round_name))
         self.get_round_results(self.tournament_service.tournament.rounds[0])
+        self.tournament_service.save()
         # self.tournament_service.update_round_matches(self.tournament_service.tournament.rounds[0], updated_match_list)
 
     def get_round_results(self, current_round):
         """
-               :param current_round: the round that should have its matches updated
-               :return: the updated match list for the current round
-               """
+        :param current_round: the round that should have its matches updated
+        :return: the updated match list for the current round
+        """
         updated_match_list = []
         for match in current_round.matches:
             View.display_opponents(match.player_a, match.player_b)
@@ -125,6 +130,7 @@ class MainController:
                     self.player_service.seek_player_and_update_score(match.player_b, match.score_player_b)
                     updated_match_list.append(match)
                     break
+        print("Tournament === " + str(self.tournament_service.tournament))
         return updated_match_list
 
     def create_remaining_rounds(self):
@@ -133,8 +139,9 @@ class MainController:
             new_match_list = self.match_service.generate_matches_for_next_round(self.player_service.player_list,
                                                                                 self.tournament_service)
             current_round = self.tournament_service.create_next_round(index + 1, new_match_list, self.round_id)
-            self.get_round_results(current_round)
+            updated_match_list = self.get_round_results(current_round)
             self.player_service.sort_players_by_total_score()
+            self.tournament_service.tournament.players = self.player_service.player_list
             View.display_players(self.player_service.players_dict)
             self.tournament_service.save()
             self.player_service.save()
