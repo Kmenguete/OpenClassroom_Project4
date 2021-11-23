@@ -29,6 +29,14 @@ class PlayerTable:
             serialized_players.append(serialized_player)
         self.player_table.insert_multiple(serialized_players)
 
+    def save_or_update(self, players: list):
+        serialized_players = []
+        for player in players:
+            serialized_player = self.player_serializer.serialize(player)
+            serialized_players.append(serialized_player)
+            Player = Query()
+            self.player_table.upsert(serialized_player, Player.player_id == player.player_id)
+
     def get_players(self):
         serialized_players = self.player_table.all()
         players = []
@@ -53,5 +61,9 @@ if __name__ == '__main__':
     player_1 = Player(last_name='Darden', firstname='Mike', rank=5, player_id='46464646QSDFSD64', total_score=3)
     player_2 = Player(last_name='Mikaela', firstname='Arnold', rank=7, player_id='1234RF5456GH46TFD', total_score=1)
     PlayerTable().save_players([player_1, player_2])
+    dsp = PlayerTable().get_players()
+    print(dsp)
+    player_3 = Player(last_name='DardenU', firstname='Mikael', rank=5, player_id='46464646QSDFSD64', total_score=35)
+    PlayerTable().save_or_update([player_3])
     dsp = PlayerTable().get_players()
     print(dsp)
