@@ -22,13 +22,29 @@ class MainController:
 
     def start(self):
         self.create_tournament()
+        self.tournament_service.save()
+
         self.create_players()
+        self.tournament_service.save()
+        self.player_service.save()
+
         self.generate_first_round()
         self.get_initial_round_results_and_update()
+        self.tournament_service.save()
+        self.player_service.save()
+
         self.player_service.sort_players_by_total_score()
+        self.tournament_service.tournament.players = self.player_service.player_list
+        self.player_service.save()
         View.display_players(self.player_service.players_dict)
+
         self.create_remaining_rounds()
+        self.tournament_service.save()
+        self.player_service.save()
+
         self.player_service.update_rank_of_players()
+        self.tournament_service.tournament.players = self.player_service.player_list
+        self.player_service.save()
         View.display_players(self.player_service.players_dict)
         # self.request_report()
 
@@ -46,9 +62,10 @@ class MainController:
             player = Player(last_name, first_name, rank)
             player_list.append(player)
             View.display_text("\n *************** Player number {} created *****************".format(index))
-            # self.tournament_service.tournament.players = player_list
-            self.tournament_service.update_players(player_list)
-            self.player_service.update_player_list(player_list)
+            self.tournament_service.tournament.players = player_list
+            self.player_service.player_list = player_list
+            # self.tournament_service.update_players(player_list)
+            # self.player_service.update_player_list(player_list)
 
     def render_all_matches(self):
         for match in self.match_service.match_list:
@@ -74,8 +91,8 @@ class MainController:
 
     def get_initial_round_results_and_update(self, round_name="Round 1"):
         View.display_text("\n *************** Enter the results for {} **************".format(round_name))
-        updated_match_list = self.get_round_results(self.tournament_service.tournament.rounds[0])
-        self.tournament_service.update_round_matches(self.tournament_service.tournament.rounds[0], updated_match_list)
+        self.get_round_results(self.tournament_service.tournament.rounds[0])
+        # self.tournament_service.update_round_matches(self.tournament_service.tournament.rounds[0], updated_match_list)
 
     def get_round_results(self, current_round):
         """
@@ -116,6 +133,8 @@ class MainController:
             updated_match_list = self.get_round_results(current_round)
             self.player_service.sort_players_by_total_score()
             View.display_players(self.player_service.players_dict)
+            self.tournament_service.save()
+            self.player_service.save()
             return updated_match_list
 
     def request_report(self):
