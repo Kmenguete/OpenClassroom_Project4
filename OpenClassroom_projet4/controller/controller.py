@@ -94,6 +94,7 @@ class MainController:
     def get_initial_round_results_and_update(self, round_name="Round 1"):
         View.display_text("\n *************** Enter the results for {} **************".format(round_name))
         self.get_round_results(self.tournament_service.tournament.rounds[0])
+        self.match_service.save()
         self.tournament_service.save()
         self.player_service.save()
 
@@ -140,6 +141,7 @@ class MainController:
             self.player_service.sort_players_by_total_score()
             self.tournament_service.tournament.players = self.player_service.player_list
             View.display_players(self.player_service.players_dict)
+            self.match_service.save()
             self.tournament_service.save()
             self.player_service.save()
 
