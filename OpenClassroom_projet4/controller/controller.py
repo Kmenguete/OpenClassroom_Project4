@@ -41,7 +41,7 @@ class MainController:
         self.tournament_service.tournament.players = self.player_service.player_list
         self.tournament_service.save()
         View.display_players(self.player_service.players_dict)
-        # self.request_report()
+        self.request_report()
 
     def create_tournament(self):
         name_choice, place_choice, date_choice, description_choice = View.get_tournament_information()
