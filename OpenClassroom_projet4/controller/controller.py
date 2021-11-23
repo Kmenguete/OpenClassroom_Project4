@@ -133,12 +133,11 @@ class MainController:
             new_match_list = self.match_service.generate_matches_for_next_round(self.player_service.player_list,
                                                                                 self.tournament_service)
             current_round = self.tournament_service.create_next_round(index + 1, new_match_list, self.round_id)
-            updated_match_list = self.get_round_results(current_round)
+            self.get_round_results(current_round)
             self.player_service.sort_players_by_total_score()
             View.display_players(self.player_service.players_dict)
             self.tournament_service.save()
             self.player_service.save()
-            return updated_match_list
 
     def request_report(self):
         self.report_service.suggest_report()
