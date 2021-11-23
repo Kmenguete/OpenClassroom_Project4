@@ -17,15 +17,11 @@ class TournamentService:
     def create_first_round(self, match_list, round_id):
         first_round = Tour(round_id, "Round 1", datetime.now(), match_list)
         round_list = [first_round]
-        self.tournament_table.update_rounds(tournament_id=self.tournament.tournament_id, new_rounds=round_list)
-        self.tournament = self.tournament_table.get_tournament(tournament_id=self.tournament.tournament_id)
+        self.tournament.rounds = round_list
 
     def create_next_round(self, round_number, match_list, round_id):
         next_round = Tour(round_id, "Round {}".format(round_number), datetime.now(), match_list)
-        rounds = self.tournament_table.get_rounds(tournament_id=self.tournament.tournament_id)
-        rounds.append(next_round)
-        self.tournament_table.update_rounds(tournament_id=self.tournament.tournament_id, new_rounds=rounds)
-        self.tournament = self.tournament_table.get_tournament(tournament_id=self.tournament.tournament_id)
+        self.tournament.rounds.append(next_round)
         return next_round
 
     def check_if_match_already_happened(self, player_a, player_b):
