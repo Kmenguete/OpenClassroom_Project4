@@ -1,10 +1,12 @@
+from OpenClassroom_projet4.database.match_table import MatchTable
 from OpenClassroom_projet4.model.Match_model import Match
 
 
 class MatchService:
 
-    def __init__(self):
-        self.match_list = None
+    def __init__(self, match_list=None):
+        self.match_list = match_list
+        self.match_table = MatchTable()
 
     def create_matches_from_player_pairs(self, player_pairs):
         match_list = []
@@ -37,3 +39,6 @@ class MatchService:
                           player_a.last_name)
         self.update_match_list(match_list)
         return match_list
+
+    def save(self):
+        self.match_table.save_or_update(self.match_list)
