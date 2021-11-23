@@ -1,5 +1,5 @@
 from datetime import datetime
-from tinydb import Query, TinyDB
+from tinydb import Query, TinyDB, where
 from OpenClassroom_projet4.serializers.tournament_serializer import TournamentSerializer
 from OpenClassroom_projet4.model.Match_model import Match
 from OpenClassroom_projet4.model.Player_model import Player
@@ -40,6 +40,10 @@ class TournamentTable:
             tournaments.append(tournament)
         return tournaments
 
+    def delete_and_save(self, tournament):
+        self.tournament_table.remove(where('tournament_id') == tournament.tournament_id)
+        self.save_tournament(tournament)
+
     def update_name(self, tournament_id, name):
         tournament = Query()
         self.tournament_table.update({'name': name}, tournament.tournament_id == tournament_id)
@@ -64,8 +68,7 @@ class TournamentTable:
         tournament.rounds.append(round)
         self.update_rounds(tournament_id, tournament.rounds)
 
-    @staticmethod
-    def _find_round(round_id, rounds):
+    def _find_round(self, round_id, rounds):
         for round in rounds:
             if round.round_id == round_id:
                 return round
@@ -78,6 +81,7 @@ class TournamentTable:
 
 
 if __name__ == '__main__':
+
     player_1 = Player(last_name='Darden', firstname='Mike', rank=5, player_id='46464646QSDFSD64', total_score=3)
     player_2 = Player(last_name='Mikaela', firstname='Arnold', rank=7, player_id='1234RF5456GH46TFD', total_score=1)
 
@@ -92,3 +96,7 @@ if __name__ == '__main__':
     tournament_1 = Tournament(name='Tournament of Magdalena', place='Pointe-à-Pitre', date=datetime.now(),
                               description='Are you ready fo this tournament?', number_of_rounds=6,
                               tournament_id='SDFG34535GT35T', rounds=[round_3], players=[player_1, player_2])
+
+    TournamentTable().save_tournaments([tournament_1])
+    dst = TournamentTable().get_tournaments()
+    print(dst)
