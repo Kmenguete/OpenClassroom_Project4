@@ -32,20 +32,16 @@ class MainController:
 
         self.generate_first_round()
         self.get_initial_round_results_and_update()
-        self.tournament_service.save()
-        self.player_service.save()
 
         self.player_service.sort_players_by_total_score()
         self.tournament_service.tournament.players = self.player_service.player_list
-        self.player_service.save()
         View.display_players(self.player_service.players_dict)
 
         self.create_remaining_rounds()
-        self.tournament_service.save()
-        self.player_service.save()
 
         self.player_service.update_rank_of_players()
         self.tournament_service.tournament.players = self.player_service.player_list
+        self.tournament_service.save()
         self.player_service.save()
         View.display_players(self.player_service.players_dict)
         # self.request_report()
@@ -93,13 +89,14 @@ class MainController:
         self.tournament_service.tournament.players_dict = \
             transform_player_list_to_dictionary(self.tournament_service.tournament.players)
         self.player_service.update_players_dict(self.tournament_service.tournament.players_dict)
-        self.tournament_service.save()
         print("Tournament === " + str(self.tournament_service.tournament))
 
     def get_initial_round_results_and_update(self, round_name="Round 1"):
         View.display_text("\n *************** Enter the results for {} **************".format(round_name))
         self.get_round_results(self.tournament_service.tournament.rounds[0])
         self.tournament_service.save()
+        self.player_service.save()
+
         # self.tournament_service.update_round_matches(self.tournament_service.tournament.rounds[0], updated_match_list)
 
     def get_round_results(self, current_round):
@@ -139,7 +136,7 @@ class MainController:
             new_match_list = self.match_service.generate_matches_for_next_round(self.player_service.player_list,
                                                                                 self.tournament_service)
             current_round = self.tournament_service.create_next_round(index + 1, new_match_list, self.round_id)
-            updated_match_list = self.get_round_results(current_round)
+            self.get_round_results(current_round)
             self.player_service.sort_players_by_total_score()
             self.tournament_service.tournament.players = self.player_service.player_list
             View.display_players(self.player_service.players_dict)
