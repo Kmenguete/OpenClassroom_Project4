@@ -44,7 +44,7 @@ class PlayerService:
                                             reverse=True)
         # self.update_player_list(sorted_list_by_total_score)
         # self.refresh()
-        self.player_list = sorted_list_by_total_score
+        # self.player_list = sorted_list_by_total_score
         self.players_dict = transform_player_list_to_dictionary(sorted_list_by_total_score)
 
     def update_rank_of_players(self):
