@@ -24,7 +24,7 @@ class MainController:
 
     def start(self):
         self.create_tournament()
-        self.tournament_service.save()
+        # self.tournament_service.save()
 
         self.create_players()
 
