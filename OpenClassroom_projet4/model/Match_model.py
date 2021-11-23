@@ -19,7 +19,7 @@ class Match:
     def get_match_id(match_id):
         if match_id is None:
             match_id = str(uuid.uuid4())
-            return match_id
+        return match_id
 
     def __str__(self):
         return "Match_id: " + self.match_id + " " + "Match: " + str(self.player_a) + ", score: " + \
