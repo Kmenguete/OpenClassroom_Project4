@@ -41,14 +41,6 @@ class MatchTable:
         match = Query()
         self.match_database.update({'match_id': match_id}, match.match_id == match_id)
 
-    def save_or_update(self, matches: list):
-        serialized_matches = []
-        for match in matches:
-            serialized_match = self.match_serializer.serialize(match)
-            serialized_matches.append(serialized_match)
-            Match = Query()
-            self.match_database.upsert(serialized_match, Match.match_id == match.match_id)
-
     def clear_database(self):
         self.match_database.truncate()
 
