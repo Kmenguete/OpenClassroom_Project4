@@ -22,9 +22,10 @@ class TournamentTable:
     def get_tournament(self, tournament_id):
         tournament_query = Query()
         serialized_tournament = self.tournament_table.search(tournament_query.tournament_id == tournament_id)
-        tournament = self.tournament_serializer.deserialize(serialized_tournament)
-        print(tournament)
-        return tournament
+        for serialized_tournament in serialized_tournament:
+            tournament = self.tournament_serializer.deserialize(serialized_tournament)
+            print(tournament)
+            return tournament
 
     def save_tournaments(self, tournaments: list):
         serialized_tournaments = []
