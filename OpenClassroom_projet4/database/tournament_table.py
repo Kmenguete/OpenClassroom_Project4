@@ -21,7 +21,8 @@ class TournamentTable:
 
     def get_tournament(self, tournament_id):
         tournament_query = Query()
-        tournament = self.tournament_table.search(tournament_query.tournament_id == tournament_id)
+        serialized_tournament = self.tournament_table.search(tournament_query.tournament_id == tournament_id)
+        tournament = self.tournament_serializer.deserialize(serialized_tournament)
         print(tournament)
         return tournament
 
@@ -72,9 +73,8 @@ class TournamentTable:
 
     def get_players_of_one_tournament(self, tournament: Tournament):
         players_query = Query()
-        players = self.tournament_table.search(players_query.players == tournament)
-        print(players)
-        return players
+        serialized_players = self.tournament_table.search(players_query.players == tournament.players)
+        return serialized_players
 
     @staticmethod
     def _find_round(round_id, rounds):
