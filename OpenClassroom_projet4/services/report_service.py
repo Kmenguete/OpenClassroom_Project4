@@ -3,6 +3,7 @@ from OpenClassroom_projet4.database.match_table import MatchTable
 from OpenClassroom_projet4.database.player_table import PlayerTable
 from OpenClassroom_projet4.database.round_table import RoundTable
 from OpenClassroom_projet4.database.tournament_table import TournamentTable
+from OpenClassroom_projet4.utils.config import Config
 
 
 class ReportService:
@@ -16,9 +17,11 @@ class ReportService:
 
     @staticmethod
     def get_sorted_player_list_alphabetically(player_list):
-        player_list = player_list.sort()
-        print(player_list)
-        return player_list
+        sorted_player_list = [player_list[player_index].last_name for player_index in
+                              range(0, Config.DEFAULT_PLAYERS_NUMBER)]
+        sorted_player_list_alphabetically = sorted(sorted_player_list)
+        print(sorted_player_list_alphabetically)
+        return sorted_player_list_alphabetically
 
     @staticmethod
     def get_sorted_player_list_by_rank(player_list):
