@@ -32,7 +32,7 @@ class Tournament:
     def __str__(self):
         return "name: " + self.name + ", " + "place: " + self.place + ", " + "description: " + self.description + ", " \
                + " number_of_rounds: " + str(self.number_of_rounds) + ", " + "tournament_id: " + self.tournament_id + \
-               " rounds: " + str(self.rounds)
+               " rounds: " + str(self.rounds) + " " + str(self.date)
 
     def __repr__(self):
         return self.__str__()
