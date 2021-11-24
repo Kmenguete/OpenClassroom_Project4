@@ -31,10 +31,9 @@ class ReportService:
         way_of_display_players = input('If you want players sorted by rank. type A: \n '
                                        'If you want players sorted alphabetically. type B: ')
         if way_of_display_players == 'A':
-            self.tournament_table.get_players_of_one_tournament(tournament)
-            self.get_sorted_player_list_by_rank(self.tournament_table.get_players_of_one_tournament(tournament))
+            self.get_sorted_player_list_by_rank(tournament.players)
         elif way_of_display_players == 'B':
-            self.get_sorted_player_list_alphabetically(self.tournament_table.get_players_of_one_tournament(tournament))
+            self.get_sorted_player_list_alphabetically(tournament.players)
         else:
             print('Invalid value, you should answer the question by A or B.')
 
@@ -65,7 +64,6 @@ class ReportService:
                 if multiple_choice_question == 'A':
                     self.tournament_table.get_tournaments()
                 elif multiple_choice_question == 'B':
-                    # self.select_one_tournament()
                     self.way_of_display_player_list()
                 elif multiple_choice_question == 'C':
                     self.select_one_tournament()
