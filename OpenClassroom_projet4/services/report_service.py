@@ -17,8 +17,8 @@ class ReportService:
 
     @staticmethod
     def get_sorted_player_list_alphabetically(player_list):
-        sorted_player_list = [player_list[player_index].last_name for player_index in
-                              range(0, Config.DEFAULT_PLAYERS_NUMBER)]
+        sorted_player_list = [player_list[player_index].last_name + " " + player_list[player_index].firstname
+                              for player_index in range(0, Config.DEFAULT_PLAYERS_NUMBER)]
         sorted_player_list_alphabetically = sorted(sorted_player_list)
         print(sorted_player_list_alphabetically)
         return sorted_player_list_alphabetically
