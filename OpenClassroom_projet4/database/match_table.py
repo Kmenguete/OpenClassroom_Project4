@@ -35,6 +35,8 @@ class MatchTable:
         for serialized_match in serialized_matches:
             match = self.match_serializer.deserialize(serialized_match)
             matches.append(match)
+        for match in matches:
+            print(match)
         return matches
 
     def update_match(self, match_id):

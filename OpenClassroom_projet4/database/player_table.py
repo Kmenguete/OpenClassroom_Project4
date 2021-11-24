@@ -43,6 +43,8 @@ class PlayerTable:
         for serialized_player in serialized_players:
             player = self.player_serializer.deserialize(serialized_player)
             players.append(player)
+        for player in players:
+            print(player)
         return players
 
     def update_first_name(self, player_id, first_name):

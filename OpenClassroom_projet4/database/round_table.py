@@ -37,6 +37,8 @@ class RoundTable:
         for serialized_round in serialized_rounds:
             round = self.round_serializer.deserialize(serialized_round)
             rounds.append(round)
+        for round in rounds:
+            print(round)
         return rounds
 
     def update_round_name(self, name, round_id):
