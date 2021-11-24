@@ -21,8 +21,7 @@ class TournamentTable:
 
     def get_tournament(self, tournament_id):
         tournament_query = Query()
-        serialized_tournament = self.tournament_table.search(tournament_query.tournament_id == tournament_id)
-        tournament = self.tournament_serializer.deserialize(serialized_tournament)
+        tournament = self.tournament_table.search(tournament_query.tournament_id == tournament_id)
         print(tournament)
         return tournament
 
