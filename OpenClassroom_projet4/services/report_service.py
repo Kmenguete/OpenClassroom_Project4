@@ -3,6 +3,7 @@ from OpenClassroom_projet4.database.match_table import MatchTable
 from OpenClassroom_projet4.database.player_table import PlayerTable
 from OpenClassroom_projet4.database.round_table import RoundTable
 from OpenClassroom_projet4.database.tournament_table import TournamentTable
+from OpenClassroom_projet4.model.Tournament_model import DEFAULT_ROUNDS_NUMBER
 from OpenClassroom_projet4.utils.config import Config
 
 
@@ -44,6 +45,11 @@ class ReportService:
         tournament = self.select_one_tournament()
         print(tournament.rounds)
 
+    def get_matches_of_one_tournament(self):
+        tournament = self.select_one_tournament()
+        for round_index in range(0, DEFAULT_ROUNDS_NUMBER):
+            print(tournament.rounds[round_index].matches)
+
     def select_one_tournament(self):
         self.tournament_table.get_tournaments()
         tournament = self.tournament_table.get_tournament(tournament_id=input('Please select one '
@@ -75,7 +81,6 @@ class ReportService:
                 elif multiple_choice_question == 'C':
                     self.get_rounds_of_one_tournament()
                 elif multiple_choice_question == 'D':
-                    self.select_one_tournament()
-                    self.match_table.get_matches()
+                    self.get_matches_of_one_tournament()
                 else:
                     print('Invalid value, you should answer the question by either A,B,C or D.')
