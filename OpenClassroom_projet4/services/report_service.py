@@ -1,5 +1,4 @@
 import operator
-
 from OpenClassroom_projet4.database.match_table import MatchTable
 from OpenClassroom_projet4.database.player_table import PlayerTable
 from OpenClassroom_projet4.database.round_table import RoundTable
@@ -7,6 +6,7 @@ from OpenClassroom_projet4.database.tournament_table import TournamentTable
 
 
 class ReportService:
+
     def __init__(self):
 
         self.player_table = PlayerTable()
@@ -38,11 +38,13 @@ class ReportService:
 
     def select_one_tournament(self):
         self.tournament_table.get_tournaments()
-        tournament_selection = input('Please select one tournament by their id: ')
-        if tournament_selection not in self.tournament_table.get_tournaments():
+        tournament = self.tournament_table.get_tournament(tournament_id=input('Please select one '
+                                                                              'tournament by their id: '))
+        tournament_selection = tournament
+        if tournament_selection != tournament:
             print('The tournament you selected does not exist. Please, select a tournament that exist.')
         else:
-            self.tournament_table.get_tournament(tournament_selection)
+            self.tournament_table.get_tournament(tournament)
 
     def suggest_report(self):
         report_suggestion = input('Do you want a report? Yes/No: ')
