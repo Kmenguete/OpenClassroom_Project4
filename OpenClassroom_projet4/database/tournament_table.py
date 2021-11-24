@@ -70,7 +70,14 @@ class TournamentTable:
         tournament.rounds.append(round)
         self.update_rounds(tournament_id, tournament.rounds)
 
-    def _find_round(self, round_id, rounds):
+    def get_players_of_one_tournament(self, tournament: Tournament):
+        players_query = Query()
+        players = self.tournament_table.search(players_query.players == tournament)
+        print(players)
+        return players
+
+    @staticmethod
+    def _find_round(round_id, rounds):
         for round in rounds:
             if round.round_id == round_id:
                 return round
