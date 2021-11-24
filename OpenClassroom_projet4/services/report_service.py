@@ -40,6 +40,10 @@ class ReportService:
         else:
             print('Invalid value, you should answer the question by A or B.')
 
+    def get_rounds_of_one_tournament(self):
+        tournament = self.select_one_tournament()
+        print(tournament.rounds)
+
     def select_one_tournament(self):
         self.tournament_table.get_tournaments()
         tournament = self.tournament_table.get_tournament(tournament_id=input('Please select one '
@@ -69,8 +73,7 @@ class ReportService:
                 elif multiple_choice_question == 'B':
                     self.way_of_display_player_list()
                 elif multiple_choice_question == 'C':
-                    self.select_one_tournament()
-                    self.round_table.get_rounds()
+                    self.get_rounds_of_one_tournament()
                 elif multiple_choice_question == 'D':
                     self.select_one_tournament()
                     self.match_table.get_matches()
