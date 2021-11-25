@@ -8,6 +8,9 @@ from OpenClassroom_projet4.utils.config import Config
 
 
 class ReportService:
+    """ The service package implement the business logic of the application. The report service is responsible to
+    generate a report when the user request it.
+    """
 
     def __init__(self):
 
