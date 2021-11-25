@@ -35,7 +35,3 @@ class Player:
         return self.firstname + " " + self.last_name + " " + "rank: " + str(self.rank) + ", " + "score: " + \
                str(self.total_score) + " " + other.firstname + " " + other.last_name + " " + "rank: " + \
                str(other.rank) + ", " + "score: " + str(other.total_score)
-
-    def update_rank(self, player_list, index):
-        self.rank = index + 1
-        return player_list[index]
