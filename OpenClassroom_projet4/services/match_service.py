@@ -2,6 +2,9 @@ from OpenClassroom_projet4.model.Match_model import Match
 
 
 class MatchService:
+    """ The service package implement the business logic of the application. The match service is responsible to create
+    matches during the running of the tournament.
+    """
 
     def __init__(self):
         self.match_list = None
