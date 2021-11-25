@@ -1,7 +1,6 @@
 from OpenClassroom_projet4.View.view import View
 from OpenClassroom_projet4.model.Player_model import Player
 from OpenClassroom_projet4.model.Tournament_model import DEFAULT_ROUNDS_NUMBER
-from OpenClassroom_projet4.model.tinydb_backend import DataBase
 from OpenClassroom_projet4.services.match_service import MatchService
 from OpenClassroom_projet4.services.player_service import PlayerService
 from OpenClassroom_projet4.services.report_service import ReportService
@@ -18,7 +17,6 @@ class MainController:
         self.player_service = PlayerService()
         self.match_service = MatchService()
         self.tournament_service = TournamentService()
-        self.database = DataBase()
         self.report_service = ReportService()
         self.round_id = str(uuid.uuid4())
 
