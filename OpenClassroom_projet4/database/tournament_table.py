@@ -9,6 +9,12 @@ from OpenClassroom_projet4.utils.config import Config
 
 
 class TournamentTable:
+    """ The tournament table stores tournament object in the database. To store a tournament we need to store players
+    object and rounds object(to store rounds object, we first need to store matches object because a round consist of a
+    list of matches(And each match need at least two players object to be stored)). In the database, a tournament object
+    consist of a tournament table, a rounds table, a matches table and a players table. Each table are required to store
+    properly a tournament in the database.
+    """
 
     def __init__(self):
         self.database = TinyDB('db.json')
