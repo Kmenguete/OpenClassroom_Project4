@@ -1,5 +1,9 @@
 
 class Config:
+    """ The Config object store every constant variables of the application, except the DEFAULT_ROUNDS_NUMBER which is
+    an attribute of the tournament object.
+    """
+
     DEFAULT_PLAYERS_NUMBER = 8
     PLAYER_A_EXPECTED_INPUT = 'A'
     PLAYER_B_EXPECTED_INPUT = 'B'
