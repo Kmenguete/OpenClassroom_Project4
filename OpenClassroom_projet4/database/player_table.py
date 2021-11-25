@@ -6,6 +6,10 @@ from OpenClassroom_projet4.utils.config import Config
 
 
 class PlayerTable:
+    """ Here, this is the player table. The player table is a class that store players object in the database
+    and gather them in a table named "player_table". In the database, there is a table for each object(a table for the
+    tournament, a table for the rounds and so on.).
+    """
 
     def __init__(self):
         self.database = TinyDB('db.json')
