@@ -2,6 +2,8 @@ import uuid
 
 
 class Player:
+    """ The player model is the class that let to create a player object(in other words, an instance of class Player).
+    """
 
     def __init__(self, last_name, firstname, rank, total_score=0, player_id=None, date_of_birth=None, sex=None):
         self.player_id = self.get_player_id(player_id)
