@@ -7,6 +7,17 @@ from OpenClassroom_projet4.utils.config import Config
 
 
 class TournamentSerializer:
+    """ The serialization is the way that let us to store our class object in the database. The package used to store
+    data is called "TinyDB". During the development of the application, we found that this package was not very
+    suitable for this project but this package was required by the customer. To store a tournament object,
+    we should convert it into a dictionary. The serialization is the process of converting an object into a
+    dictionary and to get this object back to the program(in particular when a report is requested), we deserialize
+    it(meaning we convert our dictionary into an object). To serialize a tournament object, we should first serialize
+    rounds object and players object because a tournament consist of rounds and players. To serialized rounds object,
+    we should first serialize matches object because a round consist of a list of matches. And finally, to serialize
+    a match object, we should first serialize players because a match object consist of two players and their score.
+    Each object depends each other in order to be properly stored in the database.
+    """
 
     def __init__(self):
         self.round_serializer = RoundSerializer()
