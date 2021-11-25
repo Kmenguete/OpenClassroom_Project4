@@ -4,6 +4,9 @@ from datetime import date
 
 
 class View:
+    """ The View file is responsible to interact with the user and to collect data from the user and update them to the
+    controller that will store this data in the database.
+    """
 
     @staticmethod
     def display_text(text_to_display):
@@ -32,8 +35,8 @@ class View:
 
     @staticmethod
     def display_match_information(match):
-        return "Match: " + match.player_a.firstname + " " + match.player_a.last_name + " vs " + match.player_b.firstname + \
-               " " + match.player_b.last_name
+        return "Match: " + match.player_a.firstname + " " + match.player_a.last_name + " vs " + \
+               match.player_b.firstname + " " + match.player_b.last_name
 
     @staticmethod
     def display_opponents(player_a, player_b):
