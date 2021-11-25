@@ -5,6 +5,11 @@ from OpenClassroom_projet4.utils.utils import transform_player_list_to_dictionar
 
 
 class PlayerService:
+    """ The service package implement the business logic of the application. The player service update the player
+    list and the player dictionary(for example when the total score of a player change, retrieve the score of a
+    player in a match or update the rank of players at the end of the tournament). The player service is responsible
+    of the manipulation of players.
+    """
 
     def __init__(self, player_list=None):
         self.player_table = PlayerTable()
