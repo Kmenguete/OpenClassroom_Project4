@@ -6,6 +6,9 @@ from OpenClassroom_projet4.utils.config import Config
 
 
 class MatchTable:
+    """ The match table is the table where match object are stored in the database. To store a match object,
+    we first need to store two players because a match consist of two players and their score.
+    """
 
     def __init__(self):
         self.database = TinyDB('db.json')
