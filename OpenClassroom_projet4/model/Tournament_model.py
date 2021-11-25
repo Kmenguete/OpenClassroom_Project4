@@ -11,6 +11,12 @@ def create_list_dict(players_list):
 
 
 class Tournament:
+    """ The tournament model is the class that let the user to create a tournament. Once, the user created a tournament,
+    a tournament object is created from the tournament model. At the beginning of the tournament, when it is created by
+    the user, rounds does not exist yet. rounds and players will be progressively attached to the tournament during the
+    running of the application. Each time, players, rounds and matches are created, they are automatically attached to
+    the tournament.
+    """
     def __init__(self, name, place, date, description, number_of_rounds=DEFAULT_ROUNDS_NUMBER, tournament_id=None,
                  rounds=None, players=None, players_dict=None):
         self.name = name
