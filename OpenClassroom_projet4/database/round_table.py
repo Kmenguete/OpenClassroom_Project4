@@ -8,6 +8,9 @@ from OpenClassroom_projet4.utils.config import Config
 
 
 class RoundTable:
+    """ The round table stores rounds object of a tournament. To store a round, we need to store matches and to store
+    matches, we need to store players. In fact, each table, depend each other to save properly, an entire tournament.
+    """
 
     def __init__(self):
         self.database = TinyDB('db.json')
