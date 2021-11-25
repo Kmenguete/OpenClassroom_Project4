@@ -2,6 +2,10 @@ import uuid
 
 
 class Match:
+    """ The match model is the class that let to create a match object. It is not possible to create a match object
+    without creating players object. This is why, in the running of the tournament, we first ask the user to create
+    players before the application creates the first round and generate matches.
+    """
     def __init__(self, player_a, player_b, score_player_a=None, score_player_b=None,  match_id=None):
         self.match_id = self.get_match_id(match_id)
         self.player_a = player_a
