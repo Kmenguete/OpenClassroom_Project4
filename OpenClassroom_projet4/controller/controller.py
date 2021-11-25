@@ -12,6 +12,24 @@ from OpenClassroom_projet4.utils.utils import transform_player_list_to_dictionar
 
 
 class MainController:
+    """ The MainController class ensures a proper running of the tournament. To work, the MainController class uses
+    different modules and packages. First of all, we ask the user to create a tournament. Once the tournament is
+    created, we ask him/her to create players. When players are created, the application create automatically a first
+    round. In our application, a round consist of a math list, a date, a round name and a round id. The first round is
+    voluntarily separated from other rounds because the logic to which matches are generated in the firs round is very
+    different from the logic to which matches are generated on other rounds. Once a first round is created with his
+    matches, we then, ask the user to enter the result of each match. The result of the match is known only when a
+    match(chess match) is finished. Once, the user entered results, every players are sorted by their total score. Next,
+    the second round is generated and we ask the user to enter the result of matches. And then, we repeat the process
+    until the end of the tournament. For each round, the user enter the results of matches, players are sorted by their
+    total scores and the next round start. When the tournament is finished, the rank is updating according the total
+    score of each players. When two players has the same total score then we promote the former rank of both players.
+    And finally, when a tournament is finished, it is saved in a database named "db.json". At the end of the tournament,
+    we suggest a report to the user. If the user does not want a report then the application stop running otherwise the
+    user choose which information he/she wants from the database(list of tournaments, list of players of a tournament...
+    .etc.). When the user have chosen which information he/she wants from the report, the application displays the
+    information requested by the user and then stop running.
+    """
 
     def __init__(self):
         self.player_service = PlayerService()
