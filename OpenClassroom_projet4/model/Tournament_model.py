@@ -3,13 +3,6 @@ import uuid
 DEFAULT_ROUNDS_NUMBER = 4
 
 
-def create_list_dict(players_list):
-    new_players_dict = {}
-    for player in players_list:
-        new_players_dict[player.player_id] = player.total_score
-    return new_players_dict
-
-
 class Tournament:
     """ The tournament model is the class that let the user to create a tournament. Once, the user created a tournament,
     a tournament object is created from the tournament model. At the beginning of the tournament, when it is created by
