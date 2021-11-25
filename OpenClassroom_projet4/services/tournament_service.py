@@ -5,6 +5,10 @@ from OpenClassroom_projet4.model.Tournament_model import Tournament
 
 
 class TournamentService:
+    """ The service package implement the business logic of the application. The tournament service is responsible to
+    create rounds, and to make sure that two players never meet each other twice in a match during the tournament.
+    the tournament service is also responsible to save the tournament when it is finished.
+    """
 
     def __init__(self):
         self.tournament_table = TournamentTable()
