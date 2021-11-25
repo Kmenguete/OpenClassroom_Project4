@@ -3,6 +3,14 @@ from OpenClassroom_projet4.model.Match_model import Match
 
 
 class MatchSerializer:
+    """ The serialization is the way that let us to store our class object in the database. The package used to store
+    data is called "TinyDB". During the development of the application, we found that this package was not very suitable
+    for this project but this package was required by the customer. To store a match object, we should convert it into
+    a dictionary. The serialization is the process of converting an object into a dictionary and to get this object
+    back to the program (in particular when a report is requested), we deserialize it(meaning we convert our dictionary
+    into an object). To serialize a match object, we should first serialize two players because a match consist of two
+    players and their score.
+    """
 
     def __init__(self):
         self.player_serializer = PlayerSerializer()
