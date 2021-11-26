@@ -8,7 +8,7 @@
 7. The business logic
 8. The database and the report 
 9. About the utils 
-## 1. About the application
+### 1. About the application
 ***
 The application is a chess tournament management system that aim to play
 a chess tournament. The goal is not to play chess but to manage chess matches
@@ -61,4 +61,14 @@ If the user want a report, the application will propose some information
 to display from a tournament selected by the user. When the user choose which 
 information to display from which tournament, the application will display
 the information requested by the user and then stop running. Finally, if the
-user doesn't want a report, the application will stop running.
+user doesn't want a report, the application will stop running. 
+***
+### 2. About the MVC Pattern
+***
+The MVC pattern is a software architecture model that was required for this
+project. MVC stand for Model-View-Controller. An application that implement
+the MVC pattern is more maintainable and bugs are easier to detect and fix.
+On the next chapters of this README file, I will explain in more details 
+each Part of the pattern(the model, the view and the controller). 
+***
+### 3. Required libraries, packages and modules 
