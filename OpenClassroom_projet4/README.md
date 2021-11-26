@@ -50,4 +50,8 @@ The customer asked us to set the default rounds number to 4. When the last round
 is finished, the rank of each player is updated according the final sort of 
 players by their total score. If at the end of the tournament the 8th player
 get the higher total score then he become the 1st player and win the tournament.
-
+If at the 3rd round, the 8th player get a higher total score than the 2nd player,
+the 8th player become better ranked than the 2nd player. And if at the end of the
+tournament the 8th player and the 2nd player get the same total score, the 8th
+player will remain better ranked than the 2nd player because the 8th player got 
+a higher total score than the 2nd player at the previous round.
