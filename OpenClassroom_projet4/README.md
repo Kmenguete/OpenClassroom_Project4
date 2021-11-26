@@ -39,4 +39,8 @@ and create the next round and matches for the next round. For this next round,
 the user repeat the process of the first round(registering the score of each
 player in each match). After that players are sorted by their score, the third 
 round and the third round's matches are created and the user repeat the process again.
-The process is repeated until the last round.
+The process is repeated until the last round. 
+
+During the progress of the tournament the score of each player is accumulated.
+If in a tournament there is 4 rounds and a player win every match, then, at 
+the end of the tournament, the player get 4 points.
