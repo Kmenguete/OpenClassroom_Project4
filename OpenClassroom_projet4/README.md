@@ -95,4 +95,12 @@ from the user and the controller updates information to the model that will
 store this information to the database.
 ***
 ### 6. The controller
+*** 
+The controller is responsible to ensure that the application run properly.
+This is the controller that implement every algorithm(from methods) 
+responsible for the progress of the tournament(such as create the next round,
+cumulate scores of players, generate matches....etc.).
 ***
+### 7. The business logic
+***
+
