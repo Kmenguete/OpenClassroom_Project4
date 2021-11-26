@@ -121,3 +121,8 @@ that two players never meet twice in the tournament. This is also at the
 tournament service level that the tournament is saved in the database 
 when it is finished.
 
+The report service is responsible to generate a report when the user 
+request it.
+***
+### 8. The database and the report
+***
