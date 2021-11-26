@@ -106,5 +106,13 @@ cumulate scores of players, generate matches....etc.).
 The business logic is the part of the application that deal with specific
 end user's requirement. The business logic can be seen as the 
 business/domain knowledge. In other words, the industry for which we are
-developing an application(healthcare, finance, sport, energy....etc.).
-The match_service 
+developing an application(healthcare, finance, sport, energy....etc.). 
+
+The match service is responsible to implement the swiss tournament system
+for generating matches(each player plays with a player that have the 
+same level as him/her). 
+
+The player service is responsible to register score of players and 
+accumulate them. The player service is also responsible to sort 
+players by their score/rank and update rank at the end of the tournament.
+
