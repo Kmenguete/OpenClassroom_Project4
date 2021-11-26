@@ -43,8 +43,8 @@ The process is repeated until the last round.
 
 During the progress of the tournament the score of each player is accumulated.
 If in a tournament there is 4 rounds and a player win every match, then, at 
-the end of the tournament, the player get 4 points. At the end of the last round.
-The application perform the final sort of players according their total score.
+the end of the tournament, the player get 4 points. At the end of the last round,
+the application perform the final sort of players according their total score.
 If two players haves the same total score then the rank of the last round is promoted.
 The customer asked us to set the default rounds number to 4. When the last round 
 is finished, the rank of each player is updated according the final sort of 
