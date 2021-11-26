@@ -103,4 +103,8 @@ cumulate scores of players, generate matches....etc.).
 ***
 ### 7. The business logic
 ***
-
+The business logic is the part of the application that deal with specific
+end user's requirement. The business logic can be seen as the 
+business/domain knowledge. In other words, the industry for which we are
+developing an application(healthcare, finance, sport, energy....etc.).
+The match_service 
