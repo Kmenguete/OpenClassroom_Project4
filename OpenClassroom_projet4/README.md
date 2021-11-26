@@ -83,7 +83,16 @@ System may be more suitable for this project.
 As introduced earlier, the MVC pattern play a very important role in the 
 maintainability of the code and the possibility to detect and fix bugs 
 faster. The model is the part of the application that let to instantiate
-the different object of the program such as a tournament, players, rounds
+the different objects of the program such as a tournament, players, rounds
 or matches. 
 ***
-### 5. The View
+### 5. The View 
+***
+The view is the part of the application that is responsible to interact with
+the user. The view display information to the user and collect data communicated
+by the user. Next, the view notify to the controller, the data collected 
+from the user and the controller updates information to the model that will
+store this information to the database.
+***
+### 6. The controller
+***
