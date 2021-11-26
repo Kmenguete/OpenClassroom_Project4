@@ -141,4 +141,11 @@ converting a dictionary into an object. Consequently, the tournament serializer
 serialize and deserialize tournaments objects, round serializer serialize and
 deserialize rounds and so on. By the same way, to serialize a match, you should
 first serialize two players, to serialize a round, you should first serialize
-matches and so on.
+matches and so on. 
+***
+### 9. About the utils 
+***
+The utils package store constant variables and functions that does not deal
+with business logic but that are necessary for a proper running of the 
+application.
+***
