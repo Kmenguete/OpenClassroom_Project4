@@ -116,3 +116,8 @@ The player service is responsible to register score of players and
 accumulate them. The player service is also responsible to sort 
 players by their score/rank and update rank at the end of the tournament.
 
+The tournament service is responsible to create rounds and to make sure
+that two players never meet twice in the tournament. This is also at the
+tournament service level that the tournament is saved in the database 
+when it is finished.
+
