@@ -6,7 +6,7 @@
 5. The View
 6. The controller
 7. The business logic
-8. The database and the report 
+8. The database  
 9. About the utils 
 ### 1. About the application
 ***
@@ -124,5 +124,15 @@ when it is finished.
 The report service is responsible to generate a report when the user 
 request it.
 ***
-### 8. The database and the report
-***
+### 8. The database 
+*** 
+The database consist of 4 tables. There is the tournament table, the round
+table, the match table and the player table. As the name indicate it, the 
+tournament table stores tournaments, the round table stores rounds, the match
+table stores matches and the players table stores players. Each table is
+attached together. To store a match, you should first store two players,
+to store a round, you should store matches, to store a tournament, you should
+store rounds and players. Each object depend on each other and should always
+be stored together. And each object to be stored, need to be serialized first.
+Each object need to be deserialized, if we want to load them back while
+generating a report.
