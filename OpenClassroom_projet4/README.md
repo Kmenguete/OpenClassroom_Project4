@@ -133,6 +133,12 @@ table stores matches and the players table stores players. Each table is
 attached together. To store a match, you should first store two players,
 to store a round, you should store matches, to store a tournament, you should
 store rounds and players. Each object depend on each other and should always
-be stored together. And each object to be stored, need to be serialized first.
+be stored together. And each object, to be stored, need to be serialized first.
 Each object need to be deserialized, if we want to load them back while
-generating a report.
+generating a report. The serialization is the process of converting an object
+into a dictionary. Conversely, the deserialization is the process of 
+converting a dictionary into an object. Consequently, the tournament serializer
+serialize and deserialize tournaments objects, round serializer serialize and
+deserialize rounds and so on. By the same way, to serialize a match, you should
+first serialize two players, to serialize a round, you should first serialize
+matches and so on.
