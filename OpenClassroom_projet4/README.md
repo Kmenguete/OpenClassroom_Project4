@@ -55,3 +55,10 @@ the 8th player become better ranked than the 2nd player. And if at the end of th
 tournament the 8th player and the 2nd player get the same total score, the 8th
 player will remain better ranked than the 2nd player because the 8th player got 
 a higher total score than the 2nd player at the previous round.
+
+When the tournament is finished. The application suggest a report to the user.
+If the user want a report, the application will propose some information
+to display from a tournament selected by the user. When the user choose which 
+information to display from which tournament, the application will display
+the information requested by the user and then stop running. Finally, if the
+user doesn't want a report, the application will stop running.
