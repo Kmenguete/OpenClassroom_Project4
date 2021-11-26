@@ -27,4 +27,16 @@ Once a tournament is created, we ask the user to enter the firstname and
 lastname of players. The default players number is set to 8. Thus, the user
 should register 8 players. The default rank of players is determined by
 the order in which the players were created. For the business logic of the
-tournament, the default rank play an important role.
+tournament, the default rank play an important role. 
+
+Once players have been created, the application create the first round with
+matches. When a chess match is finished, the user register the score of each 
+player in the system. In a chess match, the winner get 1 point and the loser
+get 0 point. If there is no winner, each player get 0.5 point. When the user
+finished registering the score for each chess match the application sort players
+by their score(if two players have the same score, then the rank is promoted) 
+and create the next round and matches for the next round. For this next round,
+the user repeat the process of the first round(registering the score of each
+player in each match). After that players are sorted by their score, the third 
+round and the third round's matches are created and the user repeat the process again.
+The process is repeated until the last round.
