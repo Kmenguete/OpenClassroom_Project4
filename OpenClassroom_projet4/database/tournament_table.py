@@ -71,6 +71,9 @@ class TournamentTable:
             View.display_text(tournament)
 
     def delete_and_save(self, tournament):
+        """ The delete_and_save method is used to update the tournament during the progress of it while the user plays
+        a tournament.
+                                                                            """
         self.tournament_table.remove(where('tournament_id') == tournament.tournament_id)
         self.save_tournament(tournament)
 
