@@ -38,9 +38,9 @@ class ReportsController:
                 View.display_text('Invalid value, enter one of the menu numbers')
 
     def another_report_suggestion(self):
-        """ The another_report_suggestion is called when the user got the information requested from the report service.
-        Concretely, this method ask the user whether he/she wants another report or not.
-                                """
+        """ The another_report_suggestion method is called when the user got the information requested from the
+        report service. Concretely, this method ask the user whether he/she wants another report or not.
+        """
         while True:
             choice = View.get_choice("Do you want another report? Yes/No: ")
             if choice == 'Yes':
