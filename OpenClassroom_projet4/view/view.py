@@ -9,6 +9,13 @@ class View:
     """
 
     @staticmethod
+    def display_initial_menu():
+        print("Select which action you wish to perform")
+        print('1 -> Start a new tournament\n'
+              '2 -> Generate reports\n '
+              )
+
+    @staticmethod
     def display_text(text_to_display):
         print(text_to_display)
 
