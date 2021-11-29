@@ -10,11 +10,12 @@ class MainController:
         self.reports_controller = ReportsController()
 
     def start(self):
-        View.display_initial_menu()
-        choice = View.get_choice("Choice: ")
-        if choice == '1':
-            self.game_controller.run_game()
-        elif choice == '2':
-            self.reports_controller.request_report()
-        else:
-            View.display_text("Invalid choice")
+        while True:
+            View.display_initial_menu()
+            choice = View.get_choice("Choice: ")
+            if choice == '1':
+                self.game_controller.run_game()
+            elif choice == '2':
+                self.reports_controller.request_report()
+            else:
+                View.display_text("Invalid choice")
