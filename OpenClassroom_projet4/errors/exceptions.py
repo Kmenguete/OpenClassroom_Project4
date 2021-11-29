@@ -1,0 +1,3 @@
+
+class TournamentDoesNotExistError(Exception):
+    pass
