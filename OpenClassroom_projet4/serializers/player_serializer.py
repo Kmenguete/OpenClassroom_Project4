@@ -1,4 +1,4 @@
-from OpenClassroom_projet4.model.Player_model import Player
+from OpenClassroom_projet4.model.player_model import Player
 
 
 class PlayerSerializer:

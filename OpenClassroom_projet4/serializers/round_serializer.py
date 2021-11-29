@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from OpenClassroom_projet4.serializers.match_serializer import MatchSerializer
-from OpenClassroom_projet4.model.Round_model import Tour
+from OpenClassroom_projet4.model.round_model import Tour
 from OpenClassroom_projet4.utils.config import Config
 
 

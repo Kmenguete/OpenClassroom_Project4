@@ -1,5 +1,5 @@
 from OpenClassroom_projet4.serializers.player_serializer import PlayerSerializer
-from OpenClassroom_projet4.model.Match_model import Match
+from OpenClassroom_projet4.model.match_model import Match
 
 
 class MatchSerializer:
