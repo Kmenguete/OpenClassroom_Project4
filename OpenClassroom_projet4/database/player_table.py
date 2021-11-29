@@ -42,6 +42,8 @@ class PlayerTable:
         self.player_table.insert_multiple(serialized_players)
 
     def save_or_update(self, players: list):
+        """ The save_or_update method is used to save or update a list of players.
+                                            """
         serialized_players = []
         for player in players:
             serialized_player = self.player_serializer.serialize(player)
@@ -50,6 +52,8 @@ class PlayerTable:
             self.player_table.upsert(serialized_player, Player.player_id == player.player_id)
 
     def get_players(self):
+        """ The get_players method is used to retrieve a list of players from the database.
+                                            """
         serialized_players = self.player_table.all()
         players = []
         for serialized_player in serialized_players:
@@ -57,25 +61,13 @@ class PlayerTable:
             players.append(player)
         return players
 
-    def update_first_name(self, player_id, first_name):
-        Player = Query()
-        self.player_table.update({'first_name': first_name}, Player.player_id == player_id)
-
     def update_player_total_score(self, player_id, total_score):
+        """ The update_player_total_score method is used to update the total score of players in the database.
+                                                    """
         Player = Query()
         self.player_table.update({'total_score': total_score}, Player.player_id == player_id)
 
     def clear_database(self):
+        """ The clear_database method is used to delete every player object in the database.
+                                                            """
         self.player_table.truncate()
-
-
-if __name__ == '__main__':
-    player_1 = Player(last_name='Darden', firstname='Mike', rank=5, player_id='46464646QSDFSD64', total_score=3)
-    player_2 = Player(last_name='Mikaela', firstname='Arnold', rank=7, player_id='1234RF5456GH46TFD', total_score=1)
-    PlayerTable().save_players([player_1, player_2])
-    dsp = PlayerTable().get_players()
-    print(dsp)
-    player_3 = Player(last_name='DardenU', firstname='Mikael', rank=5, player_id='46464646QSDFSD64', total_score=35)
-    PlayerTable().save_or_update([player_3])
-    dsp = PlayerTable().get_players()
-    print(dsp)
