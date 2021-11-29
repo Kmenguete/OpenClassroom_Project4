@@ -14,13 +14,9 @@ class ReportsController:
         View.display_report_menu()
         choice = View.get_report_choice()
         if choice == '1':
-            players = self.report_service.get_sorted_player_list_alphabetically()
-            View.display_players(players)
-            self.another_report_suggestion()
+            self.manage_report_choice_1()
         elif choice == '2':
-            players = self.report_service.get_sorted_player_list_by_rank()
-            View.display_players(players)
-            self.another_report_suggestion()
+            self.manage_report_choice_2()
         elif choice == '3':
             tournaments = self.report_service.get_all_tournaments()
             View.display_tournaments(tournaments)
@@ -68,6 +64,18 @@ class ReportsController:
                 exit()
             else:
                 View.display_text("Invalid answer. You should answer the question by Yes or No")
+
+    def manage_report_choice_1(self):
+        while True:
+            players = self.report_service.get_sorted_player_list_alphabetically()
+            View.display_players(players)
+            self.another_report_suggestion()
+
+    def manage_report_choice_2(self):
+        while True:
+            players = self.report_service.get_sorted_player_list_by_rank()
+            View.display_players(players)
+            self.another_report_suggestion()
 
     def manage_report_choice_5(self):
         while True:
