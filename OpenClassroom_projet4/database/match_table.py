@@ -11,7 +11,7 @@ class MatchTable:
     """
 
     def __init__(self):
-        self.database = TinyDB('db.json')
+        self.database = TinyDB(Config.DATABASE_NAME)
         self.match_database = self.database.table(Config.MATCH_TABLE_NAME)
         self.match_serializer = MatchSerializer()
 

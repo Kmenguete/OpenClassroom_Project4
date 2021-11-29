@@ -13,7 +13,7 @@ class RoundTable:
     """
 
     def __init__(self):
-        self.database = TinyDB('db.json')
+        self.database = TinyDB(Config.DATABASE_NAME)
         self.round_database = self.database.table(Config.ROUND_TABLE_NAME)
         self.round_serializer = RoundSerializer()
 

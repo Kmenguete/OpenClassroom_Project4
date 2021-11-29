@@ -17,7 +17,7 @@ class TournamentTable:
     """
 
     def __init__(self):
-        self.database = TinyDB('db.json')
+        self.database = TinyDB(Config.DATABASE_NAME)
         self.tournament_table = self.database.table(Config.TOURNAMENT_TABLE_NAME)
         self.tournament_serializer = TournamentSerializer()
 
@@ -30,7 +30,6 @@ class TournamentTable:
         serialized_tournament = self.tournament_table.search(tournament_query.tournament_id == tournament_id)
         for serialized_tournament in serialized_tournament:
             tournament = self.tournament_serializer.deserialize(serialized_tournament)
-            print(tournament)
             return tournament
 
     def save_tournaments(self, tournaments: list):
@@ -46,8 +45,6 @@ class TournamentTable:
         for serialized_tournament in serialized_tournaments:
             tournament = self.tournament_serializer.deserialize(serialized_tournament)
             tournaments.append(tournament)
-        for tournament in tournaments:
-            print(tournament)
         return tournaments
 
     def delete_and_save(self, tournament):

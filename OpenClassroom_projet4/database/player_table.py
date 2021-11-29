@@ -12,7 +12,7 @@ class PlayerTable:
     """
 
     def __init__(self):
-        self.database = TinyDB('db.json')
+        self.database = TinyDB(Config.DATABASE_NAME)
         self.player_table = self.database.table(Config.PLAYER_TABLE_NAME)
         self.player_serializer = PlayerSerializer()
 
@@ -47,8 +47,6 @@ class PlayerTable:
         for serialized_player in serialized_players:
             player = self.player_serializer.deserialize(serialized_player)
             players.append(player)
-        for player in players:
-            print(player)
         return players
 
     def update_first_name(self, player_id, first_name):
