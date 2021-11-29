@@ -59,14 +59,15 @@ class ReportsController:
             View.display_text('Invalid value, enter one of the menu numbers')
 
     def another_report_suggestion(self):
-        choice = View.get_choice("Do you want another report? Yes/No: ")
-        if choice == 'Yes':
-            self.request_report()
-        elif choice == 'No':
-            View.display_text("Thank you for your answer !!! Good bye !!!")
-            exit()
-        else:
-            View.display_text("Invalid answer. You should answer the question by Yes or No")
+        while True:
+            choice = View.get_choice("Do you want another report? Yes/No: ")
+            if choice == 'Yes':
+                self.request_report()
+            elif choice == 'No':
+                View.display_text("Thank you for your answer !!! Good bye !!!")
+                exit()
+            else:
+                View.display_text("Invalid answer. You should answer the question by Yes or No")
 
     def manage_report_choice_5(self):
         while True:
