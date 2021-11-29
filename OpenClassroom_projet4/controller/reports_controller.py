@@ -5,12 +5,18 @@ from OpenClassroom_projet4.services.report_service import ReportService
 
 
 class ReportsController:
+    """ The Reports controller aim to manage the reports requested by the user.
+        """
 
     def __init__(self):
+        """ The init method import every modules required for the reports.
+                """
         self.report_service = ReportService()
         self.tournament_table = TournamentTable()
 
     def request_report(self):
+        """ The request_report method display the report menu.
+                        """
         while True:
             View.display_report_menu()
             choice = View.get_report_choice()
@@ -32,6 +38,9 @@ class ReportsController:
                 View.display_text('Invalid value, enter one of the menu numbers')
 
     def another_report_suggestion(self):
+        """ The another_report_suggestion is called when the user got the information requested from the report service.
+        Concretely, this method ask the user whether he/she wants another report or not.
+                                """
         while True:
             choice = View.get_choice("Do you want another report? Yes/No: ")
             if choice == 'Yes':
