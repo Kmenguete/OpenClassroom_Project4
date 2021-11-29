@@ -18,18 +18,9 @@ class ReportsController:
         elif choice == '2':
             self.manage_report_choice_2()
         elif choice == '3':
-            tournaments = self.report_service.get_all_tournaments()
-            View.display_tournaments(tournaments)
-            self.another_report_suggestion()
+            self.manage_report_choice_3()
         elif choice == '4':
-            self.tournament_table.display_tournaments()
-            tournament_id = View.get_tournament_id()
-            try:
-                players = self.report_service.get_tournament_players_in_alphabetical_order(tournament_id)
-                View.display_players(players)
-                self.another_report_suggestion()
-            except TournamentDoesNotExistError:
-                View.display_invalid_tournament_id_message(tournament_id)
+            self.manage_report_choice_4()
         elif choice == '5':
             self.manage_report_choice_5()
             self.another_report_suggestion()
@@ -76,6 +67,23 @@ class ReportsController:
             players = self.report_service.get_sorted_player_list_by_rank()
             View.display_players(players)
             self.another_report_suggestion()
+
+    def manage_report_choice_3(self):
+        while True:
+            tournaments = self.report_service.get_all_tournaments()
+            View.display_tournaments(tournaments)
+            self.another_report_suggestion()
+
+    def manage_report_choice_4(self):
+        while True:
+            self.tournament_table.display_tournaments()
+            tournament_id = View.get_tournament_id()
+            try:
+                players = self.report_service.get_tournament_players_in_alphabetical_order(tournament_id)
+                View.display_players(players)
+                self.another_report_suggestion()
+            except TournamentDoesNotExistError:
+                View.display_invalid_tournament_id_message(tournament_id)
 
     def manage_report_choice_5(self):
         while True:
