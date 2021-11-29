@@ -43,10 +43,12 @@ class ReportService:
         return sorted(players, key=operator.attrgetter("rank"))
 
     def get_tournament_players_in_alphabetical_order(self, tournament_id):
+        self.tournament_table.get_tournaments()
         tournament = self.get_tournament(tournament_id)
         return self.__sort_alphabetically(tournament.players)
 
     def get_tournament_players_sorted_by_rank(self, tournament_id):
+        self.tournament_table.get_tournaments()
         tournament = self.get_tournament(tournament_id)
         return self.__sort_by_rank(tournament.players)
 
@@ -54,10 +56,12 @@ class ReportService:
         return self.tournament_table.get_tournaments()
 
     def get_tournament_rounds(self, tournament_id):
+        self.tournament_table.get_tournaments()
         tournament = self.get_tournament(tournament_id)
         return tournament.rounds
 
     def get_all_tournament_matches(self, tournament_id):
+        self.tournament_table.get_tournaments()
         tournament = self.get_tournament(tournament_id)
         match_list = []
         for round in tournament.rounds:
