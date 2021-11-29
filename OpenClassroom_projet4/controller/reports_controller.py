@@ -11,24 +11,25 @@ class ReportsController:
         self.tournament_table = TournamentTable()
 
     def request_report(self):
-        View.display_report_menu()
-        choice = View.get_report_choice()
-        if choice == '1':
-            self.manage_report_choice_1()
-        elif choice == '2':
-            self.manage_report_choice_2()
-        elif choice == '3':
-            self.manage_report_choice_3()
-        elif choice == '4':
-            self.manage_report_choice_4()
-        elif choice == '5':
-            self.manage_report_choice_5()
-        elif choice == '6':
-            self.manage_report_choice_6()
-        elif choice == '7':
-            self.manage_report_choice_7()
-        else:
-            View.display_text('Invalid value, enter one of the menu numbers')
+        while True:
+            View.display_report_menu()
+            choice = View.get_report_choice()
+            if choice == '1':
+                self.manage_report_choice_1()
+            elif choice == '2':
+                self.manage_report_choice_2()
+            elif choice == '3':
+                self.manage_report_choice_3()
+            elif choice == '4':
+                self.manage_report_choice_4()
+            elif choice == '5':
+                self.manage_report_choice_5()
+            elif choice == '6':
+                self.manage_report_choice_6()
+            elif choice == '7':
+                self.manage_report_choice_7()
+            else:
+                View.display_text('Invalid value, enter one of the menu numbers')
 
     def another_report_suggestion(self):
         while True:
