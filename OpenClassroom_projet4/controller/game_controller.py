@@ -120,8 +120,9 @@ class GameController:
 
     def get_round_results(self, current_round):
         """
-        :param current_round: the round that should have its matches updated
-        :return: the updated match list for the current round
+        This method let the user to enter matches results for every rounds. Further, this method is called in the
+        get_initial_round_results_and_update method in order to enter the results of the first round. This method
+        is also called in the create_remaining_rounds method that deal with the other rounds of the tournament.
         """
         updated_match_list = []
         for match in current_round.matches:
@@ -150,6 +151,10 @@ class GameController:
         return updated_match_list
 
     def create_remaining_rounds(self):
+        """
+        This method let the user to enter matches results for every rounds from round 2 to the last round. In this
+        method, we especially call get_round_results method(as in the get_initial_round_results_and_update method).
+        """
         for index in range(1, self.tournament_service.tournament.number_of_rounds):
             View.display_text("\n *************** Enter the results for Round {} **************".format(index + 1))
             new_match_list = self.match_service.generate_matches_for_next_round(self.player_service.player_list,
