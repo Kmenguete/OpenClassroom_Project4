@@ -53,6 +53,7 @@ class ReportsController:
 
     def manage_report_choice_5(self):
         while True:
+            self.tournament_table.display_tournaments()
             tournament_id = View.get_tournament_id()
             try:
                 players = self.report_service.get_tournament_players_sorted_by_rank(tournament_id)
