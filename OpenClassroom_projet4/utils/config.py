@@ -15,3 +15,5 @@ class Config:
     TOURNAMENT_TABLE_NAME = "tournaments"
 
     DATE_STRING_FORMAT = "%m/%d/%Y, %H:%M:%S"
+
+    DATABASE_NAME = "../database/db.json"
