@@ -1,3 +1,4 @@
+from OpenClassroom_projet4.database.tournament_table import TournamentTable
 from OpenClassroom_projet4.errors.exceptions import TournamentDoesNotExistError
 from OpenClassroom_projet4.view.view import View
 from OpenClassroom_projet4.services.report_service import ReportService
@@ -7,6 +8,7 @@ class ReportsController:
 
     def __init__(self):
         self.report_service = ReportService()
+        self.tournament_table = TournamentTable()
 
     def request_report(self):
         View.display_report_menu()
@@ -21,6 +23,7 @@ class ReportsController:
             tournaments = self.report_service.get_all_tournaments()
             View.display_tournaments(tournaments)
         elif choice == '4':
+            self.tournament_table.display_tournaments()
             tournament_id = View.get_tournament_id()
             try:
                 players = self.report_service.get_tournament_players_in_alphabetical_order(tournament_id)
@@ -30,6 +33,7 @@ class ReportsController:
         elif choice == '5':
             self.manage_report_choice_5()
         elif choice == '6':
+            self.tournament_table.display_tournaments()
             tournament_id = View.get_tournament_id()
             try:
                 rounds = self.report_service.get_tournament_rounds(tournament_id)
@@ -37,6 +41,7 @@ class ReportsController:
             except TournamentDoesNotExistError:
                 View.display_invalid_tournament_id_message(tournament_id)
         elif choice == '7':
+            self.tournament_table.display_tournaments()
             tournament_id = View.get_tournament_id()
             try:
                 games = self.report_service.get_all_tournament_matches(tournament_id)
