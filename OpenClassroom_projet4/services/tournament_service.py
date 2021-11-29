@@ -1,7 +1,7 @@
 from datetime import datetime
 from OpenClassroom_projet4.database.tournament_table import TournamentTable
-from OpenClassroom_projet4.model.Round_model import Tour
-from OpenClassroom_projet4.model.Tournament_model import Tournament
+from OpenClassroom_projet4.model.round_model import Tour
+from OpenClassroom_projet4.model.tournament_model import Tournament
 
 
 class TournamentService:

@@ -4,7 +4,7 @@ from OpenClassroom_projet4.database.player_table import PlayerTable
 from OpenClassroom_projet4.database.round_table import RoundTable
 from OpenClassroom_projet4.database.tournament_table import TournamentTable
 from OpenClassroom_projet4.errors.exceptions import TournamentDoesNotExistError
-from OpenClassroom_projet4.model.Tournament_model import DEFAULT_ROUNDS_NUMBER
+from OpenClassroom_projet4.model.tournament_model import DEFAULT_ROUNDS_NUMBER
 
 
 class ReportService:
