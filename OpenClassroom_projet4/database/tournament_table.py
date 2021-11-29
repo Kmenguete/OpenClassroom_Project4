@@ -18,15 +18,21 @@ class TournamentTable:
     """
 
     def __init__(self):
+        """ The init method is used to import every modules required to save and update tournaments.
+                                    """
         self.database = TinyDB(Config.DATABASE_NAME)
         self.tournament_table = self.database.table(Config.TOURNAMENT_TABLE_NAME)
         self.tournament_serializer = TournamentSerializer()
 
     def save_tournament(self, tournament):
+        """ The save_tournament method is used to save one tournament in the database.
+                                            """
         serialized_tournament = self.tournament_serializer.serialize(tournament)
         self.tournament_table.insert(serialized_tournament)
 
     def get_tournament(self, tournament_id):
+        """ The get_tournament method is used to retrieve one tournament from the database.
+                                                    """
         tournament_query = Query()
         serialized_tournament = self.tournament_table.search(tournament_query.tournament_id == tournament_id)
         for serialized_tournament in serialized_tournament:
@@ -34,6 +40,8 @@ class TournamentTable:
             return tournament
 
     def save_tournaments(self, tournaments: list):
+        """ The save_tournaments method is used to save a list of tournaments.
+                                                    """
         serialized_tournaments = []
         for tournament in tournaments:
             serialized_tournament = self.tournament_serializer.serialize(tournament)
@@ -41,6 +49,8 @@ class TournamentTable:
         self.tournament_table.insert_multiple(serialized_tournaments)
 
     def get_tournaments(self):
+        """ The get_tournaments method is used to retrieve a list of tournaments from the database.
+                                                            """
         serialized_tournaments = self.tournament_table.all()
         tournaments = []
         for serialized_tournament in serialized_tournaments:
@@ -49,6 +59,9 @@ class TournamentTable:
         return tournaments
 
     def display_tournaments(self):
+        """ The display_tournaments method is used to display tournaments that the user can select when he/she
+        requests a report from a specific tournament.
+                                                                    """
         serialized_tournaments = self.tournament_table.all()
         tournaments = []
         for serialized_tournament in serialized_tournaments:
