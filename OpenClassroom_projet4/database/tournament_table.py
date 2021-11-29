@@ -6,6 +6,7 @@ from OpenClassroom_projet4.model.player_model import Player
 from OpenClassroom_projet4.model.round_model import Tour
 from OpenClassroom_projet4.model.tournament_model import Tournament
 from OpenClassroom_projet4.utils.config import Config
+from OpenClassroom_projet4.view.view import View
 
 
 class TournamentTable:
@@ -46,6 +47,15 @@ class TournamentTable:
             tournament = self.tournament_serializer.deserialize(serialized_tournament)
             tournaments.append(tournament)
         return tournaments
+
+    def display_tournaments(self):
+        serialized_tournaments = self.tournament_table.all()
+        tournaments = []
+        for serialized_tournament in serialized_tournaments:
+            tournament = self.tournament_serializer.deserialize(serialized_tournament)
+            tournaments.append(tournament)
+        for tournament in tournaments:
+            View.display_text(tournament)
 
     def delete_and_save(self, tournament):
         self.tournament_table.remove(where('tournament_id') == tournament.tournament_id)
