@@ -52,24 +52,35 @@ class ReportsController:
                 View.display_text("Invalid answer. You should answer the question by Yes or No")
 
     def manage_report_choice_1(self):
+        """ If the user choose the question 1, the report service will display the list of every players of every
+        tournaments sorted alphabetically.
+                                        """
         while True:
             players = self.report_service.get_sorted_player_list_alphabetically()
             View.display_players(players)
             self.another_report_suggestion()
 
     def manage_report_choice_2(self):
+        """ If the user choose the question 2, the report service will display the list of every players of every
+                tournaments sorted by rank.
+                                                """
         while True:
             players = self.report_service.get_sorted_player_list_by_rank()
             View.display_players(players)
             self.another_report_suggestion()
 
     def manage_report_choice_3(self):
+        """ If the user choose the question 3, the report service will display the list of every tournaments.
+                                                        """
         while True:
             tournaments = self.report_service.get_all_tournaments()
             View.display_tournaments(tournaments)
             self.another_report_suggestion()
 
     def manage_report_choice_4(self):
+        """ If the user choose the question 4, the report service will display the list of every players for a
+        specific tournament sorted alphabetically.
+                                                                """
         while True:
             self.tournament_table.display_tournaments()
             tournament_id = View.get_tournament_id()
@@ -81,6 +92,9 @@ class ReportsController:
                 View.display_invalid_tournament_id_message(tournament_id)
 
     def manage_report_choice_5(self):
+        """ If the user choose the question 5, the report service will display the list of every players for a
+                specific tournament sorted by rank.
+                                                                        """
         while True:
             self.tournament_table.display_tournaments()
             tournament_id = View.get_tournament_id()
@@ -92,6 +106,9 @@ class ReportsController:
                 View.display_invalid_tournament_id_message(tournament_id)
 
     def manage_report_choice_6(self):
+        """ If the user choose the question 6, the report service will display the list of every rounds for a specific
+        tournament.
+                                                                                """
         while True:
             self.tournament_table.display_tournaments()
             tournament_id = View.get_tournament_id()
@@ -103,6 +120,9 @@ class ReportsController:
                 View.display_invalid_tournament_id_message(tournament_id)
 
     def manage_report_choice_7(self):
+        """ If the user choose the question 7, the report service will display the list of every matches for a specific
+                tournament.
+                                                                                        """
         while True:
             self.tournament_table.display_tournaments()
             tournament_id = View.get_tournament_id()
