@@ -4,7 +4,7 @@ from datetime import date
 
 
 class View:
-    """ The View file is responsible to interact with the user and to collect data from the user and update them to the
+    """ The view file is responsible to interact with the user and to collect data from the user and update them to the
     controller that will store this data in the database.
     """
 
@@ -46,3 +46,38 @@ class View:
     @staticmethod
     def display_players(players_dict):
         print(players_dict)
+
+    @staticmethod
+    def display_report_menu():
+        print('1 -> All players sorted alphabetically\n'
+              '2 -> All players sorted by rank\n'
+              '3 -> All tournaments\n'
+              '4 -> All players sorted alphabetically for a specific tournament:\n'
+              '5 -> All players sorted by rank for a specific tournament:\n'
+              '6 -> All the rounds in a specific tournament:\n'
+              '7 -> All the games in a specific tournament:\n'
+              )
+
+    @staticmethod
+    def get_report_choice():
+        return input("Choice: ")
+
+    @staticmethod
+    def display_tournaments(tournaments):
+        print(tournaments)
+
+    @staticmethod
+    def get_tournament_id():
+        return input("Enter the tournament ID: ")
+
+    @staticmethod
+    def display_invalid_tournament_id_message(tournament_id):
+        print("No tournament found with ID: {}".format(tournament_id))
+
+    @staticmethod
+    def display_rounds(rounds):
+        print(rounds)
+
+    @staticmethod
+    def display_all_games(games):
+        print(games)
