@@ -18,7 +18,7 @@ class PlayerTable:
         self.player_serializer = PlayerSerializer()
 
     def save_player(self, player):
-        """ The save_match method is used to save one player in the database.
+        """ The save_player method is used to save one player in the database.
                             """
         serialized_player = self.player_serializer.serialize(player)
         self.player_table.insert(serialized_player)
