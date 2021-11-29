@@ -16,7 +16,7 @@ class MatchTable:
         self.match_serializer = MatchSerializer()
 
     def save_match(self, match):
-        """ The save_match method is used to save one match.
+        """ The save_match method is used to save one match in the database.
                     """
         serialized_match = self.match_serializer.serialize(match)
         self.match_database.insert(serialized_match)
