@@ -1,9 +1,9 @@
 from datetime import datetime
 from tinydb import Query, TinyDB
 from OpenClassroom_projet4.serializers.round_serializer import RoundSerializer
-from OpenClassroom_projet4.model.Match_model import Match
-from OpenClassroom_projet4.model.Player_model import Player
-from OpenClassroom_projet4.model.Round_model import Tour
+from OpenClassroom_projet4.model.match_model import Match
+from OpenClassroom_projet4.model.player_model import Player
+from OpenClassroom_projet4.model.round_model import Tour
 from OpenClassroom_projet4.utils.config import Config
 
 
