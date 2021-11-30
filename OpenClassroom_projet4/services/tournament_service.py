@@ -39,6 +39,9 @@ class TournamentService:
         return next_round
 
     def check_if_match_already_happened(self, player_a, player_b):
+        """ The check_if_match_already_happened method checks if two players has already met each other in the
+        tournament.
+                                            """
         already_happened = False
         for tour in self.tournament.rounds:
             for match in tour.matches:
@@ -48,6 +51,9 @@ class TournamentService:
         return already_happened
 
     def get_next_available_player(self, player_a, next_player_index, non_available_players):
+        """ The get_next_available_player method seeks for players that are both available(None of them already got a
+        match in the same round) and that never met each other since the beginning of the tournament.
+                                                    """
         index = next_player_index
         while self.check_if_match_already_happened(player_a, self.tournament.players[index]) or \
                 self.tournament.players[index] in non_available_players:
@@ -56,4 +62,6 @@ class TournamentService:
         return player_b
 
     def save(self):
+        """ The save method updates and saves the tournament during the progress of it.
+                                                            """
         self.tournament_table.delete_and_save(self.tournament)
