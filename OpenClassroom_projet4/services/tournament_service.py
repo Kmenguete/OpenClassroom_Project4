@@ -11,19 +11,29 @@ class TournamentService:
     """
 
     def __init__(self):
+        """ The init method import the TournamentTable object(required to save each Tournament object created by the
+        user) and give the attributes tournament to TournamentService object.
+            """
         self.tournament_table = TournamentTable()
         self.tournament = None
 
     def update_tournament(self, name, place, date, description, number_of_rounds):
+        """ The update_tournament method updates the tournament each time the user creates one.
+                    """
         self.tournament = Tournament(name=name, place=place, date=date, description=description,
                                      number_of_rounds=number_of_rounds)
 
     def create_first_round(self, match_list, round_id):
+        """ The create_first_round method creates the first round once the user created every players required to
+        start the tournament.
+                            """
         first_round = Tour(round_id, "Round 1", datetime.now(), match_list)
         round_list = [first_round]
         self.tournament.rounds = round_list
 
     def create_next_round(self, round_number, match_list, round_id):
+        """ The create_next_round method creates the next rounds(from round 2 to the last round).
+                                    """
         next_round = Tour(round_id, "Round {}".format(round_number), datetime.now(), match_list)
         self.tournament.rounds.append(next_round)
         return next_round
