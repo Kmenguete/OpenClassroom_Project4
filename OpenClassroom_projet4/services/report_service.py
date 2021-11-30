@@ -43,7 +43,7 @@ class ReportService:
 
     @staticmethod
     def __sort_alphabetically(players):
-        """ The sort_alphabetically method is called to sort players alphabetically in
+        """ The __sort_alphabetically method is called to sort players alphabetically in
         get_sorted_player_list_alphabetically method.
                                            """
         sorted_player_list = [players[player_index].last_name + " " + players[player_index].firstname
@@ -52,13 +52,22 @@ class ReportService:
 
     @staticmethod
     def __sort_by_rank(players):
+        """ The __sort_by_rank method is called to sort players alphabetically in
+                get_sorted_player_list_by_rank method.
+                                                   """
         return sorted(players, key=operator.attrgetter("rank"))
 
     def get_tournament_players_in_alphabetical_order(self, tournament_id):
+        """ The get_tournament_players_in_alphabetical_order method let the user to get the list of all players for a
+        specific tournament sorted alphabetically.
+                                   """
         tournament = self.get_tournament(tournament_id)
         return self.__sort_alphabetically(tournament.players)
 
     def get_tournament_players_sorted_by_rank(self, tournament_id):
+        """ The get_tournament_players_sorted_by_rank method let the user to get the list of all players for a
+                specific tournament sorted by rank.
+                                           """
         tournament = self.get_tournament(tournament_id)
         return self.__sort_by_rank(tournament.players)
 
