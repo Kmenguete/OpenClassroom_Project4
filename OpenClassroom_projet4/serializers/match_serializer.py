@@ -13,9 +13,14 @@ class MatchSerializer:
     """
 
     def __init__(self):
+        """ The init method import the Player Serializer object because to serialize a match, you should first
+        serialize 2 players.
+            """
         self.player_serializer = PlayerSerializer()
 
     def serialize(self, match: Match):
+        """ The serialize method serializes Match object and players object.
+                    """
         serialized_player_a = self.player_serializer.serialize(match.player_a)
         serialized_player_b = self.player_serializer.serialize(match.player_b)
         serialized_match = {'match_id': match.match_id, 'player_a': serialized_player_a,
@@ -24,6 +29,8 @@ class MatchSerializer:
         return serialized_match
 
     def deserialize(self, serialized_match: dict):
+        """ The deserialize method deserializes Match object and players object.
+                            """
         deserialized_player_a = self.player_serializer.deserialize(serialized_match['player_a'])
         deserialized_player_b = self.player_serializer.deserialize(serialized_match['player_b'])
         return Match(match_id=serialized_match['match_id'], player_a=deserialized_player_a,
