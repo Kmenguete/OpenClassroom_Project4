@@ -77,10 +77,6 @@ class TournamentTable:
         self.tournament_table.remove(where('tournament_id') == tournament.tournament_id)
         self.save_tournament(tournament)
 
-    def update_name(self, tournament_id, name):
-        tournament = Query()
-        self.tournament_table.update({'name': name}, tournament.tournament_id == tournament_id)
-
     def get_rounds(self, tournament_id):
         tournament_query = Query()
         serialized_tournament = self.tournament_table.search(tournament_query.tournament_id == tournament_id)
