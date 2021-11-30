@@ -12,6 +12,8 @@ class PlayerSerializer:
 
     @staticmethod
     def serialize(player: Player):
+        """ The serialize method serializes Player object.
+            """
         serialized_player = {'first_name': player.firstname, 'last_name': player.last_name, 'rank': player.rank,
                              'player_id': player.player_id, 'total_score': player.total_score, 'date_of_birth':
                              player.date_of_birth}
@@ -19,6 +21,8 @@ class PlayerSerializer:
 
     @staticmethod
     def deserialize(serialized_player: dict):
+        """ The deserialize method deserializes Player object.
+                    """
         return Player(last_name=serialized_player['last_name'], firstname=serialized_player['first_name'],
                       rank=serialized_player['rank'], player_id=serialized_player['player_id'],
                       total_score=serialized_player['total_score'], date_of_birth=serialized_player['date_of_birth'])
