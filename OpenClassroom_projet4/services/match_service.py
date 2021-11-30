@@ -7,9 +7,13 @@ class MatchService:
     """
 
     def __init__(self):
+        """ The init method gives a match_list attribute to Match Service object.
+            """
         self.match_list = None
 
     def create_matches_from_player_pairs(self, player_pairs):
+        """ The create_matches_from_player_pairs method creates matches of the first round.
+                    """
         match_list = []
         for player_pair in player_pairs:
             match = Match(player_pair[0], player_pair[1])
@@ -17,9 +21,13 @@ class MatchService:
         self.update_match_list(match_list)
 
     def update_match_list(self, match_list):
+        """ The update_match_list method updates matches from one round to another.
+                            """
         self.match_list = match_list
 
     def generate_matches_for_next_round(self, player_list, tournament_service):
+        """ The generate_matches_for_next_round generate matches for next rounds(from round 2 to the last round).
+                                    """
         non_available_players = []
         match_list = []
         for index_player in range(len(player_list) - 1):
