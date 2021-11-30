@@ -17,9 +17,14 @@ class RoundSerializer:
     """
 
     def __init__(self):
+        """ The init method import the Match Serializer object because to serialize a Round, you should first
+                serialize matches object.
+                    """
         self.match_serializer = MatchSerializer()
 
     def serialize(self, round: Tour):
+        """ The serialize method serializes Round object and matches object.
+                            """
         serialized_matches = []
         for match in round.matches:
             serialized_match = self.match_serializer.serialize(match)
@@ -31,6 +36,8 @@ class RoundSerializer:
         return serialized_round
 
     def deserialize(self, serialized_round: dict):
+        """ The deserialize method deserializes Round object and matches object.
+                                    """
         deserialized_matches = []
         for serialized_match in serialized_round['matches']:
             match = self.match_serializer.deserialize(serialized_match)
