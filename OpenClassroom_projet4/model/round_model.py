@@ -15,12 +15,18 @@ class Tour:
     matches: list
 
     def set_matches(self, matches):
+        """ The set_matches method let to attach a match_list to Tour object.
+            """
         self.matches = matches
 
     def __str__(self):
+        """ The str method gives a string representation of Tour object when it is printed.
+                    """
         return "round_id: " + self.round_id + ", " + "round_name: " + self.round_name + ", " + "start_date: " + \
                str(self.start_date) + ", " + "match_list: " + str(self.matches)
 
     def __repr__(self):
+        """ The repr method gives a representation of Tour object when it is printed.
+                            """
         return "round_id: " + self.round_id + ", " + "round_name: " + self.round_name + ", " + "start_date: " + \
                str(self.start_date) + ", " + "match_list: " + str(self.matches)
