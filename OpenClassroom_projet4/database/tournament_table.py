@@ -105,17 +105,25 @@ class TournamentTable:
         self.update_rounds(tournament_id, tournament.rounds)
 
     def get_players_of_one_tournament(self, tournament: Tournament):
+        """ The get_players_of_one_tournament method is used to get players of one tournament when the user ask for it
+        in the report service.
+                                                                                                            """
         players_query = Query()
         serialized_players = self.tournament_table.search(players_query.players == tournament.players)
         return serialized_players
 
     @staticmethod
     def _find_round(round_id, rounds):
+        """ The _find_round method is used to search a specific round by their id.
+                                                                                                                    """
         for round in rounds:
             if round.round_id == round_id:
                 return round
 
     def update_players(self, tournament_id, players):
+        """ The update_players method is used to attach players to a specific tournament when the user create a
+        tournament and their players.
+                                                                                                                    """
         Tournament = Query()
         serialized_players, serialized_player_dict = self.tournament_serializer.serialize_tournament_players(players)
         self.tournament_table.update({'players': serialized_players, 'players_dict': serialized_player_dict},
