@@ -91,20 +91,34 @@ class View:
 
     @staticmethod
     def display_tournaments(tournaments):
+        """ The display_tournaments method displays the list of tournaments when the user requests it in the
+        report menu.
+                                                                                            """
         print(tournaments)
 
     @staticmethod
     def get_tournament_id():
+        """ The get_tournament_id method asks the user to select a tournament by it id in the report menu.
+                                                                                                    """
         return input("Enter the tournament ID: ")
 
     @staticmethod
     def display_invalid_tournament_id_message(tournament_id):
+        """ The display_invalid_tournament_id_message method tells the user that he/she typed an invalid tournament id
+        when he/she types an invalid tournament id in the report menu.
+                                                                                                            """
         print("No tournament found with ID: {}".format(tournament_id))
 
     @staticmethod
     def display_rounds(rounds):
+        """ The display_rounds method displays the list of all rounds for a specific tournament selected by the user
+        in the report menu.
+                                                                                                                """
         print(rounds)
 
     @staticmethod
     def display_all_games(games):
+        """ The display_rounds method displays the list of all matches for a specific tournament selected by the user
+                in the report menu.
+                                                                                                                 """
         print(games)
