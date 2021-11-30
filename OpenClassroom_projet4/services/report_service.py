@@ -12,28 +12,40 @@ class ReportService:
     """
 
     def __init__(self):
-
+        """ The init method import every required modules to generate reports.
+           """
         self.player_table = PlayerTable()
         self.match_table = MatchTable()
         self.round_table = RoundTable()
         self.tournament_table = TournamentTable()
 
     def get_tournament(self, tournament_id):
+        """ The get_tournament method let the user to select a specific tournament in the report menu.
+                   """
         tournament = self.tournament_table.get_tournament(tournament_id)
         if tournament is None:
             raise TournamentDoesNotExistError("This tournament id does not exist")
         return tournament
 
     def get_sorted_player_list_alphabetically(self):
+        """ The get_sorted_player_list_alphabetically method let the user to get the list of all players from all
+        tournament sorted alphabetically.
+                           """
         players = self.player_table.get_players()
         return self.__sort_alphabetically(players)
 
     def get_sorted_player_list_by_rank(self):
+        """ The get_sorted_player_list_by_rank method let the user to get the list of all players from all
+                tournament sorted by rank.
+                                   """
         players = self.player_table.get_players()
-        return sorted(players, key=operator.attrgetter("rank"))
+        return self.__sort_by_rank(players)
 
     @staticmethod
     def __sort_alphabetically(players):
+        """ The sort_alphabetically method is called to sort players alphabetically in
+        get_sorted_player_list_alphabetically method.
+                                           """
         sorted_player_list = [players[player_index].last_name + " " + players[player_index].firstname
                               for player_index in range(0, len(players))]
         return sorted(sorted_player_list)
