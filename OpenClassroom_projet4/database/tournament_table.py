@@ -128,25 +128,3 @@ class TournamentTable:
         serialized_players, serialized_player_dict = self.tournament_serializer.serialize_tournament_players(players)
         self.tournament_table.update({'players': serialized_players, 'players_dict': serialized_player_dict},
                                      Tournament.tournament_id == tournament_id)
-
-
-if __name__ == '__main__':
-
-    player_1 = Player(last_name='Darden', firstname='Mike', rank=5, player_id='46464646QSDFSD64', total_score=3)
-    player_2 = Player(last_name='Mikaela', firstname='Arnold', rank=7, player_id='1234RF5456GH46TFD', total_score=1)
-
-    match_1 = Match(match_id='Q7STS76FS87G', player_a=player_1, score_player_a=0, player_b=player_2,
-                    score_player_b=1)
-    match_2 = Match(match_id='Q7STS76FS87G', player_a=player_1, score_player_a=0.5, player_b=player_2,
-                    score_player_b=0.5)
-
-    round_3 = Tour(round_id='EER7FT7ZF32874RG', round_name='Round_1', start_date=datetime.now(),
-                   matches=[match_1, match_2])
-
-    tournament_1 = Tournament(name='Tournament of Magdalena', place='Pointe-à-Pitre', date=datetime.now(),
-                              description='Are you ready fo this tournament?', number_of_rounds=6,
-                              tournament_id='SDFG34535GT35T', rounds=[round_3], players=[player_1, player_2])
-
-    TournamentTable().save_tournaments([tournament_1])
-    dst = TournamentTable().get_tournaments()
-    print(dst)
