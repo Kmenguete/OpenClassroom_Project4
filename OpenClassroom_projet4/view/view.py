@@ -4,12 +4,14 @@ from datetime import date
 
 
 class View:
-    """ The view file is responsible to interact with the user and to collect data from the user and update them to the
-    controller that will store this data in the database.
+    """ The View object is responsible to interact with the user and to collect data from the user and update them to
+    the controller that will store this data in the database.
     """
 
     @staticmethod
     def display_initial_menu():
+        """ The display_initial_menu method displays the main menu when the user start the application.
+            """
         print("Select which action you wish to perform")
         print('1 -> Start a new tournament\n'
               '2 -> Generate reports\n '
@@ -17,15 +19,21 @@ class View:
 
     @staticmethod
     def display_text(text_to_display):
+        """ The display_text method displays every text the user need to see in the application.
+                    """
         print(text_to_display)
 
     @staticmethod
     def get_choice(input_text):
+        """ The get_choice method takes input text from the user.
+                            """
         return input(input_text)
 
     @staticmethod
     def get_tournament_information():
-        print("************** Welcome to Kevin's Chess tournament ************* \n ")
+        """ The get_tournament_information method takes information about the tournament.
+                                    """
+        print("************** Welcome to the Chess tournament ************* \n ")
         name_choice = input("enter the name of tournament: ")
         place_choice = input("enter the place of tournament: ")
         date_choice = date.today()
@@ -35,6 +43,8 @@ class View:
 
     @staticmethod
     def get_player_information():
+        """ The get_player_information method takes information about the players.
+                                            """
         print("\n ***************** Register a new player *****************")
         first_name_choice = input("Please enter the player's first name: ")
         last_name_choice = input("Please enter the player's last name: ")
@@ -42,6 +52,8 @@ class View:
 
     @staticmethod
     def display_match_information(match):
+        """ The display_match_information method displays match information.
+                                                    """
         return "Match: " + match.player_a.firstname + " " + match.player_a.last_name + " vs " + \
                match.player_b.firstname + " " + match.player_b.last_name
 
