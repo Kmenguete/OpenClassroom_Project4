@@ -20,10 +20,15 @@ class TournamentSerializer:
     """
 
     def __init__(self):
+        """ The init method import the Round Serializer object and the Player Serializer object because to serialize a
+        Tournament, you should first serialize rounds object and players object.
+                            """
         self.round_serializer = RoundSerializer()
         self.player_serializer = PlayerSerializer()
 
     def serialize_tournament_rounds(self, rounds):
+        """ The serialize_tournament_rounds method serializes rounds object of Tournament object.
+                                    """
         serialized_rounds = []
         for round in rounds:
             serialized_round = self.round_serializer.serialize(round)
@@ -31,6 +36,8 @@ class TournamentSerializer:
         return serialized_rounds
 
     def serialize_tournament_players(self, players):
+        """ The serialize_tournament_players method serializes players object of Tournament object.
+                                            """
         if players is None:
             return
 
@@ -44,6 +51,8 @@ class TournamentSerializer:
         return serialized_players, serialized_player_dict
 
     def serialize(self, tournament: Tournament):
+        """ The serialize method serializes Tournament object.
+                                                    """
         date_time = tournament.date.strftime(Config.DATE_STRING_FORMAT)
         serialized_rounds = None
         if tournament.rounds is not None:
@@ -60,6 +69,8 @@ class TournamentSerializer:
         return serialized_tournament
 
     def deserialize(self, serialized_tournament: dict):
+        """ The deserialize method deserializes Tournament object.
+                                                            """
         date_time_obj = datetime.strptime(serialized_tournament['date'], Config.DATE_STRING_FORMAT)
         rounds = []
         if serialized_tournament['rounds'] is not None:
