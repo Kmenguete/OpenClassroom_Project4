@@ -72,13 +72,19 @@ class ReportService:
         return self.__sort_by_rank(tournament.players)
 
     def get_all_tournaments(self):
+        """ The get_all_tournaments method let the user to get the list of all tournaments.
+                                                   """
         return self.tournament_table.get_tournaments()
 
     def get_tournament_rounds(self, tournament_id):
+        """ The get_tournament_rounds method let the user to get the list of all rounds for a specific tournament.
+                                                           """
         tournament = self.get_tournament(tournament_id)
         return tournament.rounds
 
     def get_all_tournament_matches(self, tournament_id):
+        """ The get_all_tournament_matches method let the user to get the list of all matches for a specific tournament.
+                                                                   """
         tournament = self.get_tournament(tournament_id)
         match_list = []
         for round in tournament.rounds:
@@ -87,4 +93,6 @@ class ReportService:
 
     @staticmethod
     def get_round_matches(round):
+        """ The get_round_matches method let the user to get the list of all matches for a specific round.
+                                                                           """
         return round.matches
