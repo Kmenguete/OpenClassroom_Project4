@@ -59,15 +59,21 @@ class View:
 
     @staticmethod
     def display_opponents(player_a, player_b):
+        """ The display_opponents method displays players that meet each other in a match.
+                                                            """
         print("Player A: " + player_a.firstname + " " + player_a.last_name)
         print("Player B: " + player_b.firstname + " " + player_b.last_name)
 
     @staticmethod
     def display_players(players_dict):
+        """ The display_players method displays the players dictionary.
+                                                                    """
         print(players_dict)
 
     @staticmethod
     def display_report_menu():
+        """ The display_report_menu method displays the report menu.
+                                                                            """
         print('1 -> All players sorted alphabetically\n'
               '2 -> All players sorted by rank\n'
               '3 -> All tournaments\n'
@@ -79,6 +85,8 @@ class View:
 
     @staticmethod
     def get_report_choice():
+        """ The get_report_choice method takes input from the user in the report menu.
+                                                                                    """
         return input("Choice: ")
 
     @staticmethod
