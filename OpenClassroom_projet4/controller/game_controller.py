@@ -193,5 +193,7 @@ class GameController:
             )
             self.get_round_results(current_round)
             self.player_service.sort_players_by_total_score()
+            self.tournament_service.save()
+            self.player_service.save()
             self.tournament_service.tournament.players = self.player_service.player_list
             View.display_players(self.player_service.players_dict)
