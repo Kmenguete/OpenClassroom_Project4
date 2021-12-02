@@ -6,38 +6,36 @@ from OpenClassroom_projet4.view.view import View
 
 
 class TournamentTable:
-    """ The tournament table stores tournament object in the database. To store a tournament we need to store players
+    """The tournament table stores tournament object in the database. To store a tournament we need to store players
     object and rounds object(to store rounds object, we first need to store matches object because a round consist of a
-    list of matches(And each match need at least two players object to be stored)). In the database, a tournament object
-    consist of a tournament table, a rounds table, a matches table and a players table. Each table are required to store
+    list of matches(And each match need two players object to be stored)). In the database, a tournament object
+    consist of a tournament table, a rounds table, a matches table and a players table. Each table is required to store
     properly a tournament in the database.
     """
 
     def __init__(self):
-        """ The init method is used to import every modules required to save and update tournaments.
-                                    """
+        """The init method is used to import every module required to save and update tournaments."""
         self.database = TinyDB(Config.DATABASE_NAME)
         self.tournament_table = self.database.table(Config.TOURNAMENT_TABLE_NAME)
         self.tournament_serializer = TournamentSerializer()
 
     def save_tournament(self, tournament):
-        """ The save_tournament method is used to save one tournament in the database.
-                                            """
+        """The save_tournament method is used to save one tournament in the database."""
         serialized_tournament = self.tournament_serializer.serialize(tournament)
         self.tournament_table.insert(serialized_tournament)
 
     def get_tournament(self, tournament_id):
-        """ The get_tournament method is used to retrieve one tournament from the database.
-                                                    """
+        """The get_tournament method is used to retrieve one tournament from the database."""
         tournament_query = Query()
-        serialized_tournament = self.tournament_table.search(tournament_query.tournament_id == tournament_id)
+        serialized_tournament = self.tournament_table.search(
+            tournament_query.tournament_id == tournament_id
+        )
         for serialized_tournament in serialized_tournament:
             tournament = self.tournament_serializer.deserialize(serialized_tournament)
             return tournament
 
     def save_tournaments(self, tournaments: list):
-        """ The save_tournaments method is used to save a list of tournaments.
-                                                    """
+        """The save_tournaments method is used to save a list of tournaments."""
         serialized_tournaments = []
         for tournament in tournaments:
             serialized_tournament = self.tournament_serializer.serialize(tournament)
@@ -45,8 +43,7 @@ class TournamentTable:
         self.tournament_table.insert_multiple(serialized_tournaments)
 
     def get_tournaments(self):
-        """ The get_tournaments method is used to retrieve a list of tournaments from the database.
-                                                            """
+        """The get_tournaments method is used to retrieve a list of tournaments from the database."""
         serialized_tournaments = self.tournament_table.all()
         tournaments = []
         for serialized_tournament in serialized_tournaments:
@@ -55,9 +52,9 @@ class TournamentTable:
         return tournaments
 
     def display_tournaments(self):
-        """ The display_tournaments method is used to display tournaments that the user can select when he/she
+        """The display_tournaments method is used to display tournaments that the user can select when he/she
         requests a report from a specific tournament.
-                                                                    """
+        """
         serialized_tournaments = self.tournament_table.all()
         tournaments = []
         for serialized_tournament in serialized_tournaments:
@@ -67,33 +64,39 @@ class TournamentTable:
             View.display_text(tournament)
 
     def delete_and_save(self, tournament):
-        """ The delete_and_save method is used to update the tournament during the progress of it while the user plays
+        """The delete_and_save method is used to update the tournament during the progress of it while the user plays
         a tournament.
-                                                                            """
-        self.tournament_table.remove(where('tournament_id') == tournament.tournament_id)
+        """
+        self.tournament_table.remove(where("tournament_id") == tournament.tournament_id)
         self.save_tournament(tournament)
 
     def get_rounds(self, tournament_id):
-        """ The get_rounds method is used to get rounds of a specific tournament when the user ask it in the report
+        """The get_rounds method is used to get rounds of a specific tournament when the user ask it in the report
         service.
-                                                                                    """
+        """
         tournament_query = Query()
-        serialized_tournament = self.tournament_table.search(tournament_query.tournament_id == tournament_id)
+        serialized_tournament = self.tournament_table.search(
+            tournament_query.tournament_id == tournament_id
+        )
         tournament = self.tournament_serializer.deserialize(serialized_tournament[0])
         return tournament.rounds
 
     def update_rounds(self, tournament_id, new_rounds):
-        """ The update_rounds method is used to save new rounds generated by the application in the database.
-                                                                                            """
+        """The update_rounds method is used to save new rounds generated by the application in the database."""
         Tournament = Query()
-        serialized_rounds = self.tournament_serializer.serialize_tournament_rounds(new_rounds)
-        self.tournament_table.update({'rounds': serialized_rounds}, Tournament.tournament_id == tournament_id)
+        serialized_rounds = self.tournament_serializer.serialize_tournament_rounds(
+            new_rounds
+        )
+        self.tournament_table.update(
+            {"rounds": serialized_rounds}, Tournament.tournament_id == tournament_id
+        )
 
     def update_round_matches(self, tournament_id, round, match_list):
-        """ The update_round_matches method is used to update matches of each round in the database.
-                                                                                                    """
+        """The update_round_matches method is used to update matches of each round in the database."""
         Tournament = Query()
-        serialized_tournament = self.tournament_table.search(Tournament.tournament_id == tournament_id)
+        serialized_tournament = self.tournament_table.search(
+            Tournament.tournament_id == tournament_id
+        )
         tournament = self.tournament_serializer.deserialize(serialized_tournament[0])
         tournament.rounds.remove(self._find_round(round.round_id, tournament.rounds))
         round.matches = match_list
@@ -101,26 +104,32 @@ class TournamentTable:
         self.update_rounds(tournament_id, tournament.rounds)
 
     def get_players_of_one_tournament(self, tournament: Tournament):
-        """ The get_players_of_one_tournament method is used to get players of one tournament when the user ask for it
+        """The get_players_of_one_tournament method is used to get players of one tournament when the user ask for it
         in the report service.
-                                                                                                            """
+        """
         players_query = Query()
-        serialized_players = self.tournament_table.search(players_query.players == tournament.players)
+        serialized_players = self.tournament_table.search(
+            players_query.players == tournament.players
+        )
         return serialized_players
 
     @staticmethod
     def _find_round(round_id, rounds):
-        """ The _find_round method is used to search a specific round by their id.
-                                                                                                                    """
+        """The _find_round method is used to search a specific round by their id."""
         for round in rounds:
             if round.round_id == round_id:
                 return round
 
     def update_players(self, tournament_id, players):
-        """ The update_players method is used to attach players to a specific tournament when the user create a
+        """The update_players method is used to attach players to a specific tournament when the user create a
         tournament and their players.
-                                                                                                                    """
+        """
         Tournament = Query()
-        serialized_players, serialized_player_dict = self.tournament_serializer.serialize_tournament_players(players)
-        self.tournament_table.update({'players': serialized_players, 'players_dict': serialized_player_dict},
-                                     Tournament.tournament_id == tournament_id)
+        (
+            serialized_players,
+            serialized_player_dict,
+        ) = self.tournament_serializer.serialize_tournament_players(players)
+        self.tournament_table.update(
+            {"players": serialized_players, "players_dict": serialized_player_dict},
+            Tournament.tournament_id == tournament_id,
+        )
