@@ -8,6 +8,7 @@
 7. The business logic
 8. The database  
 9. About the utils 
+10. About the flake8
 ### 1. About the application
 ***
 The application is a chess tournament management system that aim to play
@@ -129,7 +130,7 @@ request it.
 The database consist of 4 tables. There is the tournament table, the round
 table, the match table and the player table. As the name indicate it, the 
 tournament table stores tournaments, the round table stores rounds, the match
-table stores matches and the players table stores players. Each table is
+table stores matches and the player's table stores players. Each table is
 attached together. To store a match, you should first store two players,
 to store a round, you should store matches, to store a tournament, you should
 store rounds and players. Each object depend on each other and should always
@@ -149,3 +150,18 @@ The utils package store constant variables and functions that does not deal
 with business logic but that are necessary for a proper running of the 
 application.
 ***
+### 10. About the flake8
+***
+In order to make sure that the application respect the PEP8 convention. I 
+installed flake8-html library in order to generate reports that certify 
+that the application respect python conventions. In order to reformat
+each python files of the application, I installed the black library. First, 
+I used black to reformat each python file and then, I asked flake8-html
+to generate a report that certify that each python file respect the PEP8
+convention. 
+
+I voluntarily decided to organize reports by directory. Because I consider
+this way cleaner. For each directory, I blacked every file, I generate 
+reports(using flake8-html) with them. Each directory of the application
+has a flake8-html report directory. And each flake8-html report directory
+are in the flake8_report directory.
