@@ -133,7 +133,6 @@ class GameController:
             )
         )
         self.get_round_results(self.tournament_service.tournament.rounds[0])
-        # self.tournament_service.update_round_matches(self.tournament_service.tournament.rounds[0], updated_match_list)
 
     def get_round_results(self, current_round):
         """
