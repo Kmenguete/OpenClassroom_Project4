@@ -1,8 +1,9 @@
-from tinydb import Query, TinyDB, where
-from OpenClassroom_projet4.serializers.tournament_serializer import TournamentSerializer
-from OpenClassroom_projet4.model.tournament_model import Tournament
-from OpenClassroom_projet4.utils.config import Config
-from OpenClassroom_projet4.view.view import View
+from tinydb import TinyDB, Query, where
+
+from model.tournament_model import Tournament
+from serializers.tournament_serializer import TournamentSerializer
+from utils.config import Config
+from view.view import View
 
 
 class TournamentTable:
@@ -61,7 +62,8 @@ class TournamentTable:
             tournament = self.tournament_serializer.deserialize(serialized_tournament)
             tournaments.append(tournament)
         for tournament in tournaments:
-            View.display_text(tournament)
+            View.display_text("name of tournament: " + tournament.name +
+                              " , tournament_id: " + tournament.tournament_id)
 
     def delete_and_save(self, tournament):
         """The delete_and_save method is used to update the tournament during the progress of it while the user plays

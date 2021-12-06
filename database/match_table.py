@@ -1,6 +1,6 @@
 from tinydb import Query, TinyDB
-from OpenClassroom_projet4.serializers.match_serializer import MatchSerializer
-from OpenClassroom_projet4.utils.config import Config
+from serializers.match_serializer import MatchSerializer
+from utils.config import Config
 
 
 class MatchTable:

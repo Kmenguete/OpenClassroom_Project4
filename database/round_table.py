@@ -1,6 +1,6 @@
 from tinydb import Query, TinyDB
-from OpenClassroom_projet4.serializers.round_serializer import RoundSerializer
-from OpenClassroom_projet4.utils.config import Config
+from serializers.round_serializer import RoundSerializer
+from utils.config import Config
 
 
 class RoundTable:

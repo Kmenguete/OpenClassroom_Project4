@@ -1,7 +1,7 @@
 from tinydb import Query, TinyDB
 
-from OpenClassroom_projet4.serializers.player_serializer import PlayerSerializer
-from OpenClassroom_projet4.utils.config import Config
+from serializers.player_serializer import PlayerSerializer
+from utils.config import Config
 
 
 class PlayerTable:
