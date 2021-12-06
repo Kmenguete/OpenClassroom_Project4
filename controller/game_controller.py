@@ -1,13 +1,14 @@
-from OpenClassroom_projet4.model.player_model import Player
-from OpenClassroom_projet4.model.tournament_model import DEFAULT_ROUNDS_NUMBER
-from OpenClassroom_projet4.services.match_service import MatchService
-from OpenClassroom_projet4.services.player_service import PlayerService
-from OpenClassroom_projet4.services.tournament_service import TournamentService
-from OpenClassroom_projet4.utils.config import Config
+
 import uuid
 
-from OpenClassroom_projet4.utils.utils import transform_player_list_to_dictionary
-from OpenClassroom_projet4.view.view import View
+from model.player_model import Player
+from model.tournament_model import DEFAULT_ROUNDS_NUMBER
+from services.match_service import MatchService
+from services.player_service import PlayerService
+from services.tournament_service import TournamentService
+from utils.config import Config
+from utils.utils import transform_player_list_to_dictionary
+from view.view import View
 
 
 class GameController:

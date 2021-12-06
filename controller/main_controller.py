@@ -1,6 +1,6 @@
-from OpenClassroom_projet4.controller.game_controller import GameController
-from OpenClassroom_projet4.controller.reports_controller import ReportsController
-from OpenClassroom_projet4.view.view import View
+from controller.game_controller import GameController
+from controller.reports_controller import ReportsController
+from view.view import View
 
 
 class MainController:

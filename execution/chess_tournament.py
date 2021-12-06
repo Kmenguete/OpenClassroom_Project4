@@ -2,7 +2,6 @@
 """
 from OpenClassroom_projet4.controller.main_controller import MainController
 
-
 if __name__ == "__main__":
     MainController().start()
     exit()
