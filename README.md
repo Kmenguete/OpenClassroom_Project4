@@ -8,7 +8,8 @@
 7. The business logic
 8. The database  
 9. About the utils 
-10. About the flake8
+10. About the flake8 
+11. Execution issue troubleshooting
 ### 1. About the application
 ***
 The application is a chess tournament management system that aim to play
@@ -164,4 +165,15 @@ I voluntarily decided to organize reports by directory. Because I consider
 this way cleaner. For each directory, I blacked every file, I generate 
 reports(using flake8-html) with them. Each directory of the application
 has a flake8-html report directory. And each flake8-html report directory
-are in the flake8_report directory.
+are in the flake8_report directory. 
+***
+### 11. Execution issue troubleshooting 
+***
+In order to run the application, you will have to run it on the terminal.
+The syntax for running the application is the following: 
+python3 chess_tournament.py. While trying to run the application, you
+may meet some trouble. This trouble is "fatal: No such file or directory:
+../database/db.json". db.json is the database of the application. If you 
+face this issue, go to the config file in the utils directory. Change the
+DATABASE_NAME = "../database/db.json" to "./database/db.json". If it does
+not fix the issue try ===> "db.json".
