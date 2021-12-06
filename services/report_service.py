@@ -1,9 +1,10 @@
 import operator
-from OpenClassroom_projet4.database.match_table import MatchTable
-from OpenClassroom_projet4.database.player_table import PlayerTable
-from OpenClassroom_projet4.database.round_table import RoundTable
-from OpenClassroom_projet4.database.tournament_table import TournamentTable
-from OpenClassroom_projet4.errors.exceptions import TournamentDoesNotExistError
+
+from database.match_table import MatchTable
+from database.player_table import PlayerTable
+from database.round_table import RoundTable
+from database.tournament_table import TournamentTable
+from errors.exceptions import TournamentDoesNotExistError
 
 
 class ReportService:

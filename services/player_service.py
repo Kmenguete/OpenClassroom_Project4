@@ -1,7 +1,7 @@
 import operator
 
-from OpenClassroom_projet4.database.player_table import PlayerTable
-from OpenClassroom_projet4.utils.utils import (
+from database.player_table import PlayerTable
+from utils.utils import (
     transform_player_list_to_dictionary,
     transform_player_dict_to_list,
 )
