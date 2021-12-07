@@ -72,6 +72,7 @@ project. MVC stand for Model-View-Controller. An application that implement
 the MVC pattern is more maintainable and bugs are easier to detect and fix.
 On the next chapters of this README file, I will explain in more details 
 each Part of the pattern(the model, the view and the controller). 
+![alt text](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftechterms.com%2Fimg%2Flg%2Fmvc_1321.png&f=1&nofb=1)
 ***
 ### 3. Required libraries, packages and modules 
 *** 
