@@ -177,4 +177,9 @@ may meet some trouble. This trouble is "fatal: No such file or directory:
 ../database/db.json". db.json is the database of the application. If you 
 face this issue, go to the config file in the utils directory. Change the
 DATABASE_NAME = "../database/db.json" to "./database/db.json". If it does
-not fix the issue try ===> "db.json".
+not fix the issue try ===> "db.json". 
+
+Another issue you may face, you can get a ModuleNotFoundError while running
+the application. To fix this issue, export the absolute path to the project.
+Type the following command on the terminal: export PYTHONPATH="${PYTHONPATH}:
+/path/to/the/directory". The directory is the entire project(the application itself).
