@@ -66,7 +66,6 @@ class GameController:
             description=description_choice,
             number_of_rounds=DEFAULT_ROUNDS_NUMBER,
         )
-        # print("Tournament === " + str(self.tournament_service.tournament))
 
     def create_players(self):
         """The create players method let the user create players."""
@@ -83,7 +82,6 @@ class GameController:
             )
         self.tournament_service.tournament.players = player_list
         self.player_service.player_list = player_list
-        print("Tournament === " + str(self.tournament_service.tournament))
         # self.tournament_service.update_players(player_list)
         # self.player_service.update_player_list(player_list)
 
@@ -120,7 +118,6 @@ class GameController:
         self.player_service.update_players_dict(
             self.tournament_service.tournament.players_dict
         )
-        print("Tournament === " + str(self.tournament_service.tournament))
 
     def get_initial_round_results_and_update(self, round_name="Round 1"):
         """When a match is finished, the user enter the result. the user repeat the process for every match
@@ -172,7 +169,6 @@ class GameController:
                     )
                     updated_match_list.append(match)
                     break
-        print("Tournament === " + str(self.tournament_service.tournament))
         return updated_match_list
 
     def create_remaining_rounds(self):
